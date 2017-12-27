@@ -1,0 +1,32 @@
+# /Pods
+
+# OS X Finder
+.DS_Store
+
+## Build generated
+build/
+DerivedData/
+
+# Xcode per-user config
+*.mode1
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.perspective
+*.perspectivev3
+xcuserdata/
+# Whitelist defaults since some projects need them
+!default.mode1v3
+!default.mode2v3
+!default.pbxuser
+!default.perspectivev3
+
+# Xcode temporary files
+*~.nib
+
+# Other
+*.moved-aside
+*.xccheckout
+
+# CocoaPods
+Pods
