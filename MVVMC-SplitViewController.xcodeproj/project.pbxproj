@@ -29,8 +29,6 @@
 		C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94BE7341FF353BA0038CBA8 /* Todo.swift */; };
 		C94BE7371FF353C00038CBA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94BE7361FF353C00038CBA8 /* User.swift */; };
 		C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F8F3B1FEC234C00C8183D /* AppDelegate.swift */; };
-		C94F8F3E1FEC234C00C8183D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F8F3D1FEC234C00C8183D /* ViewController.swift */; };
-		C94F8F411FEC234C00C8183D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94F8F3F1FEC234C00C8183D /* Main.storyboard */; };
 		C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94F8F421FEC234C00C8183D /* Assets.xcassets */; };
 		C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94F8F441FEC234C00C8183D /* LaunchScreen.storyboard */; };
 		C94F8F511FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F8F501FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift */; };
@@ -76,8 +74,6 @@
 		C94BE7361FF353C00038CBA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C94F8F381FEC234C00C8183D /* MVVMC-SplitViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVMC-SplitViewController.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F8F3B1FEC234C00C8183D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C94F8F3D1FEC234C00C8183D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C94F8F401FEC234C00C8183D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C94F8F421FEC234C00C8183D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C94F8F451FEC234C00C8183D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C94F8F471FEC234C00C8183D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -200,7 +196,6 @@
 				C94F8F5D1FEC238900C8183D /* Scenes */,
 				C94BE7241FF349B70038CBA8 /* Resources */,
 				C94BE7251FF349DA0038CBA8 /* Supporting Files */,
-				C94F8F3F1FEC234C00C8183D /* Main.storyboard */,
 				C94F8F441FEC234C00C8183D /* LaunchScreen.storyboard */,
 			);
 			path = "MVVMC-SplitViewController";
@@ -244,7 +239,6 @@
 		C94F8F5D1FEC238900C8183D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C94F8F3D1FEC234C00C8183D /* ViewController.swift */,
 				C915BE031FF4C08A00F53F5F /* Common */,
 				C93E19891FF452B200B5D0B9 /* PostsList */,
 			);
@@ -360,7 +354,6 @@
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
-				C94F8F411FEC234C00C8183D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +485,6 @@
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
 				C94BE7271FF353830038CBA8 /* Address.swift in Sources */,
-				C94F8F3E1FEC234C00C8183D /* ViewController.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
@@ -531,14 +523,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C94F8F3F1FEC234C00C8183D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C94F8F401FEC234C00C8183D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C94F8F441FEC234C00C8183D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
