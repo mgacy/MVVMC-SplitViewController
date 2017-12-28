@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		92290B5D2F8E7CF8E6B38F83 /* Pods_MVVMC_SplitViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */; };
+		C93E19971FF487D500B5D0B9 /* AttachableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19961FF487D500B5D0B9 /* AttachableViewModelType.swift */; };
+		C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19981FF4881300B5D0B9 /* AttachableType.swift */; };
 		C94BE7271FF353830038CBA8 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94BE7261FF353830038CBA8 /* Address.swift */; };
 		C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94BE7281FF3538F0038CBA8 /* Album.swift */; };
 		C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94BE72A1FF353970038CBA8 /* Comment.swift */; };
@@ -43,6 +45,8 @@
 		5B8FD0302C80698E47EA2E55 /* Pods-MVVMC-SplitViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC-SplitViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController.release.xcconfig"; sourceTree = "<group>"; };
 		6A26203E4BAF3789FECA4651 /* Pods-MVVMC-SplitViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMC-SplitViewControllerTests/Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_SplitViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C93E19961FF487D500B5D0B9 /* AttachableViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableViewModelType.swift; sourceTree = "<group>"; };
+		C93E19981FF4881300B5D0B9 /* AttachableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableType.swift; sourceTree = "<group>"; };
 		C94BE7261FF353830038CBA8 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C94BE7281FF3538F0038CBA8 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		C94BE72A1FF353970038CBA8 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		C94F8F5C1FEC237F00C8183D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				C93E19981FF4881300B5D0B9 /* AttachableType.swift */,
+				C93E19961FF487D500B5D0B9 /* AttachableViewModelType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -437,10 +443,12 @@
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
+				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
 				C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */,
 				C94BE7371FF353C00038CBA8 /* User.swift in Sources */,
+				C93E19971FF487D500B5D0B9 /* AttachableViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
