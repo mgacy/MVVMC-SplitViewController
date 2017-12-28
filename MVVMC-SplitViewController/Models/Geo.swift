@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable:next type_name
 struct Geo: Codable {
     let lat: String
     let lng: String
