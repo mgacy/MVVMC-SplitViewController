@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		92290B5D2F8E7CF8E6B38F83 /* Pods_MVVMC_SplitViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
+		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
+		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
+		C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C93E198E1FF4537C00B5D0B9 /* PostsListViewController.storyboard */; };
 		C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19911FF4854E00B5D0B9 /* Router.swift */; };
 		C93E19971FF487D500B5D0B9 /* AttachableViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19961FF487D500B5D0B9 /* AttachableViewModelType.swift */; };
 		C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19981FF4881300B5D0B9 /* AttachableType.swift */; };
@@ -52,6 +55,9 @@
 		6A26203E4BAF3789FECA4651 /* Pods-MVVMC-SplitViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMC-SplitViewControllerTests/Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_SplitViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
+		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
+		C93E198E1FF4537C00B5D0B9 /* PostsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostsListViewController.storyboard; sourceTree = "<group>"; };
 		C93E19911FF4854E00B5D0B9 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C93E19961FF487D500B5D0B9 /* AttachableViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableViewModelType.swift; sourceTree = "<group>"; };
 		C93E19981FF4881300B5D0B9 /* AttachableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachableType.swift; sourceTree = "<group>"; };
@@ -127,6 +133,16 @@
 				C93E199C1FF48CF900B5D0B9 /* ErrorTracker.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C93E19891FF452B200B5D0B9 /* PostsList */ = {
+			isa = PBXGroup;
+			children = (
+				C93E198E1FF4537C00B5D0B9 /* PostsListViewController.storyboard */,
+				C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */,
+				C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */,
+			);
+			path = PostsList;
 			sourceTree = "<group>";
 		};
 		C93E19931FF4861C00B5D0B9 /* Extensions */ = {
@@ -230,6 +246,7 @@
 			children = (
 				C94F8F3D1FEC234C00C8183D /* ViewController.swift */,
 				C915BE031FF4C08A00F53F5F /* Common */,
+				C93E19891FF452B200B5D0B9 /* PostsList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -341,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
+				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
 				C94F8F411FEC234C00C8183D /* Main.storyboard in Resources */,
 			);
@@ -477,10 +495,12 @@
 				C94F8F3E1FEC234C00C8183D /* ViewController.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
+				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
 				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
+				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
 				C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */,
