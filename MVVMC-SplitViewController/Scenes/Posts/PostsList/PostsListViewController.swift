@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class PostsListViewController: UITableViewController, AttachableType {
+final class PostsListViewController: UITableViewController, AttachableType {
 
     var bindings: PostsListViewModel.Bindings {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
