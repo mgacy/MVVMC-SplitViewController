@@ -134,6 +134,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		C915BE081FF5D7EF00F53F5F /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				C93E19891FF452B200B5D0B9 /* PostsList */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
 		C93E19891FF452B200B5D0B9 /* PostsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				C915BE031FF4C08A00F53F5F /* Common */,
-				C93E19891FF452B200B5D0B9 /* PostsList */,
+				C915BE081FF5D7EF00F53F5F /* Posts */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
