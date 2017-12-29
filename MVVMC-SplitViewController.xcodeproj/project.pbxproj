@@ -11,6 +11,9 @@
 		C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */; };
 		C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE061FF5D72C00F53F5F /* AppCoordinator.swift */; };
 		C915BE0A1FF5D88700F53F5F /* PostsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE091FF5D88700F53F5F /* PostsCoordinator.swift */; };
+		C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C915BE0F1FF5DD6600F53F5F /* PostDetailViewController.storyboard */; };
+		C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE111FF5DD7700F53F5F /* PostDetailViewController.swift */; };
+		C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE131FF5DDE900F53F5F /* PostDetailViewModel.swift */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
 		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
 		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
@@ -58,6 +61,9 @@
 		C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		C915BE061FF5D72C00F53F5F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C915BE091FF5D88700F53F5F /* PostsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCoordinator.swift; sourceTree = "<group>"; };
+		C915BE0F1FF5DD6600F53F5F /* PostDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostDetailViewController.storyboard; sourceTree = "<group>"; };
+		C915BE111FF5DD7700F53F5F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		C915BE131FF5DDE900F53F5F /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
 		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -143,8 +149,19 @@
 			children = (
 				C915BE091FF5D88700F53F5F /* PostsCoordinator.swift */,
 				C93E19891FF452B200B5D0B9 /* PostsList */,
+				C915BE0E1FF5DD1500F53F5F /* PostDetail */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		C915BE0E1FF5DD1500F53F5F /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C915BE0F1FF5DD6600F53F5F /* PostDetailViewController.storyboard */,
+				C915BE111FF5DD7700F53F5F /* PostDetailViewController.swift */,
+				C915BE131FF5DDE900F53F5F /* PostDetailViewModel.swift */,
+			);
+			path = PostDetail;
 			sourceTree = "<group>";
 		};
 		C93E19891FF452B200B5D0B9 /* PostsList */ = {
@@ -370,6 +387,7 @@
 			files = (
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
+				C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
+				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
 				C94BE7311FF353AD0038CBA8 /* Photo.swift in Sources */,
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
@@ -506,6 +525,7 @@
 				C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
+				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
