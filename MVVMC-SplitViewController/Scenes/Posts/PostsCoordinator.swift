@@ -20,6 +20,8 @@ class PostsCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<Void> {
         var viewController = PostsListViewController.instance()
+        let navigationController = UINavigationController(rootViewController: viewController)
+
         var avm: Attachable<PostsListViewModel> = .detached(PostsListViewModel.Dependency(client: client))
         let viewModel = viewController.bind(toViewModel: &avm)
 
@@ -30,9 +32,10 @@ class PostsCoordinator: BaseCoordinator<Void> {
             })
             .disposed(by: viewController.disposeBag)
 
-        window.rootViewController = viewController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
+        // View will never be dismissed
         return Observable.never()
     }
 
