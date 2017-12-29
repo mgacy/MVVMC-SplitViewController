@@ -25,10 +25,9 @@ class PostsCoordinator: BaseCoordinator<Void> {
         var avm: Attachable<PostsListViewModel> = .detached(PostsListViewModel.Dependency(client: client))
         let viewModel = viewController.bind(toViewModel: &avm)
 
-        // Navigation (eventually)
         viewModel.selectedPost
-            .drive(onNext: { selection in
-                print("Selected: \(selection)")
+            .drive(onNext: { [weak self] selection in
+                self?.showDetailView(with: selection, in: navigationController)
             })
             .disposed(by: viewController.disposeBag)
 
@@ -37,6 +36,12 @@ class PostsCoordinator: BaseCoordinator<Void> {
 
         // View will never be dismissed
         return Observable.never()
+    }
+
+    private func showDetailView(with post: Post, in navigationController: UINavigationController) {
+        let viewController = PostDetailViewController.instance()
+        viewController.viewModel = PostDetailViewModel(post: post)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
 }
