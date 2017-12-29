@@ -7,33 +7,23 @@
 //
 
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator!
+    private let disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        // Dependencies
-        let client = APIClient()
-
-        // Setup
-        var viewController = PostsListViewController.instance()
-        var avm: Attachable<PostsListViewModel> = .detached(PostsListViewModel.Dependency(client: client))
-        let viewModel = viewController.bind(toViewModel: &avm)
-
-        // Navigation (eventually)
-        viewModel.selectedPost
-            .drive(onNext: { selection in
-                print("Selected: \(selection)")
-            })
-            .disposed(by: viewController.disposeBag)
-
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+        self.appCoordinator = AppCoordinator(window: self.window!)
+        self.appCoordinator.start()
+            .subscribe()
+            .disposed(by: self.disposeBag)
 
         return true
     }
