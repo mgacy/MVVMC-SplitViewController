@@ -1,0 +1,42 @@
+﻿disabled_rules: # rule identifiers to exclude from running
+  - todo
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly. Give warning only for force casting
+
+force_try:
+  severity: warning # explicitly. Give warning only for force try
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+identifier_name:
+  excluded:
+    - bs
+    - id
+    - in
+    - of
+    - vc
+
+large_tuple: # warn user when using 3 values in tuple, give error if there are 4
+   - 3
+   - 4
+
+line_length:
+  # warning: 120
+  ignores_function_declarations: true
+  ignores_comments: true
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 4    # only warning
+  max_length:      # warning and error
+    warning: 30
+    error: 35
+  excluded: iPhone # excluded via string
+  excluded: in
+reporter: "xcode"

@@ -13,9 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        // Dependencies
+        let client = APIClient()
+
+        // Setup
+        var viewController = PostsListViewController.instance()
+        var avm: Attachable<PostsListViewModel> = .detached(PostsListViewModel.Dependency(client: client))
+        let viewModel = viewController.bind(toViewModel: &avm)
+
+        // Navigation (eventually)
+        viewModel.selectedPost
+            .drive(onNext: { selection in
+                print("Selected: \(selection)")
+            })
+            .disposed(by: viewController.disposeBag)
+
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+
         return true
     }
 
@@ -41,6 +60,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-
