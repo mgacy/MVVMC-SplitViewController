@@ -20,8 +20,8 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        let postsCoordinator = PostsCoordinator(window: window)
-        return coordinate(to: postsCoordinator)
+        let tabBarCoordinator = TabBarCoordinator(window: window, client: client)
+        return coordinate(to: tabBarCoordinator)
     }
 
 }
