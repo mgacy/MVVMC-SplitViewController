@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92290B5D2F8E7CF8E6B38F83 /* Pods_MVVMC_SplitViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */; };
+		C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
 		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
 		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
@@ -52,6 +53,7 @@
 		5B8FD0302C80698E47EA2E55 /* Pods-MVVMC-SplitViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC-SplitViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController.release.xcconfig"; sourceTree = "<group>"; };
 		6A26203E4BAF3789FECA4651 /* Pods-MVVMC-SplitViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMC-SplitViewControllerTests/Pods-MVVMC-SplitViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8B3F91BD7F8F02C851EDA49 /* Pods_MVVMC_SplitViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_SplitViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
 		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				C93E199A1FF48CCD00B5D0B9 /* ActivityIndicator.swift */,
 				C93E199C1FF48CF900B5D0B9 /* ErrorTracker.swift */,
+				C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
 				C94BE7271FF353830038CBA8 /* Address.swift in Sources */,
+				C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
