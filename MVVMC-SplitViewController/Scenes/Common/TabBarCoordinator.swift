@@ -65,7 +65,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic
                 return navController
-        }
+            }
 
         tabBarController.viewControllers = navControllers
         tabBarController.view.backgroundColor = UIColor.white  // Fix dark shadow in nav bar on segue
@@ -80,7 +80,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
                     let coordinator = TodosCoordinator(navigationController: navCtrl, client: client)
                     return coordinate(to: coordinator)
                 }
-        }
+            }
     }
 
 }
