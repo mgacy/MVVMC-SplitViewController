@@ -62,7 +62,8 @@ class TabBarCoordinator: BaseCoordinator<Void> {
             .map { tab -> UINavigationController in
                 let navController = UINavigationController()
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tab.tag)
-                navController.navigationBar.prefersLargeTitles = true
+                //navController.navigationBar.prefersLargeTitles = true
+                //navController.navigationItem.largeTitleDisplayMode = .automatic
                 return navController
         }
 
