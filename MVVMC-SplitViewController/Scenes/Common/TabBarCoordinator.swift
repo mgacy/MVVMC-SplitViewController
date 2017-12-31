@@ -62,9 +62,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
             .map { tab -> UINavigationController in
                 let navController = UINavigationController()
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tab.tag)
-                if #available(iOS 11.0, *) {
-                    navController.navigationBar.prefersLargeTitles = true
-                }
+                navController.navigationBar.prefersLargeTitles = true
                 return navController
         }
 
