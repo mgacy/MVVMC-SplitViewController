@@ -44,6 +44,10 @@
 		C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94F8F441FEC234C00C8183D /* LaunchScreen.storyboard */; };
 		C94F8F511FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F8F501FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift */; };
 		C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137D91FFB1A70009EE9B6 /* UserManager.swift */; };
+		C97137DD1FFB2BDF009EE9B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */; };
+		C97137DF1FFB2BEF009EE9B6 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */; };
+		C97137E11FFB2BFE009EE9B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */; };
+		C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */; };
 		C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */; };
 		C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */; };
 		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
@@ -108,6 +112,10 @@
 		C94F8F501FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMC_SplitViewControllerTests.swift; sourceTree = "<group>"; };
 		C94F8F521FEC234C00C8183D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97137D91FFB1A70009EE9B6 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -315,6 +323,7 @@
 				C915BE031FF4C08A00F53F5F /* Common */,
 				C915BE081FF5D7EF00F53F5F /* Posts */,
 				C915BE151FF5EB6300F53F5F /* Todos */,
+				C97137DB1FFB2BC2009EE9B6 /* Login */,
 				C97137E51FFB4654009EE9B6 /* Signup */,
 			);
 			path = Scenes;
@@ -337,6 +346,17 @@
 				C97137D91FFB1A70009EE9B6 /* UserManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C97137DB1FFB2BC2009EE9B6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */,
+				C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */,
+				C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */,
+				C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		C97137E51FFB4654009EE9B6 /* Signup */ = {
@@ -443,6 +463,7 @@
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
+				C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */,
 				C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
 			);
@@ -574,6 +595,7 @@
 			files = (
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
 				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
+				C97137E11FFB2BFE009EE9B6 /* LoginViewModel.swift in Sources */,
 				C94BE7311FF353AD0038CBA8 /* Photo.swift in Sources */,
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
@@ -585,6 +607,8 @@
 				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,
+				C97137DD1FFB2BDF009EE9B6 /* LoginViewController.swift in Sources */,
+				C97137DF1FFB2BEF009EE9B6 /* LoginCoordinator.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
 				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
 				C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */,
