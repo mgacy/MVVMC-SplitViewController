@@ -10,17 +10,17 @@ import RxSwift
 
 class TodosCoordinator: BaseCoordinator<Void> {
 
-    private let window: UIWindow
+    private let navigationController: UINavigationController
     private let client: APIClient
 
-    init(window: UIWindow) {
-        self.window = window
-        self.client = APIClient()
+    init(navigationController: UINavigationController, client: APIClient) {
+        self.navigationController = navigationController
+        self.client = client
     }
 
     override func start() -> Observable<Void> {
         var viewController = TodosListViewController.instance()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.viewControllers = [viewController]
 
         var avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: client))
         let viewModel = viewController.bind(toViewModel: &avm)
@@ -30,9 +30,6 @@ class TodosCoordinator: BaseCoordinator<Void> {
                 print("Selected: \(selection)")
             })
             .disposed(by: viewController.disposeBag)
-
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
 
         // View will never be dismissed
         return Observable.never()

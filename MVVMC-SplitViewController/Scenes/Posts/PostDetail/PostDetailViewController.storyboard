@@ -45,6 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="SIT-Bu-Gpd"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bodyLabel" destination="pAI-cx-F7c" id="q1J-ec-4gv"/>
                         <outlet property="titleLabel" destination="Grd-Sn-49m" id="a9Q-Q3-IKO"/>
