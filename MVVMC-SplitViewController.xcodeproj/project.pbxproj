@@ -44,6 +44,10 @@
 		C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94F8F441FEC234C00C8183D /* LaunchScreen.storyboard */; };
 		C94F8F511FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94F8F501FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift */; };
 		C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137D91FFB1A70009EE9B6 /* UserManager.swift */; };
+		C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */; };
+		C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */; };
+		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
+		C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +108,10 @@
 		C94F8F501FEC234C00C8183D /* MVVMC_SplitViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMC_SplitViewControllerTests.swift; sourceTree = "<group>"; };
 		C94F8F521FEC234C00C8183D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97137D91FFB1A70009EE9B6 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
+		C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignupViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +315,7 @@
 				C915BE031FF4C08A00F53F5F /* Common */,
 				C915BE081FF5D7EF00F53F5F /* Posts */,
 				C915BE151FF5EB6300F53F5F /* Todos */,
+				C97137E51FFB4654009EE9B6 /* Signup */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -328,6 +337,17 @@
 				C97137D91FFB1A70009EE9B6 /* UserManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C97137E51FFB4654009EE9B6 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */,
+				C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */,
+				C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */,
+				C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */,
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
@@ -566,14 +587,17 @@
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
 				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
+				C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */,
 				C915BE1C1FF5F36600F53F5F /* TodosListViewController.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,
 				C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */,
+				C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
 				C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */,
 				C915BE1E1FF5F37900F53F5F /* TodosListViewModel.swift in Sources */,
+				C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */,
 				C94BE7371FF353C00038CBA8 /* User.swift in Sources */,
 				C915BE171FF5EB8300F53F5F /* TodosCoordinator.swift in Sources */,
 				C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */,
