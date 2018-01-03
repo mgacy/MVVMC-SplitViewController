@@ -52,6 +52,7 @@
 		C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */; };
 		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
 		C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */; };
+		C97137EF1FFCB185009EE9B6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EE1FFCB185009EE9B6 /* AppDependency.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignupViewController.storyboard; sourceTree = "<group>"; };
+		C97137EE1FFCB185009EE9B6 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				C94F8F3B1FEC234C00C8183D /* AppDelegate.swift */,
+				C97137EE1FFCB185009EE9B6 /* AppDependency.swift */,
 				C915BE061FF5D72C00F53F5F /* AppCoordinator.swift */,
 			);
 			path = Application;
@@ -595,6 +598,7 @@
 			files = (
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
 				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
+				C97137EF1FFCB185009EE9B6 /* AppDependency.swift in Sources */,
 				C97137E11FFB2BFE009EE9B6 /* LoginViewModel.swift in Sources */,
 				C94BE7311FF353AD0038CBA8 /* Photo.swift in Sources */,
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
