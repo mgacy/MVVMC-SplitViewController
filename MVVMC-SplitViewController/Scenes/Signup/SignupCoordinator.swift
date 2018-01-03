@@ -19,20 +19,21 @@ enum SignupCoordinationResult {
 }
 
 class SignupCoordinator: BaseCoordinator<SignupCoordinationResult> {
+    typealias Dependencies = HasClient & HasUserManager
 
     private let rootViewController: UIViewController
-    private let client: APIClient
+    private let dependencies: Dependencies
 
-    init(rootViewController: UIViewController, client: APIClient) {
+    init(rootViewController: UIViewController, dependencies: Dependencies) {
         self.rootViewController = rootViewController
-        self.client = client
+        self.dependencies = dependencies
     }
 
     override func start() -> Observable<CoordinationResult> {
         var viewController = SignupViewController.instance()
         let navigationController = UINavigationController(rootViewController: viewController)
 
-        var avm: Attachable<SignupViewModel> = .detached(SignupViewModel.Dependency(client: client))
+        var avm: Attachable<SignupViewModel> = .detached(dependencies)
         let viewModel = viewController.bind(toViewModel: &avm)
 
         let cancel = viewModel.cancelled

@@ -12,17 +12,15 @@ import RxSwift
 class AppCoordinator: BaseCoordinator<Void> {
 
     private let window: UIWindow
-    private let client: APIClient
-    private let userManager: UserManager
+    private let dependencies: AppDependency
 
     init(window: UIWindow) {
         self.window = window
-        self.client = APIClient()
-        self.userManager = UserManager()
+        self.dependencies = AppDependency()
     }
 
     override func start() -> Observable<Void> {
-        switch userManager.authenticationState {
+        switch dependencies.userManager.authenticationState {
         case .signedIn:
             return showTabBar()
         case .signedOut:
@@ -30,17 +28,17 @@ class AppCoordinator: BaseCoordinator<Void> {
                 .flatMap { [weak self] result -> Observable<Void> in
                     guard let strongSelf = self else { return .empty() }
                     return strongSelf.showTabBar()
-            }
+                }
         }
     }
 
     private func showTabBar() -> Observable<Void> {
-        let tabBarCoordinator = TabBarCoordinator(window: self.window, client: self.client)
+        let tabBarCoordinator = TabBarCoordinator(window: self.window, dependencies: dependencies)
         return coordinate(to: tabBarCoordinator)
     }
 
     private func showLogin() -> Observable<Void> {
-        let loginCoordinator = LoginCoordinator(window: window, client: self.client)
+        let loginCoordinator = LoginCoordinator(window: window, dependencies: dependencies)
         return coordinate(to: loginCoordinator)
     }
 

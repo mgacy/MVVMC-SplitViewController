@@ -11,19 +11,6 @@ import RxSwift
 
 final class LoginViewModel: AttachableViewModelType {
 
-    struct Dependency {
-        let client: APIClient
-    }
-
-    struct Bindings {
-        let username: Driver<String>
-        let password: Driver<String>
-        let loginTaps: Driver<Void>
-        let signupTaps: Driver<Void>
-        let doneTaps: Driver<Void>
-    }
-
-    // Properties
     let isValid: Driver<Bool>
     let loggingIn: Driver<Bool>
     let loggedIn: Driver<Bool>
@@ -59,6 +46,16 @@ final class LoginViewModel: AttachableViewModelType {
             //.share(replay: 1)
 
         signupTaps = bindings.signupTaps
+    }
+
+    typealias Dependency = HasClient
+
+    struct Bindings {
+        let username: Driver<String>
+        let password: Driver<String>
+        let loginTaps: Driver<Void>
+        let signupTaps: Driver<Void>
+        let doneTaps: Driver<Void>
     }
 
 }

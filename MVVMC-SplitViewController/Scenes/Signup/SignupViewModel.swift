@@ -11,21 +11,6 @@ import RxSwift
 
 final class SignupViewModel: AttachableViewModelType {
 
-    struct Dependency {
-        let client: APIClient
-    }
-
-    struct Bindings {
-        let firstName: Driver<String>
-        let lastName: Driver<String>
-        let login: Driver<String>
-        let password: Driver<String>
-        let cancelTaps: Driver<Void>
-        let signupTaps: Driver<Void>
-        let doneTaps: Driver<Void>
-    }
-
-    // Properties
     let isValid: Driver<Bool>
     let signingUp: Driver<Bool>
     let signedUp: Driver<Bool>
@@ -60,6 +45,18 @@ final class SignupViewModel: AttachableViewModelType {
             //.share(replay: 1)
 
         cancelled = bindings.cancelTaps
+    }
+
+    typealias Dependency = HasClient
+
+    struct Bindings {
+        let firstName: Driver<String>
+        let lastName: Driver<String>
+        let login: Driver<String>
+        let password: Driver<String>
+        let cancelTaps: Driver<Void>
+        let signupTaps: Driver<Void>
+        let doneTaps: Driver<Void>
     }
 
 }

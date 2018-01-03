@@ -11,16 +11,6 @@ import RxSwift
 
 final class PostsListViewModel: AttachableViewModelType {
 
-    struct Dependency {
-        let client: APIClient
-    }
-
-    struct Bindings {
-        let fetchTrigger: Driver<Void>
-        let selection: Driver<IndexPath>
-    }
-
-    // Properties
     let fetching: Driver<Bool>
     let posts: Driver<[Post]>
     let selectedPost: Driver<Post>
@@ -46,6 +36,13 @@ final class PostsListViewModel: AttachableViewModelType {
             .withLatestFrom(self.posts) { (indexPath, posts: [Post]) -> Post in
                 return posts[indexPath.row]
         }
+    }
+
+    typealias Dependency = HasClient
+
+    struct Bindings {
+        let fetchTrigger: Driver<Void>
+        let selection: Driver<IndexPath>
     }
 
 }

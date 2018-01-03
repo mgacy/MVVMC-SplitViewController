@@ -10,18 +10,19 @@ import UIKit
 import RxSwift
 
 class LoginCoordinator: BaseCoordinator<Void> {
+    typealias Dependencies = HasClient & HasUserManager
 
     private let window: UIWindow
-    private let client: APIClient
+    private let dependencies: Dependencies
 
-    init(window: UIWindow, client: APIClient) {
+    init(window: UIWindow, dependencies: Dependencies) {
         self.window = window
-        self.client = client
+        self.dependencies = dependencies
     }
 
     override func start() -> Observable<CoordinationResult> {
         var viewController = LoginViewController.instance()
-        var avm: Attachable<LoginViewModel> = .detached(LoginViewModel.Dependency(client: client))
+        var avm: Attachable<LoginViewModel> = .detached(dependencies)
         let viewModel = viewController.bind(toViewModel: &avm)
 
         let login = viewModel.loggedIn
@@ -46,7 +47,7 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
 
     private func showSignup(on rootViewController: UIViewController) -> Observable<SignupCoordinationResult> {
-        let signupCoordinator = SignupCoordinator(rootViewController: rootViewController, client: self.client)
+        let signupCoordinator = SignupCoordinator(rootViewController: rootViewController, dependencies: dependencies)
         return coordinate(to: signupCoordinator)
     }
 

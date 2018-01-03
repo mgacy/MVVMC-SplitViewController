@@ -9,9 +9,10 @@
 import RxSwift
 
 class TabBarCoordinator: BaseCoordinator<Void> {
+    typealias Dependencies = HasClient & HasUserManager
 
     private let window: UIWindow
-    private let client: APIClient
+    private let dependencies: Dependencies
 
     enum SectionTab {
         case posts
@@ -41,9 +42,9 @@ class TabBarCoordinator: BaseCoordinator<Void> {
 
     // MARK: - Lifecycle
 
-    init(window: UIWindow, client: APIClient) {
+    init(window: UIWindow, dependencies: Dependencies) {
         self.window = window
-        self.client = client
+        self.dependencies = dependencies
     }
 
     override func start() -> Observable<Void> {
@@ -74,10 +75,10 @@ class TabBarCoordinator: BaseCoordinator<Void> {
             .map { (tab, navCtrl) in
                 switch tab {
                 case .posts:
-                    let coordinator = PostsCoordinator(navigationController: navCtrl, client: client)
+                    let coordinator = PostsCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
                 case .todos:
-                    let coordinator = TodosCoordinator(navigationController: navCtrl, client: client)
+                    let coordinator = TodosCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
                 }
             }
