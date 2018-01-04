@@ -11,9 +11,8 @@ import RxSwift
 
 protocol AttachableType {
     associatedtype ViewModel: AttachableViewModelType
-    associatedtype Bindings
 
-    var bindings: Bindings { get }
+    var bindings: ViewModel.Bindings { get }
     var viewModel: ViewModel! { get set }
 
     func bindViewModel()
@@ -22,7 +21,7 @@ protocol AttachableType {
 extension AttachableType where Self: UIViewController {
 
     @discardableResult
-    mutating func bind<T>(toViewModel model: inout Attachable<T>) -> T where T == Self.ViewModel, T.Bindings == Self.Bindings {
+    mutating func bind(toViewModel model: inout Attachable<ViewModel>) -> ViewModel {
         loadViewIfNeeded()
         viewModel = model.bind(bindings)
         bindViewModel()
