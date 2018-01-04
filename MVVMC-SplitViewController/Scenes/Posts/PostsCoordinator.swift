@@ -20,7 +20,7 @@ class PostsCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        var viewController = PostsListViewController.instance()
+        let viewController = PostsListViewController.instance()
         navigationController.viewControllers = [viewController]
 
         var avm: Attachable<PostsListViewModel> = .detached(dependencies)

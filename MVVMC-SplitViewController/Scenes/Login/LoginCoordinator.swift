@@ -21,7 +21,7 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<CoordinationResult> {
-        var viewController = LoginViewController.instance()
+        let viewController = LoginViewController.instance()
         var avm: Attachable<LoginViewModel> = .detached(dependencies)
         let viewModel = viewController.bind(toViewModel: &avm)
 

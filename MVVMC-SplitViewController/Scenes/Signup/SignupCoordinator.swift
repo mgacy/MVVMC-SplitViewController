@@ -30,7 +30,7 @@ class SignupCoordinator: BaseCoordinator<SignupCoordinationResult> {
     }
 
     override func start() -> Observable<CoordinationResult> {
-        var viewController = SignupViewController.instance()
+        let viewController = SignupViewController.instance()
         let navigationController = UINavigationController(rootViewController: viewController)
 
         var avm: Attachable<SignupViewModel> = .detached(dependencies)

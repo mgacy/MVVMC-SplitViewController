@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol AttachableType {
+protocol AttachableType: class {
     associatedtype ViewModel: AttachableViewModelType
 
     var bindings: ViewModel.Bindings { get }
@@ -21,7 +21,7 @@ protocol AttachableType {
 extension AttachableType where Self: UIViewController {
 
     @discardableResult
-    mutating func bind(toViewModel model: inout Attachable<ViewModel>) -> ViewModel {
+    func bind(toViewModel model: inout Attachable<ViewModel>) -> ViewModel {
         loadViewIfNeeded()
         viewModel = model.bind(bindings)
         bindViewModel()

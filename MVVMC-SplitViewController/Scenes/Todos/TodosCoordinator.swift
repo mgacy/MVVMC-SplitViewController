@@ -20,7 +20,7 @@ class TodosCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        var viewController = TodosListViewController.instance()
+        let viewController = TodosListViewController.instance()
         navigationController.viewControllers = [viewController]
 
         var avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: depedencies.client))
