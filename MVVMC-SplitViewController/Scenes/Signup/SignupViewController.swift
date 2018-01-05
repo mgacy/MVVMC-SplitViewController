@@ -47,16 +47,6 @@ class SignupViewController: UIViewController, AttachableType {
     private func setupView() {
         title = "Signup"
         self.navigationItem.leftBarButtonItem = cancelButton
-    }
-
-    func bindViewModel() {
-        viewModel.isValid
-            .drive(signupButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-
-        viewModel.signingUp
-            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
-            .disposed(by: disposeBag)
 
         // Next keyboard button
         firstNameTextField.rx.controlEvent(.editingDidEndOnExit)
@@ -75,6 +65,16 @@ class SignupViewController: UIViewController, AttachableType {
             .subscribe(onNext: { _ in
                 self.passwordTextField.becomeFirstResponder()
             })
+            .disposed(by: disposeBag)
+    }
+
+    func bindViewModel() {
+        viewModel.isValid
+            .drive(signupButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        viewModel.signingUp
+            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
             .disposed(by: disposeBag)
     }
 
