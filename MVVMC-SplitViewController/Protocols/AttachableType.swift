@@ -21,9 +21,9 @@ protocol AttachableType: class {
 extension AttachableType where Self: UIViewController {
 
     @discardableResult
-    func bind(toViewModel model: inout Attachable<ViewModel>) -> ViewModel {
+    func bind(toViewModel wrapper: inout Attachable<ViewModel>) -> ViewModel {
         loadViewIfNeeded()
-        viewModel = model.bind(bindings)
+        viewModel = wrapper.bind(bindings)
         bindViewModel()
         return viewModel
     }
