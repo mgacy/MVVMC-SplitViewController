@@ -16,7 +16,7 @@ final class PostsListViewModel: AttachableViewModelType {
     let selectedPost: Driver<Post>
     let errors: Driver<Error>
 
-    // Lifecycle
+    // MARK: - Lifecycle
 
     init(dependency: Dependency, bindings: Bindings) {
         let activityIndicator = ActivityIndicator()

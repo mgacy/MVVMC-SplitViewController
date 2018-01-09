@@ -13,7 +13,7 @@ import RxSwift
 class SignupViewController: UIViewController, AttachableType {
 
     var viewModel: SignupViewModel!
-    var bindings: SignupViewModel.Bindings {
+    lazy var bindings: SignupViewModel.Bindings = {
         return SignupViewModel.Bindings(
             firstName: firstNameTextField.rx.text.orEmpty.asDriver(),
             lastName: lastNameTextField.rx.text.orEmpty.asDriver(),
@@ -23,7 +23,7 @@ class SignupViewController: UIViewController, AttachableType {
             signupTaps: signupButton.rx.tap.asDriver(),
             doneTaps: passwordTextField.rx.controlEvent(.editingDidEndOnExit).asDriver()
         )
-    }
+    }()
 
     let disposeBag = DisposeBag()
 
