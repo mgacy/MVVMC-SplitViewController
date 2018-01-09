@@ -60,6 +60,7 @@
 		C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E480200479A900F62D42 /* TableViewController.swift */; };
 		C9C5E4832004802D00F62D42 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4822004802D00F62D42 /* NavigationController.swift */; };
 		C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */; };
+		C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E486200482A300F62D42 /* TabBarController.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		C9C5E480200479A900F62D42 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C9C5E4822004802D00F62D42 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailViewController.swift; sourceTree = "<group>"; };
+		C9C5E486200482A300F62D42 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */,
 				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
 				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
+				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);
 			path = Common;
@@ -639,6 +642,7 @@
 				C94BE7271FF353830038CBA8 /* Address.swift in Sources */,
 				C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
+				C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
 				C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */,
 				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
