@@ -12,7 +12,7 @@ class EmptyDetailViewController: UIViewController {
 
     let backgroundImageView: UIImageView = {
         let view = UIImageView()
-        view.image = #imageLiteral(resourceName: "Logo")
+        view.image = #imageLiteral(resourceName: "EmptyViewBackground")
         view.tintColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
