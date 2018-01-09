@@ -17,11 +17,13 @@ class TabBarCoordinator: BaseCoordinator<Void> {
     enum SectionTab {
         case posts
         case todos
+        case settings
 
         var title: String {
             switch self {
             case .posts: return "Posts"
             case .todos: return "Todos"
+            case .settings: return "Settings"
             }
         }
 
@@ -29,6 +31,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
             switch self {
             case .posts: return #imageLiteral(resourceName: "PostsTabIcon")
             case .todos: return #imageLiteral(resourceName: "TodosTabIcon")
+            case .settings: return #imageLiteral(resourceName: "Settings")
             }
         }
 
@@ -36,6 +39,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
             switch self {
             case .posts: return 0
             case .todos: return 1
+            case .settings: return 2
             }
         }
     }
@@ -49,7 +53,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<Void> {
         let tabBarController = UITabBarController()
-        let tabs: [SectionTab] = [.posts, .todos]
+        let tabs: [SectionTab] = [.posts, .todos, .settings]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
         window.rootViewController = tabBarController
@@ -79,6 +83,9 @@ class TabBarCoordinator: BaseCoordinator<Void> {
                     return coordinate(to: coordinator)
                 case .todos:
                     let coordinator = TodosCoordinator(navigationController: navCtrl, dependencies: dependencies)
+                    return coordinate(to: coordinator)
+                case .settings:
+                    let coordinator = SettingsCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
                 }
             }
