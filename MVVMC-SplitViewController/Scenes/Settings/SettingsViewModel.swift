@@ -21,12 +21,8 @@ struct SettingsViewModel: ViewModelType {
 
         accountCellText = dependency.userManager.username
             .asDriver()
-            //.debug("accountCellText")
-            .map { maybe in
-                guard let username = maybe else {
-                    return "Login"
-                }
-                return "Logout \(username)"
+            .map { username in
+                return username != nil ? "Logout \(username!)" : "Login"
             }
 
         let accountCellTaps = bindings.selection
@@ -34,14 +30,12 @@ struct SettingsViewModel: ViewModelType {
             .filter { $0.section == 0 }
 
         didLogout = accountCellTaps
-            //.debug("didLogout")
             .filter { _ in dependency.userManager.authenticationState == .signedIn }
             .flatMap { _ in
                 return dependency.userManager.logout()
             }
 
         showLogin = accountCellTaps
-            //.debug("showLogin")
             .filter { _ in dependency.userManager.authenticationState == .signedOut }
             .map { _ in return }
     }
