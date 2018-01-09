@@ -61,6 +61,7 @@
 		C9C5E4832004802D00F62D42 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4822004802D00F62D42 /* NavigationController.swift */; };
 		C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */; };
 		C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E486200482A300F62D42 /* TabBarController.swift */; };
+		C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		C9C5E4822004802D00F62D42 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailViewController.swift; sourceTree = "<group>"; };
 		C9C5E486200482A300F62D42 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */,
 				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
 				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
+				C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */,
 				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);
@@ -655,6 +658,7 @@
 				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
 				C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */,
 				C915BE1C1FF5F36600F53F5F /* TodosListViewController.swift in Sources */,
+				C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
 				C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,

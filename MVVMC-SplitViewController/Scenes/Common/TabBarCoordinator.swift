@@ -14,6 +14,11 @@ class TabBarCoordinator: BaseCoordinator<Void> {
     private let window: UIWindow
     private let dependencies: Dependencies
 
+    private let splitViewController: UISplitViewController
+    private let tabBarController: TabBarController
+    // swiftlint:disable:next weak_delegate
+    private var viewDelegate: SplitViewDelegate?
+
     enum SectionTab {
         case posts
         case todos
@@ -49,6 +54,8 @@ class TabBarCoordinator: BaseCoordinator<Void> {
     init(window: UIWindow, dependencies: Dependencies) {
         self.window = window
         self.dependencies = dependencies
+        self.splitViewController = UISplitViewController()
+        self.tabBarController = TabBarController()
     }
 
     override func start() -> Observable<Void> {
@@ -56,7 +63,10 @@ class TabBarCoordinator: BaseCoordinator<Void> {
         let tabs: [SectionTab] = [.posts, .todos, .settings]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
-        window.rootViewController = tabBarController
+        self.viewDelegate = SplitViewDelegate(splitViewController: splitViewController,
+                                              tabBarController: tabBarController)
+
+        window.rootViewController = splitViewController
         window.makeKeyAndVisible()
 
         return coordinationResults
