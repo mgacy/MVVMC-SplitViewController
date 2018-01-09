@@ -9,21 +9,22 @@
 import RxSwift
 
 class TodosCoordinator: BaseCoordinator<Void> {
+    typealias Dependencies = HasClient
 
     private let navigationController: UINavigationController
-    private let client: APIClient
+    private let depedencies: Dependencies
 
-    init(navigationController: UINavigationController, client: APIClient) {
+    init(navigationController: UINavigationController, dependencies: Dependencies) {
         self.navigationController = navigationController
-        self.client = client
+        self.depedencies = dependencies
     }
 
     override func start() -> Observable<Void> {
-        var viewController = TodosListViewController.instance()
+        let viewController = TodosListViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        var avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: client))
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: depedencies.client))
+        let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedTodo
             .drive(onNext: { selection in
