@@ -57,7 +57,7 @@ class LoginCoordinator: BaseCoordinator<Void> {
 // MARK: - Modal Presentation
 
 class ModalLoginCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient
+    typealias Dependencies = HasClient & HasUserManager
 
     private let rootViewController: UIViewController
     private let dependencies: Dependencies

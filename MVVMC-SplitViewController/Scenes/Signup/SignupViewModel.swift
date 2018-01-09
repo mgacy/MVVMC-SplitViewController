@@ -17,16 +17,17 @@ final class SignupViewModel: AttachableViewModelType {
     let cancelled: Driver<Void>
 
     // MARK: - Lifecycle
+
     init(dependency: Dependency, bindings: Bindings) {
         let userInputs = Driver.combineLatest(
             bindings.firstName, bindings.lastName, bindings.login, bindings.password
-        ) { (firstName, lastName, login, password) -> (String, String, String, String) in
-            return (firstName, lastName, login, password)
+        ) { (firstName, lastName, username, password) -> (String, String, String, String) in
+            return (firstName, lastName, username, password)
         }
 
         isValid = userInputs
-            .map { firstName, lastName, login, password in
-                return firstName.count > 0 && lastName.count > 0  && login.count > 0 && password.count > 0
+            .map { firstName, lastName, username, password in
+                return firstName.count > 0 && lastName.count > 0  && username.count > 0 && password.count > 0
             }
 
         let signingUp = ActivityIndicator()
@@ -35,10 +36,9 @@ final class SignupViewModel: AttachableViewModelType {
         signedUp = Driver.merge(bindings.signupTaps, bindings.doneTaps)
             .withLatestFrom(userInputs)
             .flatMap { (arg) -> Driver<Bool> in
-                //let (firstName, lastName, login, password) = arg
-                let signupResult = arc4random() % 5 == 0 ? false : true
-                return Driver.just(signupResult)
-                    .delay(1.0)
+                let (firstName, lastName, username, password) = arg
+                return dependency.userManager.signup(firstName: firstName, lastName: lastName, username: username,
+                                                     password: password)
                     .trackActivity(signingUp)
                     .asDriver(onErrorJustReturn: false)
             }
@@ -47,7 +47,7 @@ final class SignupViewModel: AttachableViewModelType {
         cancelled = bindings.cancelTaps
     }
 
-    typealias Dependency = HasClient
+    typealias Dependency = HasClient & HasUserManager
 
     struct Bindings {
         let firstName: Driver<String>

@@ -37,10 +37,8 @@ final class LoginViewModel: AttachableViewModelType {
         loggedIn = Driver.merge(bindings.loginTaps, bindings.doneTaps)
             .withLatestFrom(userInputs)
             .flatMap { (arg) -> Driver<Bool> in
-                //let (username, password) = arg
-                let loginResult = arc4random() % 5 == 0 ? false : true
-                return Driver.just(loginResult)
-                    .delay(1.0)
+                let (username, password) = arg
+                return dependency.userManager.login(username: username, password: password)
                     .trackActivity(loggingIn)
                     .asDriver(onErrorJustReturn: false)
             }
@@ -50,7 +48,7 @@ final class LoginViewModel: AttachableViewModelType {
         cancelTaps = bindings.cancelTaps
     }
 
-    typealias Dependency = HasClient
+    typealias Dependency = HasClient & HasUserManager
 
     struct Bindings {
         let username: Driver<String>
