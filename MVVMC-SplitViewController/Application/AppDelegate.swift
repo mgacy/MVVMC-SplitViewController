@@ -24,7 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.appCoordinator.start()
             .subscribe()
             .disposed(by: self.disposeBag)
-
+        /*
+        #if DEBUG
+            _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+                .subscribe(onNext: { _ in
+                    print("Resource count \(RxSwift.Resources.total)")
+                })
+        #endif
+        */
         return true
     }
 
