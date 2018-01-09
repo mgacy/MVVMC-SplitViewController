@@ -23,8 +23,8 @@ class SettingsCoordinator: BaseCoordinator<Void> {
         let viewController = SettingsViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        var avm: Attachable<SettingsViewModel> = .detached(dependencies)
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<SettingsViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.showLogin
             .asObservable()

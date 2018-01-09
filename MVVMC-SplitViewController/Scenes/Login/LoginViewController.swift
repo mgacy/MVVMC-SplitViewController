@@ -12,7 +12,7 @@ import RxSwift
 
 class LoginViewController: UIViewController, AttachableType {
 
-    var viewModel: LoginViewModel!
+    var viewModel: Attachable<LoginViewModel>!
     var bindings: LoginViewModel.Bindings {
         return LoginViewModel.Bindings(
             username: loginTextField.rx.text.orEmpty.asDriver(),
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, AttachableType {
 
     // MARK: - View Methods
 
-    func bindViewModel() {
+    func bind(viewModel: LoginViewModel) -> LoginViewModel {
         viewModel.isValid
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -63,6 +63,8 @@ class LoginViewController: UIViewController, AttachableType {
                 self?.passwordTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
+
+        return viewModel
     }
 
 }

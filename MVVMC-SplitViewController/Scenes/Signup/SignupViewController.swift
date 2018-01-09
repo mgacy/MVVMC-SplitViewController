@@ -12,7 +12,7 @@ import RxSwift
 
 class SignupViewController: UIViewController, AttachableType {
 
-    var viewModel: SignupViewModel!
+    var viewModel: Attachable<SignupViewModel>!
     lazy var bindings: SignupViewModel.Bindings = {
         return SignupViewModel.Bindings(
             firstName: firstNameTextField.rx.text.orEmpty.asDriver(),
@@ -68,7 +68,7 @@ class SignupViewController: UIViewController, AttachableType {
             .disposed(by: disposeBag)
     }
 
-    func bindViewModel() {
+    func bind(viewModel: SignupViewModel) -> SignupViewModel {
         viewModel.isValid
             .drive(signupButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -76,6 +76,8 @@ class SignupViewController: UIViewController, AttachableType {
         viewModel.signingUp
             .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
             .disposed(by: disposeBag)
+
+        return viewModel
     }
 
 }

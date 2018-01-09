@@ -23,8 +23,8 @@ class TodosCoordinator: BaseCoordinator<Void> {
         let viewController = TodosListViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        var avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: depedencies.client))
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: depedencies.client))
+        let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedTodo
             .drive(onNext: { selection in

@@ -27,7 +27,7 @@ final class PostsListViewController: UITableViewController, AttachableType {
     }
 
     let disposeBag = DisposeBag()
-    var viewModel: PostsListViewModel!
+    var viewModel: Attachable<PostsListViewModel>!
 
     private let cellIdentifier = "Cell"
 
@@ -45,8 +45,7 @@ final class PostsListViewController: UITableViewController, AttachableType {
         setupTableView()
     }
 
-    func bindViewModel() {
-
+    func bind(viewModel: PostsListViewModel) -> PostsListViewModel {
         viewModel.posts
             .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, element, cell in
                 cell.textLabel?.text = element.title
@@ -62,6 +61,8 @@ final class PostsListViewController: UITableViewController, AttachableType {
                 print("Error: \(error)")
             })
             .disposed(by: disposeBag)
+
+        return viewModel
     }
 
 }

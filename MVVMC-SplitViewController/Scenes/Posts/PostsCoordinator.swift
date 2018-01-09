@@ -23,8 +23,8 @@ class PostsCoordinator: BaseCoordinator<Void> {
         let viewController = PostsListViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        var avm: Attachable<PostsListViewModel> = .detached(dependencies)
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<PostsListViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedPost
             .drive(onNext: { [weak self] selection in

@@ -19,7 +19,7 @@ class SettingsViewController: UITableViewController, AttachableType {
     }()
 
     let disposeBag = DisposeBag()
-    var viewModel: SettingsViewModel!
+    var viewModel: Attachable<SettingsViewModel>!
 
     // MARK: - Interface
 
@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController, AttachableType {
         title = "Settings"
     }
 
-    func bindViewModel() {
+    func bind(viewModel: SettingsViewModel) -> SettingsViewModel {
         viewModel.didLogout
             .drive()
             .disposed(by: disposeBag)
@@ -48,6 +48,8 @@ class SettingsViewController: UITableViewController, AttachableType {
         viewModel.accountCellText
             .drive(accountCell.textLabel!.rx.text)
             .disposed(by: disposeBag)
+
+        return viewModel
     }
 
 }

@@ -23,8 +23,8 @@ class LoginCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<CoordinationResult> {
         let viewController = LoginViewController.instance()
-        var avm: Attachable<LoginViewModel> = .detached(dependencies)
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<LoginViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         let login = viewModel.loggedIn
             .asObservable()
@@ -71,8 +71,8 @@ class ModalLoginCoordinator: BaseCoordinator<Void> {
         let viewController = LoginViewController.instance()
         let navigationController = UINavigationController(rootViewController: viewController)
 
-        var avm: Attachable<LoginViewModel> = .detached(dependencies)
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<LoginViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         let login = viewModel.loggedIn
             .filter { $0 }

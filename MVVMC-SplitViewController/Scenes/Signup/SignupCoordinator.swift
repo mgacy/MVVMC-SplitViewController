@@ -33,8 +33,8 @@ class SignupCoordinator: BaseCoordinator<SignupCoordinationResult> {
         let viewController = SignupViewController.instance()
         let navigationController = UINavigationController(rootViewController: viewController)
 
-        var avm: Attachable<SignupViewModel> = .detached(dependencies)
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<SignupViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         let cancel = viewModel.cancelled
             .map { _ in CoordinationResult.cancel }
