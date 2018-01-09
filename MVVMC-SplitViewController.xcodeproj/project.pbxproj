@@ -18,7 +18,7 @@
 		C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C915BE191FF5F35600F53F5F /* TodosListViewController.storyboard */; };
 		C915BE1C1FF5F36600F53F5F /* TodosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE1B1FF5F36600F53F5F /* TodosListViewController.swift */; };
 		C915BE1E1FF5F37900F53F5F /* TodosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE1D1FF5F37900F53F5F /* TodosListViewModel.swift */; };
-		C915BE201FF5F74E00F53F5F /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */; };
+		C915BE201FF5F74E00F53F5F /* SplitViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915BE1F1FF5F74E00F53F5F /* SplitViewCoordinator.swift */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
 		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
 		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
@@ -58,6 +58,10 @@
 		C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */; };
 		C97A6DDD1FFF247F00C6E7C5 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */; };
 		C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E480200479A900F62D42 /* TableViewController.swift */; };
+		C9C5E4832004802D00F62D42 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4822004802D00F62D42 /* NavigationController.swift */; };
+		C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */; };
+		C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E486200482A300F62D42 /* TabBarController.swift */; };
+		C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,7 +92,7 @@
 		C915BE191FF5F35600F53F5F /* TodosListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodosListViewController.storyboard; sourceTree = "<group>"; };
 		C915BE1B1FF5F36600F53F5F /* TodosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosListViewController.swift; sourceTree = "<group>"; };
 		C915BE1D1FF5F37900F53F5F /* TodosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosListViewModel.swift; sourceTree = "<group>"; };
-		C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		C915BE1F1FF5F74E00F53F5F /* SplitViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewCoordinator.swift; sourceTree = "<group>"; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
 		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +136,10 @@
 		C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		C9C5E480200479A900F62D42 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C9C5E4822004802D00F62D42 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailViewController.swift; sourceTree = "<group>"; };
+		C9C5E486200482A300F62D42 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +188,11 @@
 				C93E199A1FF48CCD00B5D0B9 /* ActivityIndicator.swift */,
 				C93E199C1FF48CF900B5D0B9 /* ErrorTracker.swift */,
 				C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */,
-				C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */,
+				C915BE1F1FF5F74E00F53F5F /* SplitViewCoordinator.swift */,
+				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
+				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
+				C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */,
+				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);
 			path = Common;
@@ -620,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */,
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
 				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
 				C97137EF1FFCB185009EE9B6 /* AppDependency.swift in Sources */,
@@ -627,11 +640,12 @@
 				C94BE7311FF353AD0038CBA8 /* Photo.swift in Sources */,
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
-				C915BE201FF5F74E00F53F5F /* TabBarCoordinator.swift in Sources */,
+				C915BE201FF5F74E00F53F5F /* SplitViewCoordinator.swift in Sources */,
 				C97A6DD91FFF204300C6E7C5 /* SettingsViewModel.swift in Sources */,
 				C94BE7271FF353830038CBA8 /* Address.swift in Sources */,
 				C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
+				C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
 				C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */,
 				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
@@ -639,10 +653,12 @@
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,
 				C97137DD1FFB2BDF009EE9B6 /* LoginViewController.swift in Sources */,
 				C97137DF1FFB2BEF009EE9B6 /* LoginCoordinator.swift in Sources */,
+				C9C5E4832004802D00F62D42 /* NavigationController.swift in Sources */,
 				C94BE7331FF353B40038CBA8 /* Post.swift in Sources */,
 				C93E19991FF4881300B5D0B9 /* AttachableType.swift in Sources */,
 				C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */,
 				C915BE1C1FF5F36600F53F5F /* TodosListViewController.swift in Sources */,
+				C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
 				C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,

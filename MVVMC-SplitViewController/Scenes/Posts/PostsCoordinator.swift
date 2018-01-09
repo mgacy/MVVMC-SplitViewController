@@ -39,7 +39,7 @@ class PostsCoordinator: BaseCoordinator<Void> {
     private func showDetailView(with post: Post) {
         let viewController = PostDetailViewController.instance()
         viewController.viewModel = PostDetailViewModel(post: post)
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.showDetailViewController(viewController, sender: nil)
     }
 
 }
