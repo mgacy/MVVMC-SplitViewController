@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class LoginViewModel: AttachableViewModelType {
+final class LoginViewModel: ViewModelType {
 
     let isValid: Driver<Bool>
     let loggingIn: Driver<Bool>

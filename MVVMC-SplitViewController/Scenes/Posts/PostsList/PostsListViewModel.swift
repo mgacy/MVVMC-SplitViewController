@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class PostsListViewModel: AttachableViewModelType {
+final class PostsListViewModel: ViewModelType {
 
     let fetching: Driver<Bool>
     let posts: Driver<[Post]>

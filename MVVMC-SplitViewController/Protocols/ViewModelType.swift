@@ -1,5 +1,5 @@
 //
-//  AttachableViewModelType.swift
+//  ViewModelType.swift
 //  MVVMC-SplitViewController
 //
 //  Created by Mathew Gacy on 12/27/17.
@@ -11,14 +11,14 @@
 
 import Foundation
 
-protocol AttachableViewModelType {
+protocol ViewModelType {
     associatedtype Dependency
     associatedtype Bindings
 
     init(dependency: Dependency, bindings: Bindings)
 }
 
-enum Attachable<VM: AttachableViewModelType> {
+enum Attachable<VM: ViewModelType> {
 
     case detached(VM.Dependency)
     case attached(VM.Dependency, VM)

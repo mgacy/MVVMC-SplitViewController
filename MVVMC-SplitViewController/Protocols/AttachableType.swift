@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 protocol AttachableType: class {
-    associatedtype ViewModel: AttachableViewModelType
+    associatedtype ViewModel: ViewModelType
 
     var bindings: ViewModel.Bindings { get }
     var viewModel: ViewModel! { get set }

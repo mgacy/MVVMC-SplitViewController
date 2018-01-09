@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-struct SettingsViewModel: AttachableViewModelType {
+struct SettingsViewModel: ViewModelType {
 
     let accountCellText: Driver<String>
     let didLogout: Driver<Bool>
