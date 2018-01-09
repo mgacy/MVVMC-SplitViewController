@@ -22,19 +22,19 @@ class AppCoordinator: BaseCoordinator<Void> {
     override func start() -> Observable<Void> {
         switch dependencies.userManager.authenticationState {
         case .signedIn:
-            return showTabBar()
+            return showSplitView()
         case .signedOut:
             return showLogin()
                 .flatMap { [weak self] result -> Observable<Void> in
                     guard let strongSelf = self else { return .empty() }
-                    return strongSelf.showTabBar()
+                    return strongSelf.showSplitView()
                 }
         }
     }
 
-    private func showTabBar() -> Observable<Void> {
-        let tabBarCoordinator = TabBarCoordinator(window: self.window, dependencies: dependencies)
-        return coordinate(to: tabBarCoordinator)
+    private func showSplitView() -> Observable<Void> {
+        let splitViewCoordinator = SplitViewCoordinator(window: self.window, dependencies: dependencies)
+        return coordinate(to: splitViewCoordinator)
     }
 
     private func showLogin() -> Observable<Void> {
