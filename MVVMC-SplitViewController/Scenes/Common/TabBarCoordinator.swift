@@ -52,7 +52,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        let tabBarController = UITabBarController()
+        let tabBarController = TabBarController()
         let tabs: [SectionTab] = [.posts, .todos, .settings]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
@@ -65,7 +65,7 @@ class TabBarCoordinator: BaseCoordinator<Void> {
     private func configure(tabBarController: UITabBarController, withTabs tabs: [SectionTab]) -> [Observable<Void>] {
         let navControllers = tabs
             .map { tab -> UINavigationController in
-                let navController = UINavigationController()
+                let navController = NavigationController()
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tab.tag)
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic
