@@ -1,13 +1,13 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - CodableAlamofire (1.1.0):
     - Alamofire (~> 4.0)
-  - RxCocoa (4.0.0):
+  - RxCocoa (4.1.1):
     - RxSwift (~> 4.0)
-  - RxSwift (4.0.0)
-  - RxSwiftExt (3.0.0):
-    - RxSwiftExt/Core (= 3.0.0)
-  - RxSwiftExt/Core (3.0.0):
+  - RxSwift (4.1.1)
+  - RxSwiftExt (3.1.0):
+    - RxSwiftExt/Core (= 3.1.0)
+  - RxSwiftExt/Core (3.1.0):
     - RxSwift (~> 4.0)
 
 DEPENDENCIES:
@@ -18,11 +18,11 @@ DEPENDENCIES:
   - RxSwiftExt (~> 3.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
-  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
-  RxSwiftExt: b06c47dff66cd33ca7683bba1e74b0c5c8e3592e
+  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
+  RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
+  RxSwiftExt: a9b9c8e94be009146707f9fcb16eaf3cc1f3910c
 
 PODFILE CHECKSUM: 794f892a3c00b044efe63f6b1dda743a7ae65104
 
