@@ -15,6 +15,7 @@ final class LoginViewModel: AttachableViewModelType {
     let loggingIn: Driver<Bool>
     let loggedIn: Driver<Bool>
     let signupTaps: Driver<Void>
+    let cancelTaps: Driver<Void>
 
     // MARK: - Lifecycle
 
@@ -46,6 +47,7 @@ final class LoginViewModel: AttachableViewModelType {
             //.share(replay: 1)
 
         signupTaps = bindings.signupTaps
+        cancelTaps = bindings.cancelTaps
     }
 
     typealias Dependency = HasClient
@@ -56,6 +58,7 @@ final class LoginViewModel: AttachableViewModelType {
         let loginTaps: Driver<Void>
         let signupTaps: Driver<Void>
         let doneTaps: Driver<Void>
+        let cancelTaps: Driver<Void>
     }
 
 }

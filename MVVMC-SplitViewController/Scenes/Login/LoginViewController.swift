@@ -19,7 +19,8 @@ class LoginViewController: UIViewController, AttachableType {
             password: passwordTextField.rx.text.orEmpty.asDriver(),
             loginTaps: loginButton.rx.tap.asDriver(),
             signupTaps: signupButton.rx.tap.asDriver(),
-            doneTaps: passwordTextField.rx.controlEvent(.editingDidEndOnExit).asDriver()
+            doneTaps: passwordTextField.rx.controlEvent(.editingDidEndOnExit).asDriver(),
+            cancelTaps: cancelButtonItem.rx.tap.asDriver()
         )
     }
 
@@ -30,11 +31,19 @@ class LoginViewController: UIViewController, AttachableType {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
 
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if self.presentingViewController != nil {
+            navigationItem.leftBarButtonItem = cancelButtonItem
+            signupButton.isHidden = true
+        }
     }
 
     // MARK: - View Methods

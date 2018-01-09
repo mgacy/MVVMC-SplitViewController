@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 import RxSwift
 
 class LoginCoordinator: BaseCoordinator<Void> {
@@ -44,6 +45,48 @@ class LoginCoordinator: BaseCoordinator<Void> {
 
         return Observable.merge(login, signup)
             .take(1)
+    }
+
+    private func showSignup(on rootViewController: UIViewController) -> Observable<SignupCoordinationResult> {
+        let signupCoordinator = SignupCoordinator(rootViewController: rootViewController, dependencies: dependencies)
+        return coordinate(to: signupCoordinator)
+    }
+
+}
+
+// MARK: - Modal Presentation
+
+class ModalLoginCoordinator: BaseCoordinator<Void> {
+    typealias Dependencies = HasClient
+
+    private let rootViewController: UIViewController
+    private let dependencies: Dependencies
+
+    init(rootViewController: UIViewController, dependencies: Dependencies) {
+        self.rootViewController = rootViewController
+        self.dependencies = dependencies
+    }
+
+    override func start() -> Observable<CoordinationResult> {
+        let viewController = LoginViewController.instance()
+        let navigationController = UINavigationController(rootViewController: viewController)
+
+        var avm: Attachable<LoginViewModel> = .detached(dependencies)
+        let viewModel = viewController.bind(toViewModel: &avm)
+
+        let login = viewModel.loggedIn
+            .filter { $0 }
+            .map { _ in return }
+
+        let cancel = viewModel.cancelTaps
+            .map { _ in return }
+
+        rootViewController.present(navigationController, animated: true)
+
+        return Driver.merge(cancel, login)
+            .asObservable()
+            .take(1)
+            .do(onNext: { [weak self] _ in self?.rootViewController.dismiss(animated: true) })
     }
 
     private func showSignup(on rootViewController: UIViewController) -> Observable<SignupCoordinationResult> {
