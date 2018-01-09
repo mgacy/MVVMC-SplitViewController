@@ -6,6 +6,7 @@
 //  Copyright © 2018 Mathew Gacy. All rights reserved.
 //
 
+import RxSwift
 import RxCocoa
 
 class UserManager {
@@ -15,8 +16,20 @@ class UserManager {
         case signedOut
     }
 
-    var authenticationState: AuthenticationState = .signedOut
-    var currentUser: User? = nil
+    var authenticationState: AuthenticationState
+    var username: Variable<String?>
+    private let storageManager: UserStorageManagerType
+
+    init() {
+        self.storageManager = UserStorageManager()
+        if let username = storageManager.read() {
+            self.authenticationState = .signedIn
+            self.username = Variable<String?>(username)
+        } else {
+            self.authenticationState = .signedOut
+            self.username = Variable<String?>(nil)
+        }
+    }
 
 }
 
@@ -34,6 +47,8 @@ extension UserManager: LoginService {
             .delay(1.0)
             .do(onNext: { [weak self] _ in
                 self?.authenticationState = .signedIn
+                self?.storageManager.store(username: username)
+                self?.username.value = username
             })
     }
 
@@ -52,6 +67,8 @@ extension UserManager: LogoutService {
             .delay(0.5)
             .do(onNext: { [weak self] _ in
                 self?.authenticationState = .signedOut
+                self?.storageManager.clear()
+                self?.username.value = nil
             })
     }
 
@@ -71,7 +88,40 @@ extension UserManager: SignupService {
             .delay(1.0)
             .do(onNext: { [weak self] _ in
                 self?.authenticationState = .signedIn
+                self?.storageManager.store(username: username)
+                self?.username.value = username
             })
+    }
+
+}
+
+// MARK: - Persistence
+
+protocol UserStorageManagerType {
+    func store(username: String)
+    func read() -> String?
+    func clear()
+}
+
+class UserStorageManager: UserStorageManagerType {
+    private let defaults: UserDefaults
+    private let defaultsKey: String
+
+    init(defaults: UserDefaults = .standard, defaultsKey: String = "username") {
+        self.defaults = defaults
+        self.defaultsKey = defaultsKey
+    }
+
+    func store(username: String) {
+        defaults.set(username, forKey: defaultsKey)
+    }
+
+    func read() -> String? {
+        return defaults.string(forKey: defaultsKey)
+    }
+
+    func clear() {
+        defaults.removeObject(forKey: defaultsKey)
     }
 
 }
