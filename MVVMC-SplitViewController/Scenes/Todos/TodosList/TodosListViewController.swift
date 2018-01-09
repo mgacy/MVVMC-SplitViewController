@@ -10,8 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class TodosListViewController: UITableViewController, AttachableType {
+final class TodosListViewController: TableViewController, AttachableType {
 
+    var viewModel: Attachable<TodosListViewModel>!
     var bindings: TodosListViewModel.Bindings {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
@@ -26,11 +27,6 @@ final class TodosListViewController: UITableViewController, AttachableType {
         )
     }
 
-    let disposeBag = DisposeBag()
-    var viewModel: Attachable<TodosListViewModel>!
-
-    private let cellIdentifier = "Cell"
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -42,7 +38,6 @@ final class TodosListViewController: UITableViewController, AttachableType {
 
     private func setupView() {
         title = "Todos"
-        setupTableView()
     }
 
     func bind(viewModel: TodosListViewModel) -> TodosListViewModel {
@@ -63,19 +58,6 @@ final class TodosListViewController: UITableViewController, AttachableType {
             .disposed(by: disposeBag)
 
         return viewModel
-    }
-
-}
-
-extension TodosListViewController {
-
-    func setupTableView() {
-        // Necessary w/ RxCocoa since UITableViewController automatically sets tableview delegate and dataSource to self
-        tableView.delegate = nil
-        tableView.dataSource = nil
-
-        tableView.tableFooterView = UIView() // Prevent empty rows
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
 }

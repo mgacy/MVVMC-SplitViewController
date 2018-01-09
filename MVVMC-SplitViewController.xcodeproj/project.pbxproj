@@ -57,6 +57,7 @@
 		C97A6DD91FFF204300C6E7C5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */; };
 		C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */; };
 		C97A6DDD1FFF247F00C6E7C5 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */; };
+		C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E480200479A900F62D42 /* TableViewController.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		C9C5E480200479A900F62D42 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				C93E199C1FF48CF900B5D0B9 /* ErrorTracker.swift */,
 				C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */,
 				C915BE1F1FF5F74E00F53F5F /* TabBarCoordinator.swift */,
+				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				C915BE051FF5D5F600F53F5F /* BaseCoordinator.swift in Sources */,
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
+				C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */,
 				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
 				C93E19921FF4854E00B5D0B9 /* Router.swift in Sources */,

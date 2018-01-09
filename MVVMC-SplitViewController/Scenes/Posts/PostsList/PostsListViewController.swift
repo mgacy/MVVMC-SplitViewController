@@ -10,8 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class PostsListViewController: UITableViewController, AttachableType {
+final class PostsListViewController: TableViewController, AttachableType {
 
+    var viewModel: Attachable<PostsListViewModel>!
     var bindings: PostsListViewModel.Bindings {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
@@ -26,11 +27,6 @@ final class PostsListViewController: UITableViewController, AttachableType {
         )
     }
 
-    let disposeBag = DisposeBag()
-    var viewModel: Attachable<PostsListViewModel>!
-
-    private let cellIdentifier = "Cell"
-
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -42,7 +38,6 @@ final class PostsListViewController: UITableViewController, AttachableType {
 
     private func setupView() {
         title = "Posts"
-        setupTableView()
     }
 
     func bind(viewModel: PostsListViewModel) -> PostsListViewModel {
@@ -63,19 +58,6 @@ final class PostsListViewController: UITableViewController, AttachableType {
             .disposed(by: disposeBag)
 
         return viewModel
-    }
-
-}
-
-extension PostsListViewController {
-
-    func setupTableView() {
-        // Necessary w/ RxCocoa since UITableViewController automatically sets tableview delegate and dataSource to self
-        tableView.delegate = nil
-        tableView.dataSource = nil
-
-        tableView.tableFooterView = UIView() // Prevent empty rows
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
 }
