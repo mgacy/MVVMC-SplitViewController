@@ -23,8 +23,6 @@ class SettingsViewController: UITableViewController, AttachableType {
 
     // MARK: - Interface
 
-    private let cellIdentifier = "Cell"
-
     @IBOutlet weak var accountCell: UITableViewCell!
 
     // MARK: - Lifecycle
@@ -50,19 +48,6 @@ class SettingsViewController: UITableViewController, AttachableType {
             .disposed(by: disposeBag)
 
         return viewModel
-    }
-
-}
-
-extension SettingsViewController {
-
-    func setupTableView() {
-        // Necessary w/ RxCocoa since UITableViewController automatically sets tableview delegate and dataSource to self
-        tableView.delegate = nil
-        tableView.dataSource = nil
-
-        tableView.tableFooterView = UIView() // Prevent empty rows
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
 }
