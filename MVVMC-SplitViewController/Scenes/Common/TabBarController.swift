@@ -27,6 +27,7 @@ class TabBarController: UITabBarController {
 
     // MARK: -
 
+    /// Call `NavigationController.collapse()` on children to add visible detail view controllers.
     func collapseTabs() {
         guard let vcs = viewControllers else { return }
         vcs.forEach { viewController in
@@ -37,6 +38,7 @@ class TabBarController: UITabBarController {
         }
     }
 
+    /// Call `NavigationController.separate()` on children to remove visible detail view controllers.
     func separateTabs() {
         guard let vcs = viewControllers else { return }
         vcs.forEach { viewController in

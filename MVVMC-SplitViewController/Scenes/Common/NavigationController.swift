@@ -53,6 +53,7 @@ class NavigationController: UINavigationController {
 
     // MARK: -
 
+    /// Add detail view controller to `viewControllers` if it is visible.
     func collapse() {
         switch detailView {
         case .visible(let detailViewController):
@@ -62,6 +63,7 @@ class NavigationController: UINavigationController {
         }
     }
 
+    /// Remove detail view controller from `viewControllers` if it is visible.
     func separate() {
         switch detailView {
         case .visible:
