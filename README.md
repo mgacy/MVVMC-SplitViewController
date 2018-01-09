@@ -7,8 +7,6 @@ Mathew Gacy
 Example project with UITabBarController inside UISplitViewController using RxSwift and MVVM-C architecture.
 
 ### Dependencies
-- Alamofire
-- CodableAlamofire
-- RxSwift
-- RxCocoa
-- RxSwiftExt
+- Xcode 9
+- Swift 4
+- iOS 11
