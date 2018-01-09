@@ -43,8 +43,7 @@ class NavigationController: UINavigationController {
                     splitViewController.viewControllers.count > 1,
                     let detailViewController = splitViewController.viewControllers.last as? UINavigationController
                 {
-                    let emptyDetailViewController = EmptyDetailViewController()
-                    detailViewController.setViewControllers([emptyDetailViewController], animated: false)
+                    detailViewController.setViewControllers([makeEmptyViewController()], animated: false)
                     detailView = .empty
                 }
             }
@@ -53,15 +52,6 @@ class NavigationController: UINavigationController {
     }
 
     // MARK: -
-
-    func separate() {
-        switch detailView {
-        case .visible:
-            viewControllers = Array(viewControllers.dropLast())
-        case .empty:
-            return
-        }
-    }
 
     func collapse() {
         switch detailView {
@@ -72,5 +62,19 @@ class NavigationController: UINavigationController {
         }
     }
 
-}
+    func separate() {
+        switch detailView {
+        case .visible:
+            viewControllers = Array(viewControllers.dropLast())
+        case .empty:
+            return
+        }
+    }
 
+    // MARK: -
+
+    func makeEmptyViewController() -> UIViewController {
+        return EmptyDetailViewController()
+    }
+
+}
