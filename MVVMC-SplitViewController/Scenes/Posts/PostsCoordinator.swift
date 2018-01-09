@@ -9,21 +9,22 @@
 import RxSwift
 
 class PostsCoordinator: BaseCoordinator<Void> {
+    typealias Dependencies = HasClient
 
     private let navigationController: UINavigationController
-    private let client: APIClient
+    private let dependencies: Dependencies
 
-    init(navigationController: UINavigationController, client: APIClient) {
+    init(navigationController: UINavigationController, dependencies: Dependencies) {
         self.navigationController = navigationController
-        self.client = client
+        self.dependencies = dependencies
     }
 
     override func start() -> Observable<Void> {
-        var viewController = PostsListViewController.instance()
+        let viewController = PostsListViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        var avm: Attachable<PostsListViewModel> = .detached(PostsListViewModel.Dependency(client: client))
-        let viewModel = viewController.bind(toViewModel: &avm)
+        let avm: Attachable<PostsListViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedPost
             .drive(onNext: { [weak self] selection in

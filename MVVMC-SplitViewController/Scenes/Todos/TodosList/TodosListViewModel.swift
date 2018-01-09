@@ -9,7 +9,7 @@
 import RxCocoa
 import RxSwift
 
-final class TodosListViewModel: AttachableViewModelType {
+final class TodosListViewModel: ViewModelType {
 
     struct Dependency {
         let client: APIClient

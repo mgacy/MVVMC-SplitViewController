@@ -27,7 +27,7 @@ final class TodosListViewController: UITableViewController, AttachableType {
     }
 
     let disposeBag = DisposeBag()
-    var viewModel: TodosListViewModel!
+    var viewModel: Attachable<TodosListViewModel>!
 
     private let cellIdentifier = "Cell"
 
@@ -45,7 +45,7 @@ final class TodosListViewController: UITableViewController, AttachableType {
         setupTableView()
     }
 
-    func bindViewModel() {
+    func bind(viewModel: TodosListViewModel) -> TodosListViewModel {
         viewModel.todos
             .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, element, cell in
                 cell.textLabel?.text = element.title
@@ -61,6 +61,8 @@ final class TodosListViewController: UITableViewController, AttachableType {
                 print("Error: \(error)")
             })
             .disposed(by: disposeBag)
+
+        return viewModel
     }
 
 }
