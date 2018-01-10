@@ -20,6 +20,18 @@ class AlbumsCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
+        let viewController = AlbumListViewController.instance()
+        navigationController.viewControllers = [viewController]
+
+        let avm: Attachable<AlbumListViewModel> = .detached(dependencies)
+        let viewModel = viewController.attach(wrapper: avm)
+
+        viewModel.selectedAlbum
+            .drive(onNext: { selection in
+                print("Selected: \(selection)")
+            })
+            .disposed(by: viewController.disposeBag)
+
 
         // View will never be dismissed
         return Observable.never()
