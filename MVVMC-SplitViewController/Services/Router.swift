@@ -9,6 +9,11 @@
 import Alamofire
 
 public enum Router: URLRequestConvertible {
+    case getAlbums
+    case getAlbum(id: Int)
+    case getPhotos
+    case getPhoto(id: Int)
+    case getPhotosFromAlbum(id: Int)
     case getPosts
     case getPost(id: Int)
     case getTodos
@@ -25,6 +30,16 @@ public enum Router: URLRequestConvertible {
 
     var path: String {
         switch self {
+        case .getAlbums:
+            return "/albums"
+        case .getAlbum(let id):
+            return "/albums/\(id)"
+        case .getPhotos:
+            return "/photos"
+        case .getPhoto(let id):
+            return "/photos/\(id)"
+        case .getPhotosFromAlbum:
+            return "/photos"
         case .getPosts:
             return "/posts"
         case .getPost(let id):
@@ -38,6 +53,8 @@ public enum Router: URLRequestConvertible {
 
     var parameters: Parameters {
         switch self {
+        case .getPhotosFromAlbum(let id):
+            return ["album": id]
         default:
             return [:]
         }
@@ -51,6 +68,8 @@ public enum Router: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
 
         switch self {
+        case .getPhotosFromAlbum:
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         default:
             break
         }
