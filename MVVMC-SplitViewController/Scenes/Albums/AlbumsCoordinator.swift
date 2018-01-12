@@ -27,21 +27,32 @@ class AlbumsCoordinator: BaseCoordinator<Void> {
         let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedAlbum
-            .drive(onNext: { selection in
-                print("Selected: \(selection)")
+            .drive(onNext: { [weak self] selection in
+                self?.showDetailView(with: selection)
             })
             .disposed(by: viewController.disposeBag)
-
 
         // View will never be dismissed
         return Observable.never()
     }
 
-    private func showDetailView(with post: Post) {
-        let viewController = PostDetailViewController.instance()
-        viewController.viewModel = PostDetailViewModel(post: post)
+    private func showDetailView(with album: Album) {
+        let viewController = PhotoCollectionViewController.instance()
+        let avm: Attachable<PhotoCollectionViewModel> = .detached(PhotoCollectionViewModel.Dependency(
+            client: dependencies.client, album: album))
+        let viewModel = viewController.attach(wrapper: avm)
+
         navigationController.showDetailViewController(viewController, sender: nil)
+
+        viewModel.selectedPhoto
+            .drive(onNext: { [weak self] photo in
+                self?.showDetail(for: photo)
+            })
+            .disposed(by: viewController.disposeBag)
+    }
+
+    private func showDetail(for photo: PhotoViewModel) {
+        print("Selected: \(photo)")
     }
 
 }
-
