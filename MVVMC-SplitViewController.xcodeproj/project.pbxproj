@@ -71,6 +71,8 @@
 		C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */; };
 		C9E4C16820084F88005A44F2 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16720084F88005A44F2 /* PhotoViewModel.swift */; };
 		C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C169200854FA005A44F2 /* PhotoCell.swift */; };
+		C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */; };
+		C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +160,8 @@
 		C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDelegate.swift; sourceTree = "<group>"; };
 		C9E4C16720084F88005A44F2 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		C9E4C169200854FA005A44F2 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoDetailViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +426,7 @@
 				C977D1A62005E2E70076205E /* AlbumsCoordinator.swift */,
 				C977D1A82005E3290076205E /* AlbumList */,
 				C977D1AF2005ED6A0076205E /* PhotoCollection */,
+				C9E4C16B20085A81005A44F2 /* PhotoDetail */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -457,6 +462,15 @@
 				C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C9E4C16B20085A81005A44F2 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */,
+				C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */,
+			);
+			path = PhotoDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +565,7 @@
 				C97A6DDD1FFF247F00C6E7C5 /* SettingsViewController.storyboard in Resources */,
 				C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */,
 				C977D1AE2005E39E0076205E /* AlbumListViewController.storyboard in Resources */,
+				C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */,
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
@@ -724,6 +739,7 @@
 				C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,
 				C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */,
+				C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */,
 				C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
