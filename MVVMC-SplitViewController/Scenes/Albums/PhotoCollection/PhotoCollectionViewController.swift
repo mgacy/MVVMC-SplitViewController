@@ -17,16 +17,7 @@ class PhotoCollectionViewController: UIViewController, AttachableType {
 
     var viewModel: Attachable<PhotoCollectionViewModel>!
     var bindings: PhotoCollectionViewModel.Bindings {
-        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
-            .mapToVoid()
-            .asDriverOnErrorJustComplete()
-        //let refresh = collectionView.refreshControl!.rx
-        //    .controlEvent(.valueChanged)
-        //    .asDriver()
-
         return PhotoCollectionViewModel.Bindings(
-            //fetchTrigger: Driver.merge(viewWillAppear, refresh),
-            fetchTrigger: viewWillAppear,
             selection: collectionView.rx.itemSelected.asDriver()
         )
     }
@@ -81,7 +72,6 @@ extension PhotoCollectionViewController {
         return (
             { (_, cv, ip, i) in
                 let cell = cv.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: ip) as! PhotoCell
-                //cell.titleLabel!.text = i.titleString
                 i.title
                     .drive(cell.titleLabel.rx.text)
                     .disposed(by: cell.disposeBag)

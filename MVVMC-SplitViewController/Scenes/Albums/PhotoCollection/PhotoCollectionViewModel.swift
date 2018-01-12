@@ -25,12 +25,8 @@ final class PhotoCollectionViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
 
-        photos = bindings.fetchTrigger
-            .asObservable()
-            .flatMapLatest { _ in
-                return dependency.client.getPhotos()
-                    .trackActivity(activityIndicator)
-            }
+        photos = dependency.client.getPhotos()
+            .trackActivity(activityIndicator)
             .map { photo in
                 return photo.map {
                     return PhotoViewModel.init(client: dependency.client, photo: $0)
@@ -44,6 +40,7 @@ final class PhotoCollectionViewModel: ViewModelType {
 
         fetching = activityIndicator.asDriver()
         errors = errorTracker.asDriver()
+
         selectedPhoto = bindings.selection
             .withLatestFrom(self.photos) { (indexPath, sections: [PhotoSection]) -> PhotoViewModel in
                 return sections[indexPath.section].items[indexPath.row]
@@ -58,7 +55,6 @@ final class PhotoCollectionViewModel: ViewModelType {
     }
 
     struct Bindings {
-        let fetchTrigger: Driver<Void>
         let selection: Driver<IndexPath>
     }
 
