@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class LoginViewController: UIViewController, AttachableType {
+class LoginViewController: UIViewController, ViewModelAttaching {
 
     var viewModel: Attachable<LoginViewModel>!
     var bindings: LoginViewModel.Bindings {

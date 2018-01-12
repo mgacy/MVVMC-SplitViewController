@@ -1,19 +1,19 @@
 //
-//  PostsListViewController.swift
+//  AlbumListViewController.swift
 //  MVVMC-SplitViewController
 //
-//  Created by Mathew Gacy on 12/27/17.
-//  Copyright © 2017 Mathew Gacy. All rights reserved.
+//  Created by Mathew Gacy on 1/9/18.
+//  Copyright © 2018 Mathew Gacy. All rights reserved.
 //
 
 import UIKit
 import RxCocoa
 import RxSwift
 
-final class PostsListViewController: TableViewController, ViewModelAttaching {
+final class AlbumListViewController: TableViewController, ViewModelAttaching {
 
-    var viewModel: Attachable<PostsListViewModel>!
-    var bindings: PostsListViewModel.Bindings {
+    var viewModel: Attachable<AlbumListViewModel>!
+    var bindings: AlbumListViewModel.Bindings {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
             .asDriverOnErrorJustComplete()
@@ -21,7 +21,7 @@ final class PostsListViewController: TableViewController, ViewModelAttaching {
             .controlEvent(.valueChanged)
             .asDriver()
 
-        return PostsListViewModel.Bindings(
+        return AlbumListViewModel.Bindings(
             fetchTrigger: Driver.merge(viewWillAppear, refresh),
             selection: tableView.rx.itemSelected.asDriver()
         )
@@ -37,11 +37,11 @@ final class PostsListViewController: TableViewController, ViewModelAttaching {
     // MARK: - View Methods
 
     private func setupView() {
-        title = "Posts"
+        title = "Albums"
     }
 
-    func bind(viewModel: PostsListViewModel) -> PostsListViewModel {
-        viewModel.posts
+    func bind(viewModel: AlbumListViewModel) -> AlbumListViewModel {
+        viewModel.albums
             .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, element, cell in
                 cell.textLabel?.text = element.title
             }
@@ -61,3 +61,4 @@ final class PostsListViewController: TableViewController, ViewModelAttaching {
     }
 
 }
+

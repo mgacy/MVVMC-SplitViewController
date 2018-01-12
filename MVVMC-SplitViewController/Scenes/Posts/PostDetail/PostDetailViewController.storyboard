@@ -18,17 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LOB-br-7v5">
-                                <rect key="frame" x="16" y="88" width="343" height="40.666666666666657"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="LOB-br-7v5">
+                                <rect key="frame" x="16" y="106" width="343" height="55"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grd-Sn-49m" userLabel="Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grd-Sn-49m" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAI-cx-F7c" userLabel="Body">
-                                        <rect key="frame" x="0.0" y="20.333333333333329" width="343" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAI-cx-F7c" userLabel="Body">
+                                        <rect key="frame" x="0.0" y="34.666666666666657" width="343" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -38,9 +38,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LOB-br-7v5" firstAttribute="trailing" secondItem="u0o-7W-cLC" secondAttribute="trailingMargin" id="cin-PL-9Zt"/>
-                            <constraint firstItem="LOB-br-7v5" firstAttribute="top" secondItem="u0o-7W-cLC" secondAttribute="topMargin" id="odc-YO-bHf"/>
-                            <constraint firstItem="LOB-br-7v5" firstAttribute="leading" secondItem="u0o-7W-cLC" secondAttribute="leadingMargin" id="vxR-ld-yjQ"/>
+                            <constraint firstItem="LOB-br-7v5" firstAttribute="trailing" secondItem="u0o-7W-cLC" secondAttribute="trailingMargin" id="DOe-fh-zOc"/>
+                            <constraint firstItem="LOB-br-7v5" firstAttribute="top" secondItem="u0o-7W-cLC" secondAttribute="topMargin" constant="18" id="gfm-sS-JUS"/>
+                            <constraint firstItem="LOB-br-7v5" firstAttribute="leading" secondItem="u0o-7W-cLC" secondAttribute="leadingMargin" id="jIg-p4-QhX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SIT-Bu-Gpd"/>
                     </view>

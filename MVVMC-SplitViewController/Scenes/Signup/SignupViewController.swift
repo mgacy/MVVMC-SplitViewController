@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class SignupViewController: UIViewController, AttachableType {
+class SignupViewController: UIViewController, ViewModelAttaching {
 
     var viewModel: Attachable<SignupViewModel>!
     lazy var bindings: SignupViewModel.Bindings = {

@@ -40,6 +40,8 @@ struct SettingsViewModel: ViewModelType {
             .map { _ in return }
     }
 
+    // MARK: - ViewModelType
+
     typealias Dependency = HasUserManager
 
     struct Bindings {

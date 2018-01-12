@@ -12,18 +12,18 @@ class TodosCoordinator: BaseCoordinator<Void> {
     typealias Dependencies = HasClient
 
     private let navigationController: UINavigationController
-    private let depedencies: Dependencies
+    private let dependencies: Dependencies
 
     init(navigationController: UINavigationController, dependencies: Dependencies) {
         self.navigationController = navigationController
-        self.depedencies = dependencies
+        self.dependencies = dependencies
     }
 
     override func start() -> Observable<Void> {
         let viewController = TodosListViewController.instance()
         navigationController.viewControllers = [viewController]
 
-        let avm: Attachable<TodosListViewModel> = .detached(TodosListViewModel.Dependency(client: depedencies.client))
+        let avm: Attachable<TodosListViewModel> = .detached(dependencies)
         let viewModel = viewController.attach(wrapper: avm)
 
         viewModel.selectedTodo

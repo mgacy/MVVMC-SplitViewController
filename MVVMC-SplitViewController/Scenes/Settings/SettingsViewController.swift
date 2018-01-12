@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class SettingsViewController: UITableViewController, AttachableType {
+class SettingsViewController: UITableViewController, ViewModelAttaching {
 
     lazy var bindings: SettingsViewModel.Bindings = {
         return SettingsViewModel.Bindings(
