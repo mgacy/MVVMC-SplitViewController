@@ -11,22 +11,12 @@ import RxSwift
 
 final class TodosListViewModel: ViewModelType {
 
-    struct Dependency {
-        let client: APIClient
-    }
-
-    struct Bindings {
-        let fetchTrigger: Driver<Void>
-        let selection: Driver<IndexPath>
-    }
-
-    // Properties
     let fetching: Driver<Bool>
     let todos: Driver<[Todo]>
     let selectedTodo: Driver<Todo>
     let errors: Driver<Error>
 
-    // Lifecycle
+    // MARK: - Lifecycle
 
     init(dependency: Dependency, bindings: Bindings) {
         let activityIndicator = ActivityIndicator()
@@ -38,7 +28,7 @@ final class TodosListViewModel: ViewModelType {
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
-        }
+            }
 
         fetching = activityIndicator.asDriver()
         errors = errorTracker.asDriver()
@@ -46,6 +36,15 @@ final class TodosListViewModel: ViewModelType {
             .withLatestFrom(self.todos) { (indexPath, todos: [Todo]) -> Todo in
                 return todos[indexPath.row]
         }
+    }
+
+    // MARK: - ViewModelType
+
+    typealias Dependency = HasClient
+
+    struct Bindings {
+        let fetchTrigger: Driver<Void>
+        let selection: Driver<IndexPath>
     }
 
 }

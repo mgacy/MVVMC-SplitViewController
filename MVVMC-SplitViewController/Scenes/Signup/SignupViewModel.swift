@@ -47,6 +47,8 @@ final class SignupViewModel: ViewModelType {
         cancelled = bindings.cancelTaps
     }
 
+    // MARK: - ViewModelType
+
     typealias Dependency = HasClient & HasUserManager
 
     struct Bindings {

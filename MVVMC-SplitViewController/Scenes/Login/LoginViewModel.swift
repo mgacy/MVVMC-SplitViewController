@@ -48,6 +48,8 @@ final class LoginViewModel: ViewModelType {
         cancelTaps = bindings.cancelTaps
     }
 
+    // MARK: - ViewModelType
+
     typealias Dependency = HasClient & HasUserManager
 
     struct Bindings {
