@@ -15,6 +15,7 @@ final class PhotoDetailViewController: UIViewController {
     let disposeBag = DisposeBag()
     var viewModel: PhotoViewModel!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
 
     // MARK: - Lifecycle
@@ -34,6 +35,10 @@ final class PhotoDetailViewController: UIViewController {
     private func bindViewModel() {
         viewModel.image
             .drive(imageView.rx.image)
+            .disposed(by: disposeBag)
+
+        viewModel.fetching
+            .drive(activityIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
     }
 
