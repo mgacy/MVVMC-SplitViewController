@@ -6,6 +6,8 @@
 //  Copyright © 2018 Mathew Gacy. All rights reserved.
 //
 
+import Differentiator
+import RxDataSources
 import RxCocoa
 import RxSwift
 
@@ -58,6 +60,48 @@ final class PhotoCollectionViewModel: ViewModelType {
     struct Bindings {
         let fetchTrigger: Driver<Void>
         let selection: Driver<IndexPath>
+    }
+
+}
+
+// MARK: - DataSource
+
+struct PhotoSection {
+    var header: String
+    var photos: [PhotoViewModel]
+    //var updated: Date
+
+    init(header: String, photos: [Item]) {
+        self.header = header
+        self.photos = photos
+        //self.updated = updated
+    }
+
+}
+
+extension PhotoSection: AnimatableSectionModelType {
+    typealias Item = PhotoViewModel
+    typealias Identity = String
+
+    var identity: String {
+        return header
+    }
+
+    var items: [PhotoViewModel] {
+        return photos
+    }
+
+    init(original: PhotoSection, items: [PhotoViewModel]) {
+        self = original
+        self.photos = items
+    }
+
+}
+
+extension PhotoSection: Equatable {
+
+    static func == (lhs: PhotoSection, rhs: PhotoSection) -> Bool {
+        return lhs.header == rhs.header && lhs.items == rhs.items //&& lhs.updated == rhs.updated
     }
 
 }

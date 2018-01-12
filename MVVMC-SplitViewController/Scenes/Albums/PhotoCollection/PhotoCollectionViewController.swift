@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxDataSources
 import RxSwift
-import Differentiator
 
 class PhotoCollectionViewController: UIViewController, AttachableType {
 
@@ -91,48 +90,6 @@ extension PhotoCollectionViewController {
                 return section
             }
         )
-    }
-
-}
-
-// MARK: DataSource
-
-struct PhotoSection {
-    var header: String
-    var photos: [PhotoViewModel]
-    //var updated: Date
-
-    init(header: String, photos: [Item]) {
-        self.header = header
-        self.photos = photos
-        //self.updated = updated
-    }
-
-}
-
-extension PhotoSection: AnimatableSectionModelType {
-    typealias Item = PhotoViewModel
-    typealias Identity = String
-
-    var identity: String {
-        return header
-    }
-
-    var items: [PhotoViewModel] {
-        return photos
-    }
-
-    init(original: PhotoSection, items: [PhotoViewModel]) {
-        self = original
-        self.photos = items
-    }
-
-}
-
-extension PhotoSection: Equatable {
-
-    static func == (lhs: PhotoSection, rhs: PhotoSection) -> Bool {
-        return lhs.header == rhs.header && lhs.items == rhs.items //&& lhs.updated == rhs.updated
     }
 
 }
