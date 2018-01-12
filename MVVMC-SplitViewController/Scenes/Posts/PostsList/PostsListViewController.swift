@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class PostsListViewController: TableViewController, AttachableType {
+final class PostsListViewController: TableViewController, ViewModelAttaching {
 
     var viewModel: Attachable<PostsListViewModel>!
     var bindings: PostsListViewModel.Bindings {

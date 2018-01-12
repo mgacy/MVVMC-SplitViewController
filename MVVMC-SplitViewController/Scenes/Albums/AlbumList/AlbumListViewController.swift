@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class AlbumListViewController: TableViewController, AttachableType {
+final class AlbumListViewController: TableViewController, ViewModelAttaching {
 
     var viewModel: Attachable<AlbumListViewModel>!
     var bindings: AlbumListViewModel.Bindings {

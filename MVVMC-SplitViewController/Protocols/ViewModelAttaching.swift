@@ -1,5 +1,5 @@
 //
-//  AttachableType.swift
+//  ViewModelAttaching.swift
 //  MVVMC-SplitViewController
 //
 //  Created by Mathew Gacy on 12/27/17.
@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol AttachableType: class {
+protocol ViewModelAttaching: class {
     associatedtype ViewModel: ViewModelType
 
     var bindings: ViewModel.Bindings { get }
@@ -19,7 +19,7 @@ protocol AttachableType: class {
     func bind(viewModel: ViewModel) -> ViewModel
 }
 
-extension AttachableType where Self: UIViewController {
+extension ViewModelAttaching where Self: UIViewController {
 
     @discardableResult
     func attach(wrapper: Attachable<ViewModel>) -> ViewModel {

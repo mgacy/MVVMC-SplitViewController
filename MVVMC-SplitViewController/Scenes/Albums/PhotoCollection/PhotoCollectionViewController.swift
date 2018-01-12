@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
-class PhotoCollectionViewController: UIViewController, AttachableType {
+class PhotoCollectionViewController: UIViewController, ViewModelAttaching {
 
     let disposeBag = DisposeBag()
 

@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class TodosListViewController: TableViewController, AttachableType {
+final class TodosListViewController: TableViewController, ViewModelAttaching {
 
     var viewModel: Attachable<TodosListViewModel>!
     var bindings: TodosListViewModel.Bindings {
