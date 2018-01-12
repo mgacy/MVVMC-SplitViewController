@@ -21,6 +21,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pz6-a9-q7G">
+                                <rect key="frame" x="177" y="423" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6GU-L6-gNo">
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,14 +96,17 @@
                         <constraints>
                             <constraint firstItem="6GU-L6-gNo" firstAttribute="top" secondItem="c2v-dY-fGK" secondAttribute="top" id="DHG-j3-g0P"/>
                             <constraint firstItem="6GU-L6-gNo" firstAttribute="bottom" secondItem="c2v-dY-fGK" secondAttribute="bottom" id="Zzo-GQ-JJW"/>
+                            <constraint firstItem="pz6-a9-q7G" firstAttribute="centerX" secondItem="c2v-dY-fGK" secondAttribute="centerX" id="cfJ-Mo-TB5"/>
                             <constraint firstItem="6GU-L6-gNo" firstAttribute="leading" secondItem="c2v-dY-fGK" secondAttribute="leading" id="dnm-8F-65K"/>
                             <constraint firstItem="6GU-L6-gNo" firstAttribute="trailing" secondItem="c2v-dY-fGK" secondAttribute="trailing" id="iSI-hE-cUd"/>
+                            <constraint firstItem="pz6-a9-q7G" firstAttribute="centerY" secondItem="c2v-dY-fGK" secondAttribute="centerY" id="pgN-Pj-gt5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c2v-dY-fGK"/>
                     </view>
                     <navigationItem key="navigationItem" id="zM3-AH-xei"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="pz6-a9-q7G" id="qJZ-bE-vzd"/>
                         <outlet property="collectionView" destination="6GU-L6-gNo" id="lHt-7J-9Q9"/>
                     </connections>
                 </viewController>

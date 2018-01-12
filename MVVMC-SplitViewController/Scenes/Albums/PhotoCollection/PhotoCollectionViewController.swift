@@ -34,6 +34,7 @@ class PhotoCollectionViewController: UIViewController, AttachableType {
     private static let reuseIdentifier = "PhotoCell"
     //fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - Lifecycle
@@ -59,6 +60,14 @@ class PhotoCollectionViewController: UIViewController, AttachableType {
         viewModel.photos
             .asObservable()
             .bind(to: collectionView.rx.items(dataSource: cvDataSource))
+            .disposed(by: disposeBag)
+
+        viewModel.fetching
+            .drive(activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+
+        viewModel.fetching
+            .drive(collectionView.rx.isHidden)
             .disposed(by: disposeBag)
 
         return viewModel

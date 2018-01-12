@@ -29,6 +29,7 @@ final class PhotoCollectionViewModel: ViewModelType {
             .asObservable()
             .flatMapLatest { _ in
                 return dependency.client.getPhotos()
+                    .trackActivity(activityIndicator)
             }
             .map { photo in
                 return photo.map {
@@ -38,7 +39,6 @@ final class PhotoCollectionViewModel: ViewModelType {
             .map {
                 return [PhotoSection(header: dependency.album.title, photos: $0)]
             }
-            .trackActivity(activityIndicator)
             .trackError(errorTracker)
             .asDriverOnErrorJustComplete()
 
