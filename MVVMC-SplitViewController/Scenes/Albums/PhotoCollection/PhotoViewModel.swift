@@ -34,7 +34,6 @@ final class PhotoViewModel {
             .asDriverOnErrorJustComplete()
 
         self.image = client.getImage(for: photo)
-            .debug("image")
             .trackActivity(activityIndicator)
             .trackError(errorTracker)
             .asDriverOnErrorJustComplete()
@@ -57,7 +56,6 @@ extension PhotoViewModel: IdentifiableType {
 
 extension PhotoViewModel: Equatable {
 
-    // equatable, this is needed to detect changes
     static func == (lhs: PhotoViewModel, rhs: PhotoViewModel) -> Bool {
         return lhs.photo.id == rhs.photo.id
     }
