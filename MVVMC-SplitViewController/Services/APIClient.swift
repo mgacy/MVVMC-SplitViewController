@@ -48,7 +48,7 @@ class APIClient {
                         //print("\(#function) FAILED : \(error)")
                         observer.onError(error)
                     }
-            }
+                }
             return Disposables.create {
                 request.cancel()
             }
@@ -69,11 +69,73 @@ class APIClient {
                         //print("\(#function) FAILED : \(error)")
                         observer.onError(error)
                     }
-            }
+                }
             return Disposables.create {
                 request.cancel()
             }
         }
+    }
+
+    private func requestImage(from url: URL) -> Observable<UIImage?> {
+        return Observable<UIImage?>.create { [unowned self] observer in
+            let request = self.sessionManager.request(url)
+            request
+                .responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        let image = UIImage(data:value)
+                        observer.onNext(image)
+                        observer.onCompleted()
+                    case .failure(let error):
+                        //print("\(#function) FAILED : \(error)")
+                        observer.onError(error)
+                    }
+                }
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
+
+}
+
+// MARK: - Albums
+
+extension APIClient {
+
+    func getAlbums() -> Observable<[Album]> {
+        return requestCollection(Router.getAlbums)
+    }
+
+    func getAlbum(id: Int) -> Observable<Album> {
+        return requestOne(Router.getAlbum(id: id))
+    }
+
+}
+
+
+// MARK: - Photos
+
+extension APIClient {
+
+    func getPhotos() -> Observable<[Photo]> {
+        return requestCollection(Router.getPhotos)
+    }
+
+    func getPhotosFromAlbum(id: Int) -> Observable<[Photo]> {
+        return requestCollection(Router.getPhotosFromAlbum(id: id))
+    }
+
+    func getPhoto(id: Int) -> Observable<Photo> {
+        return requestOne(Router.getPhoto(id: id))
+    }
+
+    func getThumbnail(for photo: Photo) -> Observable<UIImage?> {
+        return requestImage(from: photo.thumbnailUrl)
+    }
+
+    func getImage(for photo: Photo) -> Observable<UIImage?> {
+        return requestImage(from: photo.url)
     }
 
 }

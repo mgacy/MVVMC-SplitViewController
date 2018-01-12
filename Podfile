@@ -9,6 +9,7 @@ def basic_pods
   pod 'RxSwift',            '~> 4.0'
   pod 'RxCocoa',            '~> 4.0'
   pod 'RxSwiftExt',         '~> 3.0'
+  pod 'RxDataSources',      '~> 3.0'
 end
 
 # Testing
@@ -30,6 +31,7 @@ target 'MVVMC-SplitViewController' do
     # test_pods
   end
 
+  # Enable RxSwift.Resources for debugging
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       if target.name == 'RxSwift'

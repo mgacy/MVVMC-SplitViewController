@@ -53,6 +53,13 @@
 		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
 		C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */; };
 		C97137EF1FFCB185009EE9B6 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EE1FFCB185009EE9B6 /* AppDependency.swift */; };
+		C977D1A72005E2E70076205E /* AlbumsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D1A62005E2E70076205E /* AlbumsCoordinator.swift */; };
+		C977D1AA2005E3770076205E /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D1A92005E3770076205E /* AlbumListViewController.swift */; };
+		C977D1AC2005E3870076205E /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D1AB2005E3870076205E /* AlbumListViewModel.swift */; };
+		C977D1AE2005E39E0076205E /* AlbumListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C977D1AD2005E39E0076205E /* AlbumListViewController.storyboard */; };
+		C977D1B12005EDA50076205E /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D1B02005EDA50076205E /* PhotoCollectionViewController.swift */; };
+		C977D1B32005EE440076205E /* PhotoCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C977D1B22005EE440076205E /* PhotoCollectionViewModel.swift */; };
+		C977D1B52005EE580076205E /* PhotoCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C977D1B42005EE580076205E /* PhotoCollectionViewController.storyboard */; };
 		C97A6DD71FFF202B00C6E7C5 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DD61FFF202B00C6E7C5 /* SettingsCoordinator.swift */; };
 		C97A6DD91FFF204300C6E7C5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */; };
 		C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */; };
@@ -62,6 +69,10 @@
 		C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */; };
 		C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E486200482A300F62D42 /* TabBarController.swift */; };
 		C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */; };
+		C9E4C16820084F88005A44F2 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16720084F88005A44F2 /* PhotoViewModel.swift */; };
+		C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C169200854FA005A44F2 /* PhotoCell.swift */; };
+		C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */; };
+		C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +142,13 @@
 		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		C97137EC1FFB4A2C009EE9B6 /* SignupViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignupViewController.storyboard; sourceTree = "<group>"; };
 		C97137EE1FFCB185009EE9B6 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C977D1A62005E2E70076205E /* AlbumsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCoordinator.swift; sourceTree = "<group>"; };
+		C977D1A92005E3770076205E /* AlbumListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewController.swift; sourceTree = "<group>"; };
+		C977D1AB2005E3870076205E /* AlbumListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
+		C977D1AD2005E39E0076205E /* AlbumListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumListViewController.storyboard; sourceTree = "<group>"; };
+		C977D1B02005EDA50076205E /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		C977D1B22005EE440076205E /* PhotoCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewModel.swift; sourceTree = "<group>"; };
+		C977D1B42005EE580076205E /* PhotoCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoCollectionViewController.storyboard; sourceTree = "<group>"; };
 		C97A6DD61FFF202B00C6E7C5 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +158,10 @@
 		C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailViewController.swift; sourceTree = "<group>"; };
 		C9C5E486200482A300F62D42 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDelegate.swift; sourceTree = "<group>"; };
+		C9E4C16720084F88005A44F2 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
+		C9E4C169200854FA005A44F2 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoDetailViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +369,7 @@
 			children = (
 				C915BE031FF4C08A00F53F5F /* Common */,
 				C915BE081FF5D7EF00F53F5F /* Posts */,
+				C977D1A52005E2C90076205E /* Albums */,
 				C915BE151FF5EB6300F53F5F /* Todos */,
 				C97A6DD51FFF1FFC00C6E7C5 /* Settings */,
 				C97137DB1FFB2BC2009EE9B6 /* Login */,
@@ -397,6 +420,39 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		C977D1A52005E2C90076205E /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				C977D1A62005E2E70076205E /* AlbumsCoordinator.swift */,
+				C977D1A82005E3290076205E /* AlbumList */,
+				C977D1AF2005ED6A0076205E /* PhotoCollection */,
+				C9E4C16B20085A81005A44F2 /* PhotoDetail */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		C977D1A82005E3290076205E /* AlbumList */ = {
+			isa = PBXGroup;
+			children = (
+				C977D1AD2005E39E0076205E /* AlbumListViewController.storyboard */,
+				C977D1A92005E3770076205E /* AlbumListViewController.swift */,
+				C977D1AB2005E3870076205E /* AlbumListViewModel.swift */,
+			);
+			path = AlbumList;
+			sourceTree = "<group>";
+		};
+		C977D1AF2005ED6A0076205E /* PhotoCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C977D1B42005EE580076205E /* PhotoCollectionViewController.storyboard */,
+				C977D1B02005EDA50076205E /* PhotoCollectionViewController.swift */,
+				C977D1B22005EE440076205E /* PhotoCollectionViewModel.swift */,
+				C9E4C16720084F88005A44F2 /* PhotoViewModel.swift */,
+				C9E4C169200854FA005A44F2 /* PhotoCell.swift */,
+			);
+			path = PhotoCollection;
+			sourceTree = "<group>";
+		};
 		C97A6DD51FFF1FFC00C6E7C5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +462,15 @@
 				C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C9E4C16B20085A81005A44F2 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */,
+				C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */,
+			);
+			path = PhotoDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,11 +564,14 @@
 			files = (
 				C97A6DDD1FFF247F00C6E7C5 /* SettingsViewController.storyboard in Resources */,
 				C97137ED1FFB4A2C009EE9B6 /* SignupViewController.storyboard in Resources */,
+				C977D1AE2005E39E0076205E /* AlbumListViewController.storyboard in Resources */,
+				C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */,
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
 				C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */,
 				C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */,
+				C977D1B52005EE580076205E /* PhotoCollectionViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,7 +676,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 			);
@@ -616,7 +686,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 			);
@@ -647,6 +719,8 @@
 				C94F8F3C1FEC234C00C8183D /* AppDelegate.swift in Sources */,
 				C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */,
 				C94BE7291FF3538F0038CBA8 /* Album.swift in Sources */,
+				C977D1AA2005E3770076205E /* AlbumListViewController.swift in Sources */,
+				C977D1B12005EDA50076205E /* PhotoCollectionViewController.swift in Sources */,
 				C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */,
 				C915BE141FF5DDE900F53F5F /* PostDetailViewModel.swift in Sources */,
 				C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */,
@@ -659,21 +733,27 @@
 				C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */,
 				C915BE1C1FF5F36600F53F5F /* TodosListViewController.swift in Sources */,
 				C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */,
+				C977D1B32005EE440076205E /* PhotoCollectionViewModel.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
 				C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */,
+				C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,
 				C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */,
+				C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */,
 				C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
+				C977D1A72005E2E70076205E /* AlbumsCoordinator.swift in Sources */,
 				C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */,
 				C915BE1E1FF5F37900F53F5F /* TodosListViewModel.swift in Sources */,
+				C9E4C16820084F88005A44F2 /* PhotoViewModel.swift in Sources */,
 				C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */,
 				C94BE7371FF353C00038CBA8 /* User.swift in Sources */,
 				C97A6DD71FFF202B00C6E7C5 /* SettingsCoordinator.swift in Sources */,
 				C915BE171FF5EB8300F53F5F /* TodosCoordinator.swift in Sources */,
 				C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */,
 				C93E19971FF487D500B5D0B9 /* ViewModelType.swift in Sources */,
+				C977D1AC2005E3870076205E /* AlbumListViewModel.swift in Sources */,
 				C93E199F1FF4910E00B5D0B9 /* Observable+Ext.swift in Sources */,
 				C915BE0A1FF5D88700F53F5F /* PostsCoordinator.swift in Sources */,
 				C93E199D1FF48CF900B5D0B9 /* ErrorTracker.swift in Sources */,

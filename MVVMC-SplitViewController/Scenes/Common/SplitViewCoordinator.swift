@@ -21,12 +21,14 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
 
     enum SectionTab {
         case posts
+        case albums
         case todos
         case settings
 
         var title: String {
             switch self {
             case .posts: return "Posts"
+            case .albums: return "Albums"
             case .todos: return "Todos"
             case .settings: return "Settings"
             }
@@ -35,6 +37,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         var image: UIImage {
             switch self {
             case .posts: return #imageLiteral(resourceName: "PostsTabIcon")
+            case .albums: return #imageLiteral(resourceName: "AlbumsTabIcon")
             case .todos: return #imageLiteral(resourceName: "TodosTabIcon")
             case .settings: return #imageLiteral(resourceName: "Settings")
             }
@@ -43,8 +46,9 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         var tag: Int {
             switch self {
             case .posts: return 0
-            case .todos: return 1
-            case .settings: return 2
+            case .albums: return 1
+            case .todos: return 2
+            case .settings: return 3
             }
         }
     }
@@ -60,7 +64,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<Void> {
         let tabBarController = TabBarController()
-        let tabs: [SectionTab] = [.posts, .todos, .settings]
+        let tabs: [SectionTab] = [.posts, .albums, .todos, .settings]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
         self.viewDelegate = SplitViewDelegate(splitViewController: splitViewController,
@@ -90,6 +94,9 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
                 switch tab {
                 case .posts:
                     let coordinator = PostsCoordinator(navigationController: navCtrl, dependencies: dependencies)
+                    return coordinate(to: coordinator)
+                case .albums:
+                    let coordinator = AlbumsCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
                 case .todos:
                     let coordinator = TodosCoordinator(navigationController: navCtrl, dependencies: dependencies)

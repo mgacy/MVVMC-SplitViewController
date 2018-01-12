@@ -1,19 +1,19 @@
 //
-//  TodosListViewModel.swift
+//  AlbumListViewModel.swift
 //  MVVMC-SplitViewController
 //
-//  Created by Mathew Gacy on 12/28/17.
-//  Copyright © 2017 Mathew Gacy. All rights reserved.
+//  Created by Mathew Gacy on 1/9/18.
+//  Copyright © 2018 Mathew Gacy. All rights reserved.
 //
 
 import RxCocoa
 import RxSwift
 
-final class TodosListViewModel: ViewModelType {
+final class AlbumListViewModel: ViewModelType {
 
     let fetching: Driver<Bool>
-    let todos: Driver<[Todo]>
-    let selectedTodo: Driver<Todo>
+    let albums: Driver<[Album]>
+    let selectedAlbum: Driver<Album>
     let errors: Driver<Error>
 
     // MARK: - Lifecycle
@@ -22,9 +22,9 @@ final class TodosListViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
 
-        todos = bindings.fetchTrigger
+        albums = bindings.fetchTrigger
             .flatMapLatest {
-                return dependency.client.getTodos()
+                return dependency.client.getAlbums()
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
@@ -32,10 +32,10 @@ final class TodosListViewModel: ViewModelType {
 
         fetching = activityIndicator.asDriver()
         errors = errorTracker.asDriver()
-        selectedTodo = bindings.selection
-            .withLatestFrom(self.todos) { (indexPath, todos: [Todo]) -> Todo in
-                return todos[indexPath.row]
-        }
+        selectedAlbum = bindings.selection
+            .withLatestFrom(self.albums) { (indexPath, albums: [Album]) -> Album in
+                return albums[indexPath.row]
+            }
     }
 
     // MARK: - ViewModelType
@@ -48,3 +48,4 @@ final class TodosListViewModel: ViewModelType {
     }
 
 }
+
