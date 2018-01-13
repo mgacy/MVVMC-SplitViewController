@@ -23,6 +23,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         case posts
         case albums
         case todos
+        case profile
         case settings
 
         var title: String {
@@ -30,6 +31,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .posts: return "Posts"
             case .albums: return "Albums"
             case .todos: return "Todos"
+            case .profile: return "Profile"
             case .settings: return "Settings"
             }
         }
@@ -39,6 +41,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .posts: return #imageLiteral(resourceName: "PostsTabIcon")
             case .albums: return #imageLiteral(resourceName: "AlbumsTabIcon")
             case .todos: return #imageLiteral(resourceName: "TodosTabIcon")
+            case .profile: return #imageLiteral(resourceName: "ProfileTabIcon")
             case .settings: return #imageLiteral(resourceName: "Settings")
             }
         }
@@ -48,7 +51,8 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .posts: return 0
             case .albums: return 1
             case .todos: return 2
-            case .settings: return 3
+            case .profile: return 3
+            case .settings: return 4
             }
         }
     }
@@ -101,9 +105,11 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
                 case .todos:
                     let coordinator = TodosCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
-                case .settings:
-                    let coordinator = SettingsCoordinator(navigationController: navCtrl, dependencies: dependencies)
+                case .profile:
+                    let coordinator = ProfileCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
+                case .settings:
+                    return Observable.just(())
                 }
             }
     }
