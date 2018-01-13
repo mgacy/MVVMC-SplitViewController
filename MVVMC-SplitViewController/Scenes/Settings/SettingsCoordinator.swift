@@ -11,17 +11,17 @@ import RxSwift
 class SettingsCoordinator: BaseCoordinator<Void> {
     typealias Dependencies = HasClient & HasUserManager
 
-    private let navigationController: UINavigationController
+    private let rootViewController: UIViewController
     private let dependencies: Dependencies
 
-    init(navigationController: UINavigationController, dependencies: Dependencies) {
-        self.navigationController = navigationController
+    init(rootViewController: UIViewController, dependencies: Dependencies) {
+        self.rootViewController = rootViewController
         self.dependencies = dependencies
     }
 
     override func start() -> Observable<CoordinationResult> {
         let viewController = SettingsViewController.instance()
-        navigationController.viewControllers = [viewController]
+        let navigationController = UINavigationController(rootViewController: viewController)
 
         let avm: Attachable<SettingsViewModel> = .detached(dependencies)
         let viewModel = viewController.attach(wrapper: avm)
@@ -34,8 +34,16 @@ class SettingsCoordinator: BaseCoordinator<Void> {
             }
             .subscribe()
             .disposed(by: disposeBag)
+        if let navVC = rootViewController.parent as? UINavigationController, let tabVC = navVC.parent,
+            let splitVC = tabVC.parent, splitVC.traitCollection.horizontalSizeClass == .regular {
+            navigationController.modalPresentationStyle = .formSheet
+        }
 
-        return Observable.never()
+        rootViewController.present(navigationController, animated: true)
+
+        return viewController.doneButtonItem.rx.tap
+            .take(1)
+            .do(onNext: { [weak self] _ in self?.rootViewController.dismiss(animated: true) })
     }
 
     private func showLogin(on rootViewController: UIViewController) -> Observable<Void> {
