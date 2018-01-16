@@ -30,8 +30,8 @@ class ProfileCoordinator: BaseCoordinator<Void> {
 
         viewModel.settingsTap
             .asObservable()
-            .flatMap { [weak self] _ -> Observable<Void> in
-                guard let strongSelf = self else { return Observable.just(()) }
+            .flatMap { [weak self] _ -> Observable<SettingsCoordinationResult> in
+                guard let strongSelf = self else { return .empty() }
                 return strongSelf.showSettings(on: viewController)
             }
             .subscribe()
@@ -51,7 +51,7 @@ class ProfileCoordinator: BaseCoordinator<Void> {
         return Observable.never()
     }
 
-    private func showSettings(on rootViewController: UIViewController) -> Observable<Void> {
+    private func showSettings(on rootViewController: UIViewController) -> Observable<SettingsCoordinationResult> {
         let settingsCoordinator = SettingsCoordinator(rootViewController: rootViewController, dependencies: dependencies)
         return coordinate(to: settingsCoordinator)
     }

@@ -8,7 +8,18 @@
 
 import RxSwift
 
-class SettingsCoordinator: BaseCoordinator<Void> {
+/// Type defining possible coordination results of the `SettingsCoordinator`.
+///
+/// - none:   No changes to user authentication status.
+/// - logout: User logged out.
+/// - login:  User logged out and back in again (possible as a different user).
+enum SettingsCoordinationResult {
+    case none
+    case logout
+    case login
+}
+
+class SettingsCoordinator: BaseCoordinator<SettingsCoordinationResult> {
     typealias Dependencies = HasClient & HasUserManager
 
     private let rootViewController: UIViewController
@@ -26,14 +37,23 @@ class SettingsCoordinator: BaseCoordinator<Void> {
         let avm: Attachable<SettingsViewModel> = .detached(dependencies)
         let viewModel = viewController.attach(wrapper: avm)
 
-        viewModel.showLogin
+        let login = viewModel.showLogin
             .asObservable()
-            .flatMap { [weak self] _ -> Observable<Void> in
-                guard let strongSelf = self else { return Observable.just(()) }
+            .flatMap { [weak self] _ -> Observable<ModalLoginCoordinationResult> in
+                guard let strongSelf = self else { return .empty() }
                 return strongSelf.showLogin(on: viewController)
             }
-            .subscribe()
-            .disposed(by: disposeBag)
+            .filter { $0 == .login }
+            .map { _ in return SettingsCoordinationResult.login }
+
+        let logout = viewModel.didLogout
+            .asObservable()
+            .map { _ in return SettingsCoordinationResult.logout }
+
+        let authenticationChanges = Observable.of(logout, login)
+            .merge()
+            .startWith(SettingsCoordinationResult.none)
+
         if let navVC = rootViewController.parent as? UINavigationController, let tabVC = navVC.parent,
             let splitVC = tabVC.parent, splitVC.traitCollection.horizontalSizeClass == .regular {
             navigationController.modalPresentationStyle = .formSheet
@@ -43,10 +63,11 @@ class SettingsCoordinator: BaseCoordinator<Void> {
 
         return viewController.doneButtonItem.rx.tap
             .take(1)
+            .withLatestFrom(authenticationChanges)
             .do(onNext: { [weak self] _ in self?.rootViewController.dismiss(animated: true) })
     }
 
-    private func showLogin(on rootViewController: UIViewController) -> Observable<Void> {
+    private func showLogin(on rootViewController: UIViewController) -> Observable<ModalLoginCoordinationResult> {
         let loginCoordinator = ModalLoginCoordinator(rootViewController: rootViewController, dependencies: dependencies)
         return coordinate(to: loginCoordinator)
     }
