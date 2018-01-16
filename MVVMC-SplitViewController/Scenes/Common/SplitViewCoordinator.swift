@@ -68,7 +68,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<Void> {
         let tabBarController = TabBarController()
-        let tabs: [SectionTab] = [.posts, .albums, .todos, .settings]
+        let tabs: [SectionTab] = [.posts, .albums, .todos, .profile]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
         self.viewDelegate = SplitViewDelegate(splitViewController: splitViewController,
