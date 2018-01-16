@@ -37,17 +37,6 @@ class ProfileCoordinator: BaseCoordinator<Void> {
             .subscribe()
             .disposed(by: disposeBag)
 
-        /*
-        let signup = viewModel.signupTaps
-            .asObservable()
-            .flatMap { [weak self] _ -> Observable<SignupCoordinationResult> in
-                guard let strongSelf = self else { return .empty() }
-                return strongSelf.showSignup(on: viewController)
-            }
-            .filter { $0 != SignupCoordinationResult.cancel }
-            .map { _ in return }
-        */
-
         return Observable.never()
     }
 
