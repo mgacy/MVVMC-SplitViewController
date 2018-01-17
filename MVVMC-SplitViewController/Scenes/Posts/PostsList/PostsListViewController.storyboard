@@ -26,16 +26,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uca-gU-czb">
-                                            <rect key="frame" x="16" y="11" width="343" height="36"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="38"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-KS-gi2" userLabel="Title">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="22.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8u1-rn-aV5">
-                                                    <rect key="frame" x="0.0" y="20.333333333333332" width="343" height="15.666666666666668"/>
+                                                    <rect key="frame" x="0.0" y="22.333333333333336" width="343" height="15.666666666666664"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -49,11 +49,6 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="Uca-gU-czb" secondAttribute="bottom" id="QDo-bM-X44"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Uca-gU-czb" secondAttribute="trailing" id="lZI-iG-pyr"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="QDo-bM-X44"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bodyLabel" destination="8u1-rn-aV5" id="H6X-yC-rth"/>
