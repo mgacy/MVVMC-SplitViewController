@@ -13,7 +13,7 @@
         <!--Post Detail-->
         <scene sceneID="XEP-rX-DFg">
             <objects>
-                <viewController storyboardIdentifier="PostDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Wo-lh-r5H" userLabel="Post Detail" customClass="PostDetailViewController" customModule="MVVMC_SplitViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Wo-lh-r5H" userLabel="Post Detail" customClass="PostDetailViewController" customModule="MVVMC_SplitViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u0o-7W-cLC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="SIT-Bu-Gpd"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bodyLabel" destination="pAI-cx-F7c" id="q1J-ec-4gv"/>
                         <outlet property="titleLabel" destination="Grd-Sn-49m" id="a9Q-Q3-IKO"/>
