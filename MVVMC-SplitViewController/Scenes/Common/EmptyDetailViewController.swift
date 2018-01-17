@@ -27,6 +27,7 @@ class EmptyDetailViewController: UIViewController {
     }
 
     func setupView() {
+        view.backgroundColor = UIColor(named: "AthensGray")
         self.view.addSubview(backgroundImageView)
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
