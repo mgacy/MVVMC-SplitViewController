@@ -23,13 +23,12 @@ final class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        bindViewModel()
     }
 
     // MARK: - View Methods
 
     private func setupView() {
-        title = "Post"
+        bindViewModel()
     }
 
     func bindViewModel() {
