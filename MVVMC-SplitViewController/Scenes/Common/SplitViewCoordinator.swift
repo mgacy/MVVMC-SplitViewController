@@ -24,7 +24,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         case albums
         case todos
         case profile
-        case settings
 
         var title: String {
             switch self {
@@ -32,7 +31,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .albums: return "Albums"
             case .todos: return "Todos"
             case .profile: return "Profile"
-            case .settings: return "Settings"
             }
         }
 
@@ -42,7 +40,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .albums: return #imageLiteral(resourceName: "AlbumsTabIcon")
             case .todos: return #imageLiteral(resourceName: "TodosTabIcon")
             case .profile: return #imageLiteral(resourceName: "ProfileTabIcon")
-            case .settings: return #imageLiteral(resourceName: "Settings")
             }
         }
 
@@ -52,7 +49,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .albums: return 1
             case .todos: return 2
             case .profile: return 3
-            case .settings: return 4
             }
         }
     }
@@ -108,8 +104,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
                 case .profile:
                     let coordinator = ProfileCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
-                case .settings:
-                    return Observable.just(())
                 }
             }
     }
