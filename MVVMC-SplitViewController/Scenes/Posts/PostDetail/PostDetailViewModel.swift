@@ -12,12 +12,14 @@ import RxSwift
 final class PostDetailViewModel {
     let title: Driver<String>
     let body: Driver<String>
+    let post: Post
 
     // MARK: - Lifecycle
 
     init(post: Post) {
-        title = Observable.just(post.title).asDriver(onErrorJustReturn: "Error")
-        body = Observable.just(post.body).asDriver(onErrorJustReturn: "Error")
+        self.post = post
+        self.title = Observable.just(post.title).asDriver(onErrorJustReturn: "Error")
+        self.body = Observable.just(post.body).asDriver(onErrorJustReturn: "Error")
     }
 
 }

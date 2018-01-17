@@ -12,7 +12,7 @@ import RxSwift
 final class PostsListViewModel: ViewModelType {
 
     let fetching: Driver<Bool>
-    let posts: Driver<[Post]>
+    let posts: Driver<[PostDetailViewModel]>
     let selectedPost: Driver<Post>
     let errors: Driver<Error>
 
@@ -28,15 +28,18 @@ final class PostsListViewModel: ViewModelType {
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
+                    .map { $0.map(PostDetailViewModel.init) }
             }
 
         fetching = activityIndicator.asDriver()
         errors = errorTracker.asDriver()
         selectedPost = bindings.selection
-            .withLatestFrom(self.posts) { (indexPath, posts: [Post]) -> Post in
-                return posts[indexPath.row]
+            .withLatestFrom(self.posts) { (indexPath, posts: [PostDetailViewModel]) -> Post in
+                return posts[indexPath.row].post
         }
     }
+
+    // MARK: - ViewModelType
 
     typealias Dependency = HasClient
 
