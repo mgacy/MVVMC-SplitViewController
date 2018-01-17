@@ -20,6 +20,16 @@ class PhotoCell: UICollectionViewCell {
         disposeBag = DisposeBag() // because life cicle of every cell ends on prepare for reuse
     }
 
+    func bind(to viewModel: PhotoViewModel) {
+        viewModel.title
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.thumbnail
+            .drive(imageView.rx.image)
+            .disposed(by: disposeBag)
+    }
+
 }
 
 // MARK: - SectionView
