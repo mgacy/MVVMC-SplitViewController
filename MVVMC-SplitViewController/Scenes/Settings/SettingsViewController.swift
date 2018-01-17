@@ -23,6 +23,7 @@ class SettingsViewController: UITableViewController, ViewModelAttaching {
 
     // MARK: - Interface
 
+    @IBOutlet weak var doneButtonItem: UIBarButtonItem!
     @IBOutlet weak var accountCell: UITableViewCell!
 
     // MARK: - Lifecycle

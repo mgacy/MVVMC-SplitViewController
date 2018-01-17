@@ -23,14 +23,14 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         case posts
         case albums
         case todos
-        case settings
+        case profile
 
         var title: String {
             switch self {
             case .posts: return "Posts"
             case .albums: return "Albums"
             case .todos: return "Todos"
-            case .settings: return "Settings"
+            case .profile: return "Profile"
             }
         }
 
@@ -39,7 +39,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .posts: return #imageLiteral(resourceName: "PostsTabIcon")
             case .albums: return #imageLiteral(resourceName: "AlbumsTabIcon")
             case .todos: return #imageLiteral(resourceName: "TodosTabIcon")
-            case .settings: return #imageLiteral(resourceName: "Settings")
+            case .profile: return #imageLiteral(resourceName: "ProfileTabIcon")
             }
         }
 
@@ -48,7 +48,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             case .posts: return 0
             case .albums: return 1
             case .todos: return 2
-            case .settings: return 3
+            case .profile: return 3
             }
         }
     }
@@ -64,7 +64,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
 
     override func start() -> Observable<Void> {
         let tabBarController = TabBarController()
-        let tabs: [SectionTab] = [.posts, .albums, .todos, .settings]
+        let tabs: [SectionTab] = [.posts, .albums, .todos, .profile]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
         self.viewDelegate = SplitViewDelegate(splitViewController: splitViewController,
@@ -101,8 +101,8 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
                 case .todos:
                     let coordinator = TodosCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
-                case .settings:
-                    let coordinator = SettingsCoordinator(navigationController: navCtrl, dependencies: dependencies)
+                case .profile:
+                    let coordinator = ProfileCoordinator(navigationController: navCtrl, dependencies: dependencies)
                     return coordinate(to: coordinator)
                 }
             }
