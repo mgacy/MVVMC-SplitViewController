@@ -23,6 +23,7 @@ extension Reusable {
 }
 
 extension UITableViewCell: Reusable {}
+extension UICollectionReusableView: Reusable {}
 
 extension UIViewController: Reusable {
     class func instance() -> Self {

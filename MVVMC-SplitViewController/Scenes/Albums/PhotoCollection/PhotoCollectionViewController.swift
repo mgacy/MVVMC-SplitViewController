@@ -83,7 +83,7 @@ extension PhotoCollectionViewController {
                 return cell
             },
             { (ds ,cv, kind, ip) in
-                let section = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PhotoSectionView",
+                let section = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoSectionView.reuseID,
                                                                   for: ip) as! PhotoSectionView
                 section.titleLabel!.text = "\(ds[ip.section].header)"
                 return section
