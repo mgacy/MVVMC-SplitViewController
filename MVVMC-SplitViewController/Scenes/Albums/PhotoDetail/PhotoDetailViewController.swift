@@ -28,11 +28,14 @@ final class PhotoDetailViewController: UIViewController {
     // MARK: - View Methods
 
     private func setupView() {
-        title = "Photos"
         bindViewModel()
     }
 
     private func bindViewModel() {
+        viewModel.title
+            .drive(self.rx.title)
+            .disposed(by: disposeBag)
+
         viewModel.image
             .drive(imageView.rx.image)
             .disposed(by: disposeBag)
