@@ -167,3 +167,13 @@ extension APIClient {
     }
 
 }
+
+// MARK: - Users
+
+extension APIClient {
+
+    func getUser(id: Int) -> Observable<User> {
+        return requestOne(Router.getUser(id: id))
+    }
+
+}
