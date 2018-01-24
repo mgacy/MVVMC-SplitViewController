@@ -17,9 +17,8 @@ class PhotoCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor(named: "AthensGray")
-        layer.cornerRadius = 5
-        layer.masksToBounds = true
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
     }
 
     override func prepareForReuse() {
