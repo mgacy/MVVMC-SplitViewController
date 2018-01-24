@@ -15,6 +15,13 @@ class PhotoCell: UICollectionViewCell {
 
     private(set) var disposeBag = DisposeBag()
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = UIColor(named: "AthensGray")
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag() // because life cicle of every cell ends on prepare for reuse
