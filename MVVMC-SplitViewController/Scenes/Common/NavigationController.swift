@@ -41,9 +41,9 @@ class NavigationController: UINavigationController {
                 if
                     let splitViewController = splitViewController,
                     splitViewController.viewControllers.count > 1,
-                    let detailViewController = splitViewController.viewControllers.last as? UINavigationController
+                    let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
                 {
-                    detailViewController.setViewControllers([makeEmptyViewController()], animated: false)
+                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: false)
                     detailView = .empty
                 }
             }
@@ -54,7 +54,7 @@ class NavigationController: UINavigationController {
     // MARK: -
 
     /// Add detail view controller to `viewControllers` if it is visible.
-    func collapse() {
+    func collapseDetail() {
         switch detailView {
         case .visible(let detailViewController):
             viewControllers += [detailViewController]
@@ -64,7 +64,7 @@ class NavigationController: UINavigationController {
     }
 
     /// Remove detail view controller from `viewControllers` if it is visible.
-    func separate() {
+    func separateDetail() {
         switch detailView {
         case .visible:
             viewControllers = Array(viewControllers.dropLast())

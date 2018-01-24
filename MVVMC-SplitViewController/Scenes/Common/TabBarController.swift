@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         return viewControllers?
             .flatMap { vc in
                 guard let navController = vc as? NavigationController else { return nil }
-                navController.separate()
+                navController.separateDetail()
                 return vc
             }
             .filter { $0 == self.selectedViewController }
@@ -34,7 +34,7 @@ class TabBarController: UITabBarController {
             guard let navController = viewController as? NavigationController else {
                 fatalError("\(#function) FAILED : wrong view controller type")
             }
-            navController.collapse()
+            navController.collapseDetail()
         }
     }
 
@@ -45,7 +45,7 @@ class TabBarController: UITabBarController {
             guard let navController = viewController as? NavigationController else {
                 fatalError("\(#function) FAILED : wrong view controller type")
             }
-            navController.separate()
+            navController.separateDetail()
         }
     }
 

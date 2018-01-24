@@ -39,7 +39,7 @@ class SplitViewDelegate: NSObject {
 extension SplitViewDelegate: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // Prevent selection of the same tab twice (which would reset the sections navigation controller)
+        // Prevent selection of the same tab twice (which would reset the section's navigation controller)
         if tabBarController.selectedViewController === viewController {
             return false
         } else {
@@ -60,7 +60,7 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
         case .visible(let detailViewController):
             detailViewController.navigationItem.leftItemsSupplementBackButton = true
             detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-            detailNavigationController.viewControllers = [detailViewController]; return
+            detailNavigationController.viewControllers = [detailViewController]
         case .empty:
             detailNavigationController.viewControllers = [navigationController.makeEmptyViewController()]
         }
@@ -114,13 +114,12 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         switch navigationController.detailView {
         case .empty:
             detailNavigationController.viewControllers = [navigationController.makeEmptyViewController()]
-            return detailNavigationController
         case .visible(let detailViewController):
             detailViewController.navigationItem.leftItemsSupplementBackButton = true
             detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
             detailNavigationController.viewControllers = [detailViewController]
-            return detailNavigationController
         }
+        return detailNavigationController
     }
 
     // MARK: Overriding the Presentation Behavior
