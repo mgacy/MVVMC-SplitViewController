@@ -42,8 +42,8 @@ final class PostsListViewController: TableViewController, ViewModelAttaching {
 
     func bind(viewModel: PostsListViewModel) -> PostsListViewModel {
         viewModel.posts
-            .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, element, cell in
-                cell.textLabel?.text = element.title
+            .drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { _, viewModel, cell in
+                cell.bind(to: viewModel)
             }
             .disposed(by: disposeBag)
 

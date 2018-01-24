@@ -24,6 +24,8 @@ class ProfileViewController: UIViewController, ViewModelAttaching {
     // MARK: Interface
 
     @IBOutlet weak var settingsButtonItem: UIBarButtonItem!
+    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
 
@@ -31,16 +33,20 @@ class ProfileViewController: UIViewController, ViewModelAttaching {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupView()
+        setupView()
     }
 
     // MARK: - View Methods
 
     private func setupView() {
-        title = "Profile"
+        avatarView.layer.cornerRadius = 35
+        avatarView.clipsToBounds = true
     }
 
     func bind(viewModel: ProfileViewModel) -> ProfileViewModel {
+        viewModel.initials.drive(avatarLabel.rx.text)
+            .disposed(by: disposeBag)
+
         viewModel.name.drive(nameLabel.rx.text)
             .disposed(by: disposeBag)
 
