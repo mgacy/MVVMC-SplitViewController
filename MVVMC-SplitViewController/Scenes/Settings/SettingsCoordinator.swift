@@ -12,7 +12,7 @@ import RxSwift
 ///
 /// - none:   No changes to user authentication status.
 /// - logout: User logged out.
-/// - login:  User logged out and back in again (possible as a different user).
+/// - login:  User logged out and back in again (possibly as a different user).
 enum SettingsCoordinationResult {
     case none
     case logout

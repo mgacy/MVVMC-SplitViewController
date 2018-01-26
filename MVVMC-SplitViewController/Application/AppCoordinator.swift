@@ -20,15 +20,29 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
+        coordinateToRoot()
+        return .never()
+    }
+
+    // Recursive method that will restart a child coordinator after completion.
+    // Based on:
+    // https://github.com/uptechteam/Coordinator-MVVM-Rx-Example/issues/3
+    private func coordinateToRoot(){
         switch dependencies.userManager.authenticationState {
         case .signedIn:
             return showSplitView()
+                .subscribe(onNext: { [weak self] _ in
+                    self?.window.rootViewController = nil
+                    self?.coordinateToRoot()
+                })
+                .disposed(by: disposeBag)
         case .signedOut:
             return showLogin()
-                .flatMap { [weak self] result -> Observable<Void> in
-                    guard let strongSelf = self else { return .empty() }
-                    return strongSelf.showSplitView()
-                }
+                .subscribe(onNext: { [weak self] _ in
+                    self?.window.rootViewController = nil
+                    self?.coordinateToRoot()
+                })
+                .disposed(by: disposeBag)
         }
     }
 
