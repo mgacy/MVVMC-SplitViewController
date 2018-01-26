@@ -28,16 +28,14 @@ class ProfileCoordinator: BaseCoordinator<Void> {
         let avm: Attachable<ProfileViewModel> = .detached(dependencies)
         let viewModel = viewController.attach(wrapper: avm)
 
-        viewModel.settingsTap
+        return viewModel.settingsTap
             .asObservable()
             .flatMap { [weak self] _ -> Observable<SettingsCoordinationResult> in
                 guard let strongSelf = self else { return .empty() }
                 return strongSelf.showSettings(on: viewController)
             }
-            .subscribe()
-            .disposed(by: disposeBag)
-
-        return Observable.never()
+            .filter { $0 != .none }
+            .map { _ in return }
     }
 
     private func showSettings(on rootViewController: UIViewController) -> Observable<SettingsCoordinationResult> {
