@@ -53,7 +53,7 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
         if splitViewController.isCollapsed { return }
 
         // Otherwise, we want to change the secondary view controller to this tab's detail view
-        guard let navigationController = viewController as? NavigationController else {
+        guard let navigationController = viewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : wrong view controller type")
         }
         switch navigationController.detailView {
@@ -79,8 +79,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
     // size class. Override this method to perform custom adjustments to the view controller hierarchy of the target
     // controller. When you return from this method, you're expected to have modified the `primaryViewController` so as
     // to be suitable for display in a compact-width split view controller, potentially using `secondaryViewController`
-    // to do so. Return YES to prevent UIKit from applying its default behavior; return NO to request that UIKit
-    // perform its default collapsing behavior.
+    // to do so.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return false
         /*
@@ -90,8 +89,8 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
                 fatalError("\(#function) FAILED : unable to get selectedViewController")
         }
         tabBarController.collapseTabs()
-        return true
         */
+        return true // Prevent UIKit from performing default collapse behavior
     }
     */
     // MARK: Expanding the Interface
@@ -105,27 +104,26 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         guard
             let tabBarController = primaryViewController as? TabBarController,
-            let navigationController = tabBarController.selectedViewController as? NavigationController else {
+            let selectedNavController = tabBarController.selectedViewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : unable to get selectedViewController")
         }
 
         tabBarController.separateTabs()
 
-        switch navigationController.detailView {
-        case .empty:
-            detailNavigationController.viewControllers = [navigationController.makeEmptyViewController()]
+        switch selectedNavController.detailView {
         case .visible(let detailViewController):
             detailViewController.navigationItem.leftItemsSupplementBackButton = true
             detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
             detailNavigationController.viewControllers = [detailViewController]
+        case .empty:
+            detailNavigationController.viewControllers = [selectedNavController.makeEmptyViewController()]
         }
         return detailNavigationController
     }
 
     // MARK: Overriding the Presentation Behavior
 
-    // Customize the behavior of `showDetailViewController:` on a split view controller. Return YES to indicate that
-    // you've handled the action yourself; return NO to cause the default behavior to be executed.
+    // Customize the behavior of `showDetailViewController:` on a split view controller.
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         guard
             let tabBarController = splitViewController.viewControllers.first as? UITabBarController,
@@ -147,7 +145,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
             }
         }
         navigationController.detailView = .visible(vc)
-        return true
+        return true // Prevent UIKit from performing default behavior
     }
 
 }

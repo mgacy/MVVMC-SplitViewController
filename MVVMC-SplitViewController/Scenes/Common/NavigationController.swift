@@ -8,19 +8,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol DetailViewControllerType where Self: UIViewController {}
-
-// MARK: - Supporting
-
-enum DetailView<T: UIViewController> {
-    case visible(T)
-    case empty
-}
-
-// MARK: - Class
-
 class NavigationController: UINavigationController {
 
     var detailView: DetailView<UIViewController> = .empty
@@ -51,7 +38,9 @@ class NavigationController: UINavigationController {
         return super.popViewController(animated: animated)
     }
 
-    // MARK: -
+}
+
+extension NavigationController: PrimaryContainerType {
 
     /// Add detail view controller to `viewControllers` if it is visible.
     func collapseDetail() {
@@ -67,13 +56,11 @@ class NavigationController: UINavigationController {
     func separateDetail() {
         switch detailView {
         case .visible:
-            viewControllers = Array(viewControllers.dropLast())
+            viewControllers.removeLast()
         case .empty:
             return
         }
     }
-
-    // MARK: -
 
     func makeEmptyViewController() -> UIViewController {
         return EmptyDetailViewController()
