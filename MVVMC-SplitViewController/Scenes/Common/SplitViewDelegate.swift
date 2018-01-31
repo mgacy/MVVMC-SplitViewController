@@ -40,7 +40,7 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
         // If split view controller is collapsed, detail view will already be on `selectedNavController.viewControllers`;
         // otherwise, we need to change the secondary view controller to the selected tab's detail view.
         if !splitViewController.isCollapsed {
-            detailNavigationController.updateDetailView(with: selectedNavController, in: splitViewController)
+            detailNavigationController.updateWithDetailView(from: selectedNavController)
         }
     }
 
@@ -81,7 +81,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         if case .empty = selectedNavController.detailView {
             splitViewController.preferredDisplayMode = .allVisible
         }
-        detailNavigationController.updateDetailView(with: selectedNavController, in: splitViewController)
+        detailNavigationController.updateWithDetailView(from: selectedNavController)
         return detailNavigationController
     }
 

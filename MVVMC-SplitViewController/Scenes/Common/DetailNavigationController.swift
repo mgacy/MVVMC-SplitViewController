@@ -19,7 +19,7 @@ class DetailNavigationController: UINavigationController {
 
 extension DetailNavigationController: SecondaryContainerType {
 
-    func updateDetailView(with primaryContainer: PrimaryContainerType, in splitViewController: UISplitViewController) {
+    func updateWithDetailView(from primaryContainer: PrimaryContainerType) {
         switch primaryContainer.detailView {
         case .visible(let detailViewController):
             setViewControllers([detailViewController], animated: false)

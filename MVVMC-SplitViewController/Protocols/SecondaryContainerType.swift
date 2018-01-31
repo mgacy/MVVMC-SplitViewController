@@ -11,5 +11,5 @@ import UIKit
 protocol SecondaryContainerType: class {
     var viewControllers: [UIViewController] { get set }
     func setViewControllers(_: [UIViewController], animated: Bool)
-    func updateDetailView(with: PrimaryContainerType, in: UISplitViewController)
+    func updateWithDetailView(from: PrimaryContainerType)
 }
