@@ -63,9 +63,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         splitViewController.viewControllers = [tabBarController, viewDelegate.detailNavigationController]
         splitViewController.preferredDisplayMode = .allVisible
 
-        // Detail
         if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
-            //viewDelegate.configureDetailNavigationController(with: initialPrimaryView.makeEmptyViewController)
             viewDelegate.detailNavigationController.updateDetailView(with: initialPrimaryView, in: splitViewController)
         }
 

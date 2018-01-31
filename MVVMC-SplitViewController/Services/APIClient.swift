@@ -83,7 +83,7 @@ class APIClient {
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
-                        let image = UIImage(data:value)
+                        let image = UIImage(data: value)
                         observer.onNext(image)
                         observer.onCompleted()
                     case .failure(let error):
@@ -112,7 +112,6 @@ extension APIClient {
     }
 
 }
-
 
 // MARK: - Photos
 

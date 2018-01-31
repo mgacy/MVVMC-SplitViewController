@@ -27,7 +27,7 @@ class AppCoordinator: BaseCoordinator<Void> {
     // Recursive method that will restart a child coordinator after completion.
     // Based on:
     // https://github.com/uptechteam/Coordinator-MVVM-Rx-Example/issues/3
-    private func coordinateToRoot(){
+    private func coordinateToRoot() {
         switch dependencies.userManager.authenticationState {
         case .signedIn:
             return showSplitView()
