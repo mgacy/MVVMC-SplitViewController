@@ -56,7 +56,12 @@ class LoginCoordinator: BaseCoordinator<Void> {
 
 // MARK: - Modal Presentation
 
-class ModalLoginCoordinator: BaseCoordinator<Void> {
+enum ModalLoginCoordinationResult {
+    case login
+    case cancel
+}
+
+class ModalLoginCoordinator: BaseCoordinator<ModalLoginCoordinationResult> {
     typealias Dependencies = HasClient & HasUserManager
 
     private let rootViewController: UIViewController
@@ -76,10 +81,10 @@ class ModalLoginCoordinator: BaseCoordinator<Void> {
 
         let login = viewModel.loggedIn
             .filter { $0 }
-            .map { _ in return }
+            .map { _ in return ModalLoginCoordinationResult.login }
 
         let cancel = viewModel.cancelTaps
-            .map { _ in return }
+            .map { _ in return ModalLoginCoordinationResult.cancel }
 
         rootViewController.present(navigationController, animated: true)
 

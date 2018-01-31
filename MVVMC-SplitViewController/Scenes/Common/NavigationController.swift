@@ -8,19 +8,6 @@
 
 import UIKit
 
-// MARK: - Protocols
-
-protocol DetailViewControllerType where Self: UIViewController {}
-
-// MARK: - Supporting
-
-enum DetailView<T: UIViewController> {
-    case visible(T)
-    case empty
-}
-
-// MARK: - Class
-
 class NavigationController: UINavigationController {
 
     var detailView: DetailView<UIViewController> = .empty
@@ -41,9 +28,9 @@ class NavigationController: UINavigationController {
                 if
                     let splitViewController = splitViewController,
                     splitViewController.viewControllers.count > 1,
-                    let detailViewController = splitViewController.viewControllers.last as? UINavigationController
+                    let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
                 {
-                    detailViewController.setViewControllers([makeEmptyViewController()], animated: false)
+                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: false)
                     detailView = .empty
                 }
             }
@@ -51,10 +38,12 @@ class NavigationController: UINavigationController {
         return super.popViewController(animated: animated)
     }
 
-    // MARK: -
+}
+
+extension NavigationController: PrimaryContainerType {
 
     /// Add detail view controller to `viewControllers` if it is visible.
-    func collapse() {
+    func collapseDetail() {
         switch detailView {
         case .visible(let detailViewController):
             viewControllers += [detailViewController]
@@ -64,16 +53,14 @@ class NavigationController: UINavigationController {
     }
 
     /// Remove detail view controller from `viewControllers` if it is visible.
-    func separate() {
+    func separateDetail() {
         switch detailView {
         case .visible:
-            viewControllers = Array(viewControllers.dropLast())
+            viewControllers.removeLast()
         case .empty:
             return
         }
     }
-
-    // MARK: -
 
     func makeEmptyViewController() -> UIViewController {
         return EmptyDetailViewController()

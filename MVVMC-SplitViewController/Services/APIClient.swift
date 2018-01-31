@@ -83,7 +83,7 @@ class APIClient {
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
-                        let image = UIImage(data:value)
+                        let image = UIImage(data: value)
                         observer.onNext(image)
                         observer.onCompleted()
                     case .failure(let error):
@@ -112,7 +112,6 @@ extension APIClient {
     }
 
 }
-
 
 // MARK: - Photos
 
@@ -164,6 +163,16 @@ extension APIClient {
 
     func getTodo(id: Int) -> Observable<Todo> {
         return requestOne(Router.getTodo(id: id))
+    }
+
+}
+
+// MARK: - Users
+
+extension APIClient {
+
+    func getUser(id: Int) -> Observable<User> {
+        return requestOne(Router.getUser(id: id))
     }
 
 }

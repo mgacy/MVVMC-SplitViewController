@@ -18,6 +18,7 @@ public enum Router: URLRequestConvertible {
     case getPost(id: Int)
     case getTodos
     case getTodo(id: Int)
+    case getUser(id: Int)
 
     static let baseURLString = "https://jsonplaceholder.typicode.com"
 
@@ -48,6 +49,8 @@ public enum Router: URLRequestConvertible {
             return "/todos"
         case .getTodo(let id):
             return "/todos/\(id)"
+        case .getUser(let id):
+            return "/users/\(id)"
         }
     }
 

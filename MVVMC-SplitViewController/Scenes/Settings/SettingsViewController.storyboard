@@ -120,11 +120,14 @@
                             <outlet property="delegate" destination="6cX-om-quK" id="bH8-i9-jFj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="CCv-M5-Dso"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="CCv-M5-Dso">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="qLc-jk-8dd"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="AccountCell" destination="Qpr-1F-Gvg" id="ZH4-hQ-aVb"/>
                         <outlet property="accountCell" destination="Qpr-1F-Gvg" id="urF-Ce-xe6"/>
+                        <outlet property="doneButtonItem" destination="qLc-jk-8dd" id="r9G-P6-eGn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceY-lj-uH1" userLabel="First Responder" sceneMemberID="firstResponder"/>

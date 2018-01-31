@@ -42,7 +42,7 @@ class PhotoCollectionViewController: UIViewController, ViewModelAttaching {
     }
 
     func bind(viewModel: PhotoCollectionViewModel) -> PhotoCollectionViewModel {
-        let (configureCollectionViewCell, configureSupplementaryView) =  PhotoCollectionViewController.collectionViewDataSourceUI()
+        let (configureCollectionViewCell, configureSupplementaryView) = PhotoCollectionViewController.collectionViewDataSourceUI()
         let cvDataSource = RxCollectionViewSectionedAnimatedDataSource<PhotoSection>(
             configureCell: configureCollectionViewCell,
             configureSupplementaryView: configureSupplementaryView
@@ -70,20 +70,16 @@ extension PhotoCollectionViewController {
 
     static func collectionViewDataSourceUI() -> (CollectionViewSectionedDataSource<PhotoSection>.ConfigureCell, CollectionViewSectionedDataSource<PhotoSection>.ConfigureSupplementaryView) {
         return (
+            // swiftlint:disable:next identifier_name
             { (_, cv, ip, i) in
                 let cell = cv.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: ip) as! PhotoCell
-                i.title
-                    .drive(cell.titleLabel.rx.text)
-                    .disposed(by: cell.disposeBag)
-
-                i.thumbnail
-                    .drive(cell.imageView.rx.image)
-                    .disposed(by: cell.disposeBag)
-
+                cell.bind(to: i)
                 return cell
             },
-            { (ds ,cv, kind, ip) in
-                let section = cv.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PhotoSectionView",
+            // swiftlint:disable:next identifier_name
+            { (ds, cv, kind, ip) in
+                let section = cv.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                  withReuseIdentifier: PhotoSectionView.reuseID,
                                                                   for: ip) as! PhotoSectionView
                 section.titleLabel!.text = "\(ds[ip.section].header)"
                 return section

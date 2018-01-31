@@ -13,7 +13,7 @@ class EmptyDetailViewController: UIViewController {
     let backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.image = #imageLiteral(resourceName: "EmptyViewBackground")
-        view.tintColor = .gray
+        view.tintColor = UIColor(named: "StarDust")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -26,10 +26,16 @@ class EmptyDetailViewController: UIViewController {
         setupConstraints()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        if let displayModeButtonItem = splitViewController?.displayModeButtonItem {
+            navigationItem.leftBarButtonItem = displayModeButtonItem
+        }
+    }
+
     func setupView() {
+        view.backgroundColor = UIColor(named: "AthensGray")
         self.view.addSubview(backgroundImageView)
         navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
     }
 
     func setupConstraints() {

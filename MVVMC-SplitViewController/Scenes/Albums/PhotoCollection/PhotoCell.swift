@@ -15,9 +15,25 @@ class PhotoCell: UICollectionViewCell {
 
     private(set) var disposeBag = DisposeBag()
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageView.layer.cornerRadius = 5
+        imageView.layer.masksToBounds = true
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag() // because life cicle of every cell ends on prepare for reuse
+    }
+
+    func bind(to viewModel: PhotoViewModel) {
+        viewModel.title
+            .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        viewModel.thumbnail
+            .drive(imageView.rx.image)
+            .disposed(by: disposeBag)
     }
 
 }
