@@ -26,11 +26,16 @@ class EmptyDetailViewController: UIViewController {
         setupConstraints()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        if let displayModeButtonItem = splitViewController?.displayModeButtonItem {
+            navigationItem.leftBarButtonItem = displayModeButtonItem
+        }
+    }
+
     func setupView() {
         view.backgroundColor = UIColor(named: "AthensGray")
         self.view.addSubview(backgroundImageView)
         navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
     }
 
     func setupConstraints() {

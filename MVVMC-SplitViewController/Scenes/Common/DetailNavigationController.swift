@@ -22,8 +22,6 @@ extension DetailNavigationController: SecondaryContainerType {
     func updateDetailView(with primaryContainer: PrimaryContainerType, in splitViewController: UISplitViewController) {
         switch primaryContainer.detailView {
         case .visible(let detailViewController):
-            detailViewController.navigationItem.leftItemsSupplementBackButton = true
-            detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
             viewControllers = [detailViewController]
         case .empty:
             viewControllers = [primaryContainer.makeEmptyViewController()]

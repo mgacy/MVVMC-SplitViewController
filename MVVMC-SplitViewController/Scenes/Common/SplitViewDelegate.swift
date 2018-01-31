@@ -55,8 +55,8 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
             let selectedNavController = viewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : wrong view controller type")
         }
-        // If svc is collapsed, detail view will already be on `selectedNavController.viewControllers`; otherwise, we
-        // need to change the secondary view controller to this tab's detail view.
+        // If split view controller is collapsed, detail view will already be on `selectedNavController.viewControllers`;
+        // otherwise, we need to change the secondary view controller to the selected tab's detail view.
         if !splitViewController.isCollapsed {
             detailNavigationController.updateDetailView(with: selectedNavController, in: splitViewController)
         }
@@ -109,12 +109,13 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
             let selectedNavController = tabBarController.selectedViewController as? NavigationController else {
                 fatalError("\(#function) FAILED : unable to get section navigation controller")
         }
+
+        vc.navigationItem.leftItemsSupplementBackButton = true
+        vc.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+
         if splitViewController.isCollapsed {
             selectedNavController.pushViewController(vc, animated: true)
         } else {
-            vc.navigationItem.leftItemsSupplementBackButton = true
-            vc.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-
             switch selectedNavController.detailView {
             // Animate only the initial presentation of the detail vc
             case .empty:
