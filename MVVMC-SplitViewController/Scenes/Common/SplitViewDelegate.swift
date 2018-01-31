@@ -39,7 +39,7 @@ class SplitViewDelegate: NSObject {
 extension SplitViewDelegate: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // Prevent selection of the same tab twice (which would reset the section's navigation controller)
+        // Prevent selection of the same tab twice (which would reset its navigation controller)
         if tabBarController.selectedViewController === viewController {
             return false
         } else {
@@ -71,15 +71,10 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
 // MARK: - UISplitViewControllerDelegate
 extension SplitViewDelegate: UISplitViewControllerDelegate {
 
-    // MARK: Overriding the Interface Orientations
-
     // MARK: Collapsing the Interface
     /*
     // This method is called when a split view controller is collapsing its children for a transition to a compact-width
-    // size class. Override this method to perform custom adjustments to the view controller hierarchy of the target
-    // controller. When you return from this method, you're expected to have modified the `primaryViewController` so as
-    // to be suitable for display in a compact-width split view controller, potentially using `secondaryViewController`
-    // to do so.
+    // size class.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return false
         /*
@@ -96,11 +91,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
     // MARK: Expanding the Interface
 
     // This method is called when a split view controller is separating its child into two children for a transition
-    // from a compact-width size class to a regular-width size class. Override this method to perform custom separation
-    // behavior. The controller returned from this method will be set as the secondary view controller of the split
-    // view controller. When you return from this method, `primaryViewController` should have been configured for
-    // display in a regular-width split view controller. If you return `nil`, then `UISplitViewController` will perform
-    // its default behavior.
+    // from a compact-width size class to a regular-width size class.
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         guard
             let tabBarController = primaryViewController as? TabBarController,
@@ -127,16 +118,16 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         guard
             let tabBarController = splitViewController.viewControllers.first as? UITabBarController,
-            let navigationController = tabBarController.selectedViewController as? NavigationController else {
+            let selectedNavController = tabBarController.selectedViewController as? NavigationController else {
                 fatalError("\(#function) FAILED : unable to get section navigation controller")
         }
         if splitViewController.isCollapsed {
-            navigationController.pushViewController(vc, animated: true)
+            selectedNavController.pushViewController(vc, animated: true)
         } else {
             vc.navigationItem.leftItemsSupplementBackButton = true
             vc.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
 
-            switch navigationController.detailView {
+            switch selectedNavController.detailView {
             // Animate only the initial presentation of the detail vc
             case .empty:
                 detailNavigationController.setViewControllers([vc], animated: true)
@@ -144,7 +135,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
                 detailNavigationController.setViewControllers([vc], animated: false)
             }
         }
-        navigationController.detailView = .visible(vc)
+        selectedNavController.detailView = .visible(vc)
         return true // Prevent UIKit from performing default behavior
     }
 
