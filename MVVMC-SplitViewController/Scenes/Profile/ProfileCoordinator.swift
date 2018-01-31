@@ -39,7 +39,8 @@ class ProfileCoordinator: BaseCoordinator<Void> {
     }
 
     private func showSettings(on rootViewController: UIViewController) -> Observable<SettingsCoordinationResult> {
-        let settingsCoordinator = SettingsCoordinator(rootViewController: rootViewController, dependencies: dependencies)
+        let settingsCoordinator = SettingsCoordinator(rootViewController: rootViewController,
+                                                      dependencies: dependencies)
         return coordinate(to: settingsCoordinator)
     }
 
