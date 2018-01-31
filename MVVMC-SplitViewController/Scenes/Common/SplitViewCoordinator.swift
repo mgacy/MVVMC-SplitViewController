@@ -43,14 +43,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             }
         }
 
-        var tag: Int {
-            switch self {
-            case .posts: return 0
-            case .albums: return 1
-            case .todos: return 2
-            case .profile: return 3
-            }
-        }
     }
 
     // MARK: - Lifecycle
@@ -80,7 +72,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         let navControllers = tabs
             .map { tab -> UINavigationController in
                 let navController = NavigationController()
-                navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tab.tag)
+                navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: nil)
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic
                 return navController
