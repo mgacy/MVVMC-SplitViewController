@@ -96,6 +96,9 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
 
         navigationControllers.forEach { $0.separateDetail() }
 
+        if case .empty = selectedNavController.detailView {
+            splitViewController.preferredDisplayMode = .allVisible
+        }
         detailNavigationController.updateDetailView(with: selectedNavController, in: splitViewController)
         return detailNavigationController
     }
