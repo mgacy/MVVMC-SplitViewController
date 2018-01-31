@@ -8,31 +8,13 @@
 
 import RxSwift
 
-class SplitViewDelegate: NSObject {
+final class SplitViewDelegate: NSObject {
 
-    private let splitViewController: UISplitViewController
-    private let tabBarController: TabBarController
-    private let detailNavigationController: DetailNavigationController
+    let detailNavigationController: DetailNavigationController
 
-    init(splitViewController: UISplitViewController, tabBarController: TabBarController) {
-        self.splitViewController = splitViewController
-        self.tabBarController = tabBarController
-        self.detailNavigationController = DetailNavigationController()
+    init(detailNavigationController: DetailNavigationController) {
+        self.detailNavigationController = detailNavigationController
         super.init()
-
-        // Tab
-        tabBarController.delegate = self
-
-        // Detail
-        guard let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType else {
-                fatalError("\(#function) FAILED : wrong view controller type")
-        }
-        detailNavigationController.updateDetailView(with: initialPrimaryView, in: splitViewController)
-
-        // Split
-        splitViewController.delegate = self
-        splitViewController.viewControllers = [tabBarController, detailNavigationController]
-        splitViewController.preferredDisplayMode = .allVisible
     }
 
 }
