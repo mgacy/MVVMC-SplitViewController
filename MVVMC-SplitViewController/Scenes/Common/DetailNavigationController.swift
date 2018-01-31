@@ -22,9 +22,9 @@ extension DetailNavigationController: SecondaryContainerType {
     func updateDetailView(with primaryContainer: PrimaryContainerType, in splitViewController: UISplitViewController) {
         switch primaryContainer.detailView {
         case .visible(let detailViewController):
-            viewControllers = [detailViewController]
+            setViewControllers([detailViewController], animated: false)
         case .empty:
-            viewControllers = [primaryContainer.makeEmptyViewController()]
+            setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
         }
     }
 
