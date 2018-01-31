@@ -14,10 +14,8 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
     private let window: UIWindow
     private let dependencies: Dependencies
 
-    private let splitViewController: UISplitViewController
-    private let tabBarController: TabBarController
     // swiftlint:disable:next weak_delegate
-    private var viewDelegate: SplitViewDelegate?
+    private let viewDelegate: SplitViewDelegate
 
     enum SectionTab {
         case posts
@@ -43,14 +41,6 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
             }
         }
 
-        var tag: Int {
-            switch self {
-            case .posts: return 0
-            case .albums: return 1
-            case .todos: return 2
-            case .profile: return 3
-            }
-        }
     }
 
     // MARK: - Lifecycle
@@ -58,17 +48,26 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
     init(window: UIWindow, dependencies: Dependencies) {
         self.window = window
         self.dependencies = dependencies
-        self.splitViewController = UISplitViewController()
-        self.tabBarController = TabBarController()
+
+        let detailNavigationController = DetailNavigationController()
+        self.viewDelegate = SplitViewDelegate(detailNavigationController: detailNavigationController)
     }
 
     override func start() -> Observable<CoordinationResult> {
-        let tabBarController = TabBarController()
+        let tabBarController = UITabBarController()
         let tabs: [SectionTab] = [.posts, .albums, .todos, .profile]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
-        self.viewDelegate = SplitViewDelegate(splitViewController: splitViewController,
-                                              tabBarController: tabBarController)
+        let splitViewController = UISplitViewController()
+        splitViewController.delegate = viewDelegate
+        splitViewController.viewControllers = [tabBarController, viewDelegate.detailNavigationController]
+        splitViewController.preferredDisplayMode = .allVisible
+
+        // Detail
+        if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
+            //viewDelegate.configureDetailNavigationController(with: initialPrimaryView.makeEmptyViewController)
+            viewDelegate.detailNavigationController.updateDetailView(with: initialPrimaryView, in: splitViewController)
+        }
 
         window.rootViewController = splitViewController
         window.makeKeyAndVisible()
@@ -80,13 +79,14 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         let navControllers = tabs
             .map { tab -> UINavigationController in
                 let navController = NavigationController()
-                navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tab.tag)
+                navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: nil)
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic
                 return navController
             }
 
         tabBarController.viewControllers = navControllers
+        tabBarController.delegate = viewDelegate
         tabBarController.view.backgroundColor = UIColor.white  // Fix dark shadow in nav bar on segue
 
         return zip(tabs, navControllers)

@@ -17,8 +17,8 @@ class TabBarController: UITabBarController {
     override func separateSecondaryViewController(for splitViewController: UISplitViewController) -> UIViewController? {
         return viewControllers?
             .flatMap { vc in
-                guard let navController = vc as? NavigationController else { return nil }
-                navController.separate()
+                guard let navController = vc as? PrimaryContainerType else { return nil }
+                navController.separateDetail()
                 return vc
             }
             .filter { $0 == self.selectedViewController }
@@ -27,25 +27,25 @@ class TabBarController: UITabBarController {
 
     // MARK: -
 
-    /// Call `NavigationController.collapse()` on children to add visible detail view controllers.
+    /// Call `PrimaryContainerType.collapseDetail()` on children to add visible detail view controllers.
     func collapseTabs() {
         guard let vcs = viewControllers else { return }
         vcs.forEach { viewController in
-            guard let navController = viewController as? NavigationController else {
+            guard let navController = viewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : wrong view controller type")
             }
-            navController.collapse()
+            navController.collapseDetail()
         }
     }
 
-    /// Call `NavigationController.separate()` on children to remove visible detail view controllers.
+    /// Call `PrimaryContainerType.separateDetail()` on children to remove visible detail view controllers.
     func separateTabs() {
         guard let vcs = viewControllers else { return }
         vcs.forEach { viewController in
-            guard let navController = viewController as? NavigationController else {
+            guard let navController = viewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : wrong view controller type")
             }
-            navController.separate()
+            navController.separateDetail()
         }
     }
 
