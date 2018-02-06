@@ -33,10 +33,11 @@ class LoginViewController: UIViewController, ViewModelAttaching {
     @IBOutlet weak var signupButton: UIButton!
     let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +48,10 @@ class LoginViewController: UIViewController, ViewModelAttaching {
     }
 
     // MARK: - View Methods
+
+    private func setupView() {
+        loginButton.layer.cornerRadius = 5
+    }
 
     func bind(viewModel: LoginViewModel) -> LoginViewModel {
         viewModel.isValid

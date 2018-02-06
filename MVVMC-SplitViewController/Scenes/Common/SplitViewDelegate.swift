@@ -73,7 +73,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
             let tabBarController = primaryViewController as? UITabBarController,
             let navigationControllers = tabBarController.viewControllers as? [PrimaryContainerType],
             let selectedNavController = tabBarController.selectedViewController as? PrimaryContainerType else {
-                fatalError("\(#function) FAILED : unable to get selectedViewController")
+                fatalError("\(#function) FAILED : wrong view controller type")
         }
 
         navigationControllers.forEach { $0.separateDetail() }
@@ -92,7 +92,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         guard
             let tabBarController = splitViewController.viewControllers.first as? UITabBarController,
             let selectedNavController = tabBarController.selectedViewController as? NavigationController else {
-                fatalError("\(#function) FAILED : unable to get section navigation controller")
+                fatalError("\(#function) FAILED : wrong view controller type")
         }
 
         vc.navigationItem.leftItemsSupplementBackButton = true

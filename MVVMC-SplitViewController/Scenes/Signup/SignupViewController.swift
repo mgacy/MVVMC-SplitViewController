@@ -47,6 +47,7 @@ class SignupViewController: UIViewController, ViewModelAttaching {
     private func setupView() {
         title = "Signup"
         self.navigationItem.leftBarButtonItem = cancelButton
+        signupButton.layer.cornerRadius = 5
 
         // Next keyboard button
         firstNameTextField.rx.controlEvent(.editingDidEndOnExit)

@@ -39,10 +39,12 @@ class EmptyDetailViewController: UIViewController {
     }
 
     func setupConstraints() {
-        backgroundImageView.widthAnchor.constraint(equalToConstant: 180.0).isActive = true
-        backgroundImageView.heightAnchor.constraint(equalToConstant: 180.0).isActive = true
-        backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 180.0),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 180.0),
+            backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
 }
