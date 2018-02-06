@@ -10,13 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum AuthenticationState {
+    case signedIn
+    case signedOut
+}
+
 class UserManager {
-
-    enum AuthenticationState {
-        case signedIn
-        case signedOut
-    }
-
     var authenticationState: AuthenticationState
     let currentUser = BehaviorSubject<User?>(value: nil)
     private let client = APIClient()
@@ -34,11 +33,13 @@ class UserManager {
 
 }
 
+// MARK: - Authentication Services
+
 enum AuthenticationError: Error {
     case invalidCredentials
 }
 
-// MARK: - LoginService
+// MARK: LoginService
 
 protocol LoginService {
     func login(username: String, password: String) -> Observable<Bool>
@@ -64,7 +65,7 @@ extension UserManager: LoginService {
 
 }
 
-// MARK: - LogoutService
+// MARK: LogoutService
 
 protocol LogoutService {
     func logout() -> Observable<Bool>
@@ -85,7 +86,7 @@ extension UserManager: LogoutService {
 
 }
 
-// MARK: - SignupService
+// MARK: SignupService
 
 protocol SignupService {
     func signup(firstName: String, lastName: String, username: String, password: String) -> Observable<Bool>
