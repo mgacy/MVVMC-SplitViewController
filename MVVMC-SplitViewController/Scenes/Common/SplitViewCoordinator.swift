@@ -58,14 +58,14 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         let tabs: [SectionTab] = [.posts, .albums, .todos, .profile]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
+        if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
+            viewDelegate.updateSecondaryWithDetail(from: initialPrimaryView)
+        }
+
         let splitViewController = UISplitViewController()
         splitViewController.delegate = viewDelegate
         splitViewController.viewControllers = [tabBarController, viewDelegate.detailNavigationController]
         splitViewController.preferredDisplayMode = .allVisible
-
-        if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
-            viewDelegate.detailNavigationController.updateWithDetailView(from: initialPrimaryView)
-        }
 
         window.rootViewController = splitViewController
         window.makeKeyAndVisible()

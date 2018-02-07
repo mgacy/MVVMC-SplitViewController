@@ -7,9 +7,8 @@
 //
 
 import UIKit
-
+/*
 protocol SecondaryContainerType: class {
-    var viewControllers: [UIViewController] { get set }
-    func setViewControllers(_: [UIViewController], animated: Bool)
     func updateWithDetailView(from: PrimaryContainerType)
 }
+*/

@@ -16,16 +16,3 @@ class DetailNavigationController: UINavigationController {
     }
 
 }
-
-extension DetailNavigationController: SecondaryContainerType {
-
-    func updateWithDetailView(from primaryContainer: PrimaryContainerType) {
-        switch primaryContainer.detailView {
-        case .visible(let detailViewController):
-            setViewControllers([detailViewController], animated: false)
-        case .empty:
-            setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
-        }
-    }
-
-}

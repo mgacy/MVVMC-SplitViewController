@@ -10,11 +10,21 @@ import RxSwift
 
 final class SplitViewDelegate: NSObject {
 
-    let detailNavigationController: DetailNavigationController
+    let detailNavigationController: UINavigationController
 
-    init(detailNavigationController: DetailNavigationController) {
+    init(detailNavigationController: UINavigationController) {
         self.detailNavigationController = detailNavigationController
         super.init()
+    }
+
+    // func updateSecondary(withDetailfrom primaryContainer: PrimaryContainerType) {
+    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType) {
+        switch primaryContainer.detailView {
+        case .visible(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: false)
+        case .empty:
+            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
+        }
     }
 
 }
@@ -40,7 +50,7 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
         // If split view controller is collapsed, detail view will already be on `selectedNavController.viewControllers`;
         // otherwise, we need to change the secondary view controller to the selected tab's detail view.
         if !splitViewController.isCollapsed {
-            detailNavigationController.updateWithDetailView(from: selectedNavController)
+            updateSecondaryWithDetail(from: selectedNavController)
         }
     }
 
@@ -81,7 +91,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         if case .empty = selectedNavController.detailView {
             splitViewController.preferredDisplayMode = .allVisible
         }
-        detailNavigationController.updateWithDetailView(from: selectedNavController)
+        updateSecondaryWithDetail(from: selectedNavController)
         return detailNavigationController
     }
 
