@@ -32,6 +32,8 @@ class EmptyDetailViewController: UIViewController {
         }
     }
 
+    // MARK: - View Methods
+
     func setupView() {
         view.backgroundColor = UIColor(named: "AthensGray")
         self.view.addSubview(backgroundImageView)

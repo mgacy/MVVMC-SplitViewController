@@ -229,10 +229,10 @@
 				C93E199C1FF48CF900B5D0B9 /* ErrorTracker.swift */,
 				C915BE041FF5D5F600F53F5F /* BaseCoordinator.swift */,
 				C915BE1F1FF5F74E00F53F5F /* SplitViewCoordinator.swift */,
-				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
+				C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */,
 				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
 				C9490C4A201FC3BA0071DEEB /* DetailNavigationController.swift */,
-				C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */,
+				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
 				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);

@@ -25,6 +25,7 @@ class NavigationController: UINavigationController {
                 detailView = .empty
             } else {
                 // Set detail view controller to empty to prevent confusion
+                // FIXME: it's really ugly that we are reaching up into splitViewController to get its detail nav controller
                 if
                     let splitViewController = splitViewController,
                     splitViewController.viewControllers.count > 1,
