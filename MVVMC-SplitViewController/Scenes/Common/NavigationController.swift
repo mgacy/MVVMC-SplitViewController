@@ -31,7 +31,7 @@ class NavigationController: UINavigationController {
                     splitViewController.viewControllers.count > 1,
                     let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
                 {
-                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: false)
+                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: true)
                     detailView = .empty
                 }
             }
