@@ -6,7 +6,7 @@
 //  Copyright © 2018 Mathew Gacy. All rights reserved.
 //
 
-import RxSwift
+import UIKit
 
 final class SplitViewDelegate: NSObject {
 
