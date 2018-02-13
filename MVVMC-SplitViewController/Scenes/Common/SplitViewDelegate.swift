@@ -29,6 +29,10 @@ final class SplitViewDelegate: NSObject {
         }
     }
 
+    func replaceDetail(withEmpty viewController: UIViewController & EmptyDetailViewControllerType) {
+        detailNavigationController.setViewControllers([viewController], animated: true)
+    }
+
 }
 
 // MARK: - UITabBarControllerDelegate

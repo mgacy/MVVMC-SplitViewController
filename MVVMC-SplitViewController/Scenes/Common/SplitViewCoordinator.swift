@@ -76,7 +76,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
     private func configure(tabBarController: UITabBarController, withTabs tabs: [SectionTab]) -> [Observable<Void>] {
         let navControllers = tabs
             .map { tab -> UINavigationController in
-                let navController = NavigationController()
+                let navController = NavigationController(withPopDetailCompletion: viewDelegate.replaceDetail)
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: nil)
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic

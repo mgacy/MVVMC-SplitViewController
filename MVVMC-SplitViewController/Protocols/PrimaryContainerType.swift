@@ -19,7 +19,9 @@ enum DetailView {
 }
 
 protocol PrimaryContainerType: class {
+    var detailPopCompletion: (UIViewController & EmptyDetailViewControllerType) -> Void { get }
     var detailView: DetailView { get set }
+
     func collapseDetail()
     func separateDetail()
     func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType

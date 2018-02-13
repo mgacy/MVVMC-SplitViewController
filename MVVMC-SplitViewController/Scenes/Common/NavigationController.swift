@@ -10,9 +10,19 @@ import UIKit
 
 class NavigationController: UINavigationController {
 
+    let detailPopCompletion: (UIViewController & EmptyDetailViewControllerType) -> Void
     var detailView: DetailView = .empty
 
     // MARK: - Lifecycle
+
+    init(withPopDetailCompletion completion: @escaping (UIViewController & EmptyDetailViewControllerType) -> Void) {
+        self.detailPopCompletion = completion
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +35,8 @@ class NavigationController: UINavigationController {
             detailView = .empty
         case .separated:
             detailView = .empty
-            // Set detail view controller to empty to prevent confusion
-            if
-                let splitViewController = splitViewController,
-                splitViewController.viewControllers.count > 1,
-                let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
-            {
-                detailNavigationController.setViewControllers([makeEmptyViewController()], animated: true)
-            }
+            // Set detail view controller to `EmptyDetailViewControllerType` to prevent confusion
+            detailPopCompletion(makeEmptyViewController())
         case .empty:
             break
         }
@@ -43,7 +47,7 @@ class NavigationController: UINavigationController {
 
 extension NavigationController: PrimaryContainerType {
 
-    /// Add detail view controller to `viewControllers` if it is visible.
+    /// Add detail view controller to `viewControllers` if it is visible and update `detailView`.
     func collapseDetail() {
         switch detailView {
         case .separated(let detailViewController):
@@ -54,7 +58,7 @@ extension NavigationController: PrimaryContainerType {
         }
     }
 
-    /// Remove detail view controller from `viewControllers` if it is visible.
+    /// Remove detail view controller from `viewControllers` if it is visible and update `detailView`.
     func separateDetail() {
         switch detailView {
         case .collapsed(let detailViewController):
