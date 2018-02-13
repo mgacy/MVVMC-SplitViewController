@@ -20,7 +20,9 @@ final class SplitViewDelegate: NSObject {
     // func updateSecondary(withDetailfrom primaryContainer: PrimaryContainerType) {
     func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType) {
         switch primaryContainer.detailView {
-        case .visible(let detailViewController):
+        case .collapsed(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: false)
+        case .separated(let detailViewController):
             detailNavigationController.setViewControllers([detailViewController], animated: false)
         case .empty:
             detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
@@ -111,16 +113,17 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
 
         if splitViewController.isCollapsed {
             selectedNavController.pushViewController(vc, animated: true)
+            selectedNavController.detailView = .collapsed(vc)
         } else {
             switch selectedNavController.detailView {
             // Animate only the initial presentation of the detail vc
             case .empty:
                 detailNavigationController.setViewControllers([vc], animated: true)
-            case .visible:
+            default:
                 detailNavigationController.setViewControllers([vc], animated: false)
             }
+            selectedNavController.detailView = .separated(vc)
         }
-        selectedNavController.detailView = .visible(vc)
         return true // Prevent UIKit from performing default behavior
     }
 

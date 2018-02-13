@@ -11,13 +11,15 @@ import UIKit
 /// Represents empty detail view controller.
 protocol EmptyDetailViewControllerType: class {}
 
-enum DetailView<T: UIViewController> {
-    case visible(T)
+/// Represents state of `PrimaryContainerType` in split view controller.
+enum DetailView {
+    case collapsed(UIViewController)
+    case separated(UIViewController)
     case empty
 }
 
 protocol PrimaryContainerType: class {
-    var detailView: DetailView<UIViewController> { get set }
+    var detailView: DetailView { get set }
     func collapseDetail()
     func separateDetail()
     func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType
