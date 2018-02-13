@@ -18,14 +18,15 @@ final class SplitViewDelegate: NSObject {
     }
 
     // func updateSecondary(withDetailfrom primaryContainer: PrimaryContainerType) {
-    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType) {
+    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType, animated: Bool = false) {
         switch primaryContainer.detailView {
         case .collapsed(let detailViewController):
-            detailNavigationController.setViewControllers([detailViewController], animated: false)
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
         case .separated(let detailViewController):
-            detailNavigationController.setViewControllers([detailViewController], animated: false)
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
         case .empty:
-            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
+            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()],
+                                                          animated: animated)
         }
     }
 
