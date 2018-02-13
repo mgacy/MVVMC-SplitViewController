@@ -16,7 +16,7 @@ import RxSwift
 /// Base abstract coordinator generic over the return type of the `start` method.
 class BaseCoordinator<ResultType>: Coordinator {
 
-    /// Typealias which will allows to access a ResultType of the Coordainator by `CoordinatorName.CoordinationResult`.
+    /// Typealias which allows to access a ResultType of the Coordainator by `CoordinatorName.CoordinationResult`.
     typealias CoordinationResult = ResultType
 
     /// Utility `DisposeBag` used by the subclasses.

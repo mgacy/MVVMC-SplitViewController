@@ -54,20 +54,20 @@ class NavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransition
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard
-            let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-            let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
+            let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+            let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else {
                 return
         }
 
         if operation == .push {
-            switch toViewController is EmptyDetailViewController {
+            switch toVC is EmptyDetailViewControllerType {
             case true:
-                animatePushAsPop(from: fromViewController, to: toViewController, using: transitionContext)
+                animatePushAsPop(from: fromVC, to: toVC, using: transitionContext)
             case false:
-                animatePush(from: fromViewController, to: toViewController, using: transitionContext)
+                animatePush(from: fromVC, to: toVC, using: transitionContext)
             }
         } else if operation == .pop {
-            animatePop(from: fromViewController, to: toViewController, using: transitionContext)
+            animatePop(from: fromVC, to: toVC, using: transitionContext)
         }
     }
 
@@ -87,7 +87,7 @@ class NavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransition
             animations: {
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx / -2.5, dy: 0.0)
-        },
+            },
             completion: { (finished) in transitionContext.completeTransition(true) }
         )
     }
@@ -106,7 +106,7 @@ class NavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransition
             animations: {
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx, dy: 0.0)
-        },
+            },
             completion: { (finished) in transitionContext.completeTransition(true) }
         )
     }
