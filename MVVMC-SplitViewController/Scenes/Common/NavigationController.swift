@@ -63,7 +63,7 @@ extension NavigationController: PrimaryContainerType {
         }
     }
 
-    func makeEmptyViewController() -> UIViewController {
+    func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType {
         return EmptyDetailViewController()
     }
 
