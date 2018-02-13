@@ -18,13 +18,20 @@ final class SplitViewDelegate: NSObject {
     }
 
     // func updateSecondary(withDetailfrom primaryContainer: PrimaryContainerType) {
-    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType) {
+    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType, animated: Bool = false) {
         switch primaryContainer.detailView {
-        case .visible(let detailViewController):
-            detailNavigationController.setViewControllers([detailViewController], animated: false)
+        case .collapsed(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
+        case .separated(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
         case .empty:
-            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
+            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()],
+                                                          animated: animated)
         }
+    }
+
+    func replaceDetail(withEmpty viewController: UIViewController & EmptyDetailViewControllerType) {
+        detailNavigationController.setViewControllers([viewController], animated: true)
     }
 
 }
@@ -111,16 +118,17 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
 
         if splitViewController.isCollapsed {
             selectedNavController.pushViewController(vc, animated: true)
+            selectedNavController.detailView = .collapsed(vc)
         } else {
             switch selectedNavController.detailView {
             // Animate only the initial presentation of the detail vc
             case .empty:
                 detailNavigationController.setViewControllers([vc], animated: true)
-            case .visible:
+            default:
                 detailNavigationController.setViewControllers([vc], animated: false)
             }
+            selectedNavController.detailView = .separated(vc)
         }
-        selectedNavController.detailView = .visible(vc)
         return true // Prevent UIKit from performing default behavior
     }
 

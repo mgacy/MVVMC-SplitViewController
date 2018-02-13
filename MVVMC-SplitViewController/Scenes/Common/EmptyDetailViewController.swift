@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyDetailViewController: UIViewController {
+class EmptyDetailViewController: UIViewController, EmptyDetailViewControllerType {
 
     let backgroundImageView: UIImageView = {
         let view = UIImageView()

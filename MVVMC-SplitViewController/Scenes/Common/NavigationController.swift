@@ -10,9 +10,19 @@ import UIKit
 
 class NavigationController: UINavigationController {
 
-    var detailView: DetailView<UIViewController> = .empty
+    let detailPopCompletion: (UIViewController & EmptyDetailViewControllerType) -> Void
+    var detailView: DetailView = .empty
 
     // MARK: - Lifecycle
+
+    init(withPopDetailCompletion completion: @escaping (UIViewController & EmptyDetailViewControllerType) -> Void) {
+        self.detailPopCompletion = completion
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,21 +30,15 @@ class NavigationController: UINavigationController {
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {
-        if case .visible(let detailViewController) = detailView {
-            if topViewController === detailViewController {
-                detailView = .empty
-            } else {
-                // Set detail view controller to empty to prevent confusion
-                // FIXME: it's really ugly that we are reaching up into splitViewController to get its detail nav controller
-                if
-                    let splitViewController = splitViewController,
-                    splitViewController.viewControllers.count > 1,
-                    let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
-                {
-                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: true)
-                    detailView = .empty
-                }
-            }
+        switch detailView {
+        case .collapsed:
+            detailView = .empty
+        case .separated:
+            detailView = .empty
+            // Set detail view controller to `EmptyDetailViewControllerType` to prevent confusion
+            detailPopCompletion(makeEmptyViewController())
+        case .empty:
+            break
         }
         return super.popViewController(animated: animated)
     }
@@ -43,27 +47,29 @@ class NavigationController: UINavigationController {
 
 extension NavigationController: PrimaryContainerType {
 
-    /// Add detail view controller to `viewControllers` if it is visible.
+    /// Add detail view controller to `viewControllers` if it is visible and update `detailView`.
     func collapseDetail() {
         switch detailView {
-        case .visible(let detailViewController):
+        case .separated(let detailViewController):
             viewControllers += [detailViewController]
-        case .empty:
+            detailView = .collapsed(detailViewController)
+        default:
             return
         }
     }
 
-    /// Remove detail view controller from `viewControllers` if it is visible.
+    /// Remove detail view controller from `viewControllers` if it is visible and update `detailView`.
     func separateDetail() {
         switch detailView {
-        case .visible:
+        case .collapsed(let detailViewController):
             viewControllers.removeLast()
-        case .empty:
+            detailView = .separated(detailViewController)
+        default:
             return
         }
     }
 
-    func makeEmptyViewController() -> UIViewController {
+    func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType {
         return EmptyDetailViewController()
     }
 
