@@ -41,11 +41,7 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         // Prevent selection of the same tab twice (which would reset its navigation controller)
-        if tabBarController.selectedViewController === viewController {
-            return false
-        } else {
-            return true
-        }
+        return tabBarController.selectedViewController === viewController ? false : true
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
