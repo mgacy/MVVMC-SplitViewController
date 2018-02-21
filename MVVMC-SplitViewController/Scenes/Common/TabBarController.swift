@@ -10,43 +10,58 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+    let detailNavigationController: UINavigationController
+
+    // MARK: - Lifecycle
+
+    init(detailNavigationController: UINavigationController) {
+        self.detailNavigationController = detailNavigationController
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - A
+
     override func collapseSecondaryViewController(_ secondaryViewController: UIViewController, for splitViewController: UISplitViewController) {
-        collapseTabs()
+        guard let navigationControllers = viewControllers as? [PrimaryContainerType] else { return }
+        navigationControllers.forEach { $0.collapseDetail() }
     }
 
     override func separateSecondaryViewController(for splitViewController: UISplitViewController) -> UIViewController? {
-        return viewControllers?
-            .flatMap { vc in
-                guard let navController = vc as? PrimaryContainerType else { return nil }
-                navController.separateDetail()
-                return vc
-            }
-            .filter { $0 == self.selectedViewController }
-            .first
+        guard
+            let navigationControllers = viewControllers as? [PrimaryContainerType],
+            let selectedNavController = selectedViewController as? PrimaryContainerType else {
+                fatalError("Wrong view controller type: \(String(describing: viewControllers?.filter { !($0 is PrimaryContainerType) }))")
+        }
+
+        navigationControllers.forEach { $0.separateDetail() }
+
+        if case .empty = selectedNavController.detailView {
+            splitViewController.preferredDisplayMode = .allVisible
+        }
+        updateSecondaryWithDetail(from: selectedNavController)
+        return detailNavigationController
     }
 
-    // MARK: -
+    // MARK: - B
 
-    /// Call `PrimaryContainerType.collapseDetail()` on children to add visible detail view controllers.
-    func collapseTabs() {
-        guard let vcs = viewControllers else { return }
-        vcs.forEach { viewController in
-            guard let navController = viewController as? PrimaryContainerType else {
-                fatalError("\(#function) FAILED : wrong view controller type")
-            }
-            navController.collapseDetail()
+    func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType, animated: Bool = false) {
+        switch primaryContainer.detailView {
+        case .collapsed(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
+        case .separated(let detailViewController):
+            detailNavigationController.setViewControllers([detailViewController], animated: animated)
+        case .empty:
+            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()],
+                                                          animated: animated)
         }
     }
 
-    /// Call `PrimaryContainerType.separateDetail()` on children to remove visible detail view controllers.
-    func separateTabs() {
-        guard let vcs = viewControllers else { return }
-        vcs.forEach { viewController in
-            guard let navController = viewController as? PrimaryContainerType else {
-                fatalError("\(#function) FAILED : wrong view controller type")
-            }
-            navController.separateDetail()
-        }
+    func replaceDetail(withEmpty viewController: UIViewController & EmptyDetailViewControllerType) {
+        detailNavigationController.setViewControllers([viewController], animated: true)
     }
 
 }
