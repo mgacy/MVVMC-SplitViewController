@@ -34,7 +34,7 @@ class APIClient {
 
     // MARK: Private
 
-    private func requestOne<M: Codable>(_ endpoint: Router) -> Observable<M> {
+    private func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Observable<M> {
         return Observable<M>.create { [unowned self] observer in
             let request = self.sessionManager.request(endpoint)
             request
@@ -45,28 +45,6 @@ class APIClient {
                         observer.onNext(value)
                         observer.onCompleted()
                     case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
-                        observer.onError(error)
-                    }
-                }
-            return Disposables.create {
-                request.cancel()
-            }
-        }
-    }
-
-    private func requestCollection<M: Codable>(_ endpoint: Router) -> Observable<[M]> {
-        return Observable<[M]>.create { [unowned self] observer in
-            let request = self.sessionManager.request(endpoint)
-            request
-                .validate()
-                .responseDecodableObject(queue: self.queue, decoder: self.decoder) { (response: DataResponse<[M]>) in
-                    switch response.result {
-                    case .success(let value):
-                        observer.onNext(value)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
                         observer.onError(error)
                     }
                 }
@@ -104,11 +82,11 @@ class APIClient {
 extension APIClient {
 
     func getAlbums() -> Observable<[Album]> {
-        return requestCollection(Router.getAlbums)
+        return request(Router.getAlbums)
     }
 
     func getAlbum(id: Int) -> Observable<Album> {
-        return requestOne(Router.getAlbum(id: id))
+        return request(Router.getAlbum(id: id))
     }
 
 }
@@ -118,15 +96,15 @@ extension APIClient {
 extension APIClient {
 
     func getPhotos() -> Observable<[Photo]> {
-        return requestCollection(Router.getPhotos)
+        return request(Router.getPhotos)
     }
 
     func getPhotosFromAlbum(id: Int) -> Observable<[Photo]> {
-        return requestCollection(Router.getPhotosFromAlbum(id: id))
+        return request(Router.getPhotosFromAlbum(id: id))
     }
 
     func getPhoto(id: Int) -> Observable<Photo> {
-        return requestOne(Router.getPhoto(id: id))
+        return request(Router.getPhoto(id: id))
     }
 
     func getThumbnail(for photo: Photo) -> Observable<UIImage?> {
@@ -144,11 +122,11 @@ extension APIClient {
 extension APIClient {
 
     func getPosts() -> Observable<[Post]> {
-        return requestCollection(Router.getPosts)
+        return request(Router.getPosts)
     }
 
     func getPost(id: Int) -> Observable<Post> {
-        return requestOne(Router.getPost(id: id))
+        return request(Router.getPost(id: id))
     }
 
 }
@@ -158,11 +136,11 @@ extension APIClient {
 extension APIClient {
 
     func getTodos() -> Observable<[Todo]> {
-        return requestCollection(Router.getTodos)
+        return request(Router.getTodos)
     }
 
     func getTodo(id: Int) -> Observable<Todo> {
-        return requestOne(Router.getTodo(id: id))
+        return request(Router.getTodo(id: id))
     }
 
 }
@@ -172,7 +150,7 @@ extension APIClient {
 extension APIClient {
 
     func getUser(id: Int) -> Observable<User> {
-        return requestOne(Router.getUser(id: id))
+        return request(Router.getUser(id: id))
     }
 
 }
