@@ -65,7 +65,6 @@ class APIClient {
                         observer.onNext(image)
                         observer.onCompleted()
                     case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
                         observer.onError(error)
                     }
                 }

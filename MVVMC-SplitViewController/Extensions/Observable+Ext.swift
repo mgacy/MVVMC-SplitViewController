@@ -13,8 +13,6 @@
 import RxSwift
 import RxCocoa
 
-// swiftlint:disable unused_closure_parameter
-
 extension ObservableType where E == Bool {
     /// Boolean not operator
     public func not() -> Observable<Bool> {
@@ -37,7 +35,7 @@ extension ObservableType {
     }
 
     func asDriverOnErrorJustComplete() -> Driver<E> {
-        return asDriver { error in
+        return asDriver { _ in
             return Driver.empty()
         }
     }

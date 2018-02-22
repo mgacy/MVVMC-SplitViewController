@@ -14,7 +14,6 @@ final class PhotoViewModel {
 
     let fetching: Driver<Bool>
     let errors: Driver<Error>
-    //let titleString: String
     let title: Driver<String>
     let thumbnail: Driver<UIImage?>
     let image: Driver<UIImage?>
@@ -27,7 +26,6 @@ final class PhotoViewModel {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
 
-        //self.titleString = photo.title
         self.title = Driver.just(photo.title)
 
         self.thumbnail = client.getThumbnail(for: photo)
