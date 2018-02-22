@@ -34,13 +34,13 @@ extension DetailNavigationController: UINavigationControllerDelegate {
             return nil
         }
 
-        return NavigationControllerAnimator(operation: operation)
+        return DetailNavigationControllerAnimator(operation: operation)
     }
 
 }
 
 // MARK: - Animator
-class NavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let operation: UINavigationControllerOperation
 
     init(operation: UINavigationControllerOperation) {
