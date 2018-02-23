@@ -82,6 +82,7 @@
 		C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */; };
 		C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */; };
 		C9EC850D203FB126002F3F8C /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC850C203FB126002F3F8C /* PhotoDetailViewModel.swift */; };
+		C9EC850F203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC850E203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoDetailViewController.storyboard; sourceTree = "<group>"; };
 		C9EC850C203FB126002F3F8C /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		C9EC850E203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNavigationControllerAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */,
 				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
 				C9490C4A201FC3BA0071DEEB /* DetailNavigationController.swift */,
+				C9EC850E203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift */,
 				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
 				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
@@ -785,6 +788,7 @@
 				C97137DA1FFB1A70009EE9B6 /* UserManager.swift in Sources */,
 				C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */,
 				C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */,
+				C9EC850F203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
 				C977D1A72005E2E70076205E /* AlbumsCoordinator.swift in Sources */,
