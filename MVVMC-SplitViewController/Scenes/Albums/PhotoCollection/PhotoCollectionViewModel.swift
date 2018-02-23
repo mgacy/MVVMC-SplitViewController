@@ -65,12 +65,10 @@ final class PhotoCollectionViewModel: ViewModelType {
 struct PhotoSection {
     var header: String
     var photos: [PhotoCellViewModel]
-    //var updated: Date
 
     init(header: String, photos: [Item]) {
         self.header = header
         self.photos = photos
-        //self.updated = updated
     }
 
 }
@@ -97,7 +95,7 @@ extension PhotoSection: AnimatableSectionModelType {
 extension PhotoSection: Equatable {
 
     static func == (lhs: PhotoSection, rhs: PhotoSection) -> Bool {
-        return lhs.header == rhs.header && lhs.items == rhs.items //&& lhs.updated == rhs.updated
+        return lhs.header == rhs.header && lhs.items == rhs.items
     }
 
 }
