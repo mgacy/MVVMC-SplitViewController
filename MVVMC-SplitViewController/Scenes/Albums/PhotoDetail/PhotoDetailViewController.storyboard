@@ -22,7 +22,7 @@
                                 <rect key="frame" x="177" y="423" width="20" height="20"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-II-4Zj">
-                                <rect key="frame" x="0.0" y="245.66666666666663" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="246.33333333333337" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="f7D-II-4Zj" secondAttribute="height" multiplier="1:1" id="uLo-0T-Pw1"/>
                                 </constraints>
@@ -30,12 +30,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="f7D-II-4Zj" firstAttribute="width" relation="lessThanOrEqual" secondItem="fFi-IY-brL" secondAttribute="width" id="0s1-ja-jXy"/>
                             <constraint firstItem="lf4-z0-aWb" firstAttribute="centerY" secondItem="fFi-IY-brL" secondAttribute="centerY" id="1ep-xv-eBb"/>
+                            <constraint firstItem="f7D-II-4Zj" firstAttribute="height" secondItem="fFi-IY-brL" secondAttribute="height" priority="750" id="3Gt-6K-Z0V"/>
                             <constraint firstItem="lf4-z0-aWb" firstAttribute="centerX" secondItem="fFi-IY-brL" secondAttribute="centerX" id="ZTz-Tm-gep"/>
                             <constraint firstItem="f7D-II-4Zj" firstAttribute="centerX" secondItem="fFi-IY-brL" secondAttribute="centerX" id="beg-Ao-Tp4"/>
                             <constraint firstItem="f7D-II-4Zj" firstAttribute="centerY" secondItem="fFi-IY-brL" secondAttribute="centerY" id="bxW-qR-ibu"/>
-                            <constraint firstItem="f7D-II-4Zj" firstAttribute="leading" secondItem="s3R-uQ-FQz" secondAttribute="leading" id="hxT-M4-w5k"/>
-                            <constraint firstAttribute="trailing" secondItem="f7D-II-4Zj" secondAttribute="trailing" id="nCW-Dx-jyc"/>
+                            <constraint firstItem="f7D-II-4Zj" firstAttribute="height" relation="lessThanOrEqual" secondItem="fFi-IY-brL" secondAttribute="height" id="kGf-is-bpI"/>
+                            <constraint firstItem="f7D-II-4Zj" firstAttribute="width" secondItem="fFi-IY-brL" secondAttribute="width" priority="750" id="thJ-Vy-TcA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fFi-IY-brL"/>
                     </view>
