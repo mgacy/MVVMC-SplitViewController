@@ -45,15 +45,15 @@ class AlbumsCoordinator: BaseCoordinator<Void> {
         navigationController.pushViewController(viewController, animated: true)
 
         viewModel.selectedPhoto
-            .drive(onNext: { [weak self] photoViewModel in
-                self?.showDetail(for: photoViewModel)
+            .drive(onNext: { [weak self] photoCellViewModel in
+                self?.showDetail(with: photoCellViewModel.photo)
             })
             .disposed(by: viewController.disposeBag)
     }
 
-    private func showDetail(for viewModel: PhotoViewModel) {
+    private func showDetail(with photo: Photo) {
         let viewController = PhotoDetailViewController.instance()
-        viewController.viewModel = viewModel
+        viewController.viewModel = PhotoDetailViewModel(client: dependencies.client, photo: photo)
         navigationController.showDetailViewController(viewController, sender: nil)
     }
 

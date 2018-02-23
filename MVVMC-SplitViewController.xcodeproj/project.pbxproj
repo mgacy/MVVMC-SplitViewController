@@ -81,6 +81,7 @@
 		C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C169200854FA005A44F2 /* PhotoCell.swift */; };
 		C9E4C16D20085AA8005A44F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */; };
 		C9E4C16F20085ABE005A44F2 /* PhotoDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */; };
+		C9EC850D203FB126002F3F8C /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC850C203FB126002F3F8C /* PhotoDetailViewModel.swift */; };
 		F74BD4199296360ED4ABF481 /* Pods_MVVMC_SplitViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3AAA8850B1B4E2D19748C3 /* Pods_MVVMC_SplitViewControllerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,7 @@
 		C9E4C169200854FA005A44F2 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoDetailViewController.storyboard; sourceTree = "<group>"; };
+		C9EC850C203FB126002F3F8C /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +503,7 @@
 			children = (
 				C9E4C16E20085ABE005A44F2 /* PhotoDetailViewController.storyboard */,
 				C9E4C16C20085AA8005A44F2 /* PhotoDetailViewController.swift */,
+				C9EC850C203FB126002F3F8C /* PhotoDetailViewModel.swift */,
 			);
 			path = PhotoDetail;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9EC850D203FB126002F3F8C /* PhotoDetailViewModel.swift in Sources */,
 				C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */,
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
 				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
