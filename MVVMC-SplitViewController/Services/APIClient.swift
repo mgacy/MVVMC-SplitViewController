@@ -54,14 +54,18 @@ class APIClient {
         }
     }
 
-    private func requestImage(from url: URL) -> Observable<UIImage?> {
-        return Observable<UIImage?>.create { [unowned self] observer in
-            let request = self.sessionManager.request(url)
+    private func requestImage(_ endpoint: URLRequestConvertible) -> Observable<UIImage> {
+        return Observable<UIImage>.create { [unowned self] observer in
+            let request = self.sessionManager.request(endpoint)
             request
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
-                        let image = UIImage(data: value)
+                        guard let image = UIImage(data: value) else {
+                            observer.onError(ClientError.imageDecodingFailed)
+                            return
+                        }
+
                         observer.onNext(image)
                         observer.onCompleted()
                     case .failure(let error):
@@ -74,6 +78,12 @@ class APIClient {
         }
     }
 
+}
+
+// MARK: - Errors
+
+enum ClientError: Error {
+    case imageDecodingFailed
 }
 
 // MARK: - Albums
@@ -106,12 +116,12 @@ extension APIClient {
         return request(Router.getPhoto(id: id))
     }
 
-    func getThumbnail(for photo: Photo) -> Observable<UIImage?> {
-        return requestImage(from: photo.thumbnailUrl)
+    func getThumbnail(for photo: Photo) -> Observable<UIImage> {
+        return requestImage(URLRequest(url: photo.thumbnailUrl))
     }
 
-    func getImage(for photo: Photo) -> Observable<UIImage?> {
-        return requestImage(from: photo.url)
+    func getImage(for photo: Photo) -> Observable<UIImage> {
+        return requestImage(URLRequest(url: photo.url))
     }
 
 }

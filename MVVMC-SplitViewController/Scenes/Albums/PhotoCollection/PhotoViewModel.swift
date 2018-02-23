@@ -15,8 +15,8 @@ final class PhotoViewModel {
     let fetching: Driver<Bool>
     let errors: Driver<Error>
     let title: Driver<String>
-    let thumbnail: Driver<UIImage?>
-    let image: Driver<UIImage?>
+    let thumbnail: Driver<UIImage>
+    let image: Driver<UIImage>
 
     private let photo: Photo
 
