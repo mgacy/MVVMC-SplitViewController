@@ -1,5 +1,5 @@
 //
-//  PhotoViewModel.swift
+//  PhotoCellViewModel.swift
 //  MVVMC-SplitViewController
 //
 //  Created by Mathew Gacy on 1/11/18.
@@ -10,7 +10,7 @@ import Differentiator
 import RxCocoa
 import RxSwift
 
-final class PhotoViewModel {
+final class PhotoCellViewModel {
 
     let fetching: Driver<Bool>
     let errors: Driver<Error>
@@ -44,7 +44,7 @@ final class PhotoViewModel {
 
 // MARK: - RxDataSources - AnimatableSectionModelType
 
-extension PhotoViewModel: IdentifiableType {
+extension PhotoCellViewModel: IdentifiableType {
     typealias Identity = Int
 
     var identity: Int {
@@ -52,9 +52,9 @@ extension PhotoViewModel: IdentifiableType {
     }
 }
 
-extension PhotoViewModel: Equatable {
+extension PhotoCellViewModel: Equatable {
 
-    static func == (lhs: PhotoViewModel, rhs: PhotoViewModel) -> Bool {
+    static func == (lhs: PhotoCellViewModel, rhs: PhotoCellViewModel) -> Bool {
         return lhs.photo.id == rhs.photo.id
     }
 

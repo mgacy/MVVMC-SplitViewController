@@ -26,7 +26,7 @@ class PhotoCell: UICollectionViewCell {
         disposeBag = DisposeBag() // because life cicle of every cell ends on prepare for reuse
     }
 
-    func bind(to viewModel: PhotoViewModel) {
+    func bind(to viewModel: PhotoCellViewModel) {
         viewModel.title
             .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
