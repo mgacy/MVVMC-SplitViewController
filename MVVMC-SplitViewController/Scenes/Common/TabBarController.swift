@@ -70,8 +70,6 @@ extension TabBarController: UISplitViewControllerDelegate {
 
     // MARK: Collapsing the Interface
 
-    // This method is called when a split view controller is collapsing its children for a transition to a compact-width
-    // size class.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         guard let navigationControllers = viewControllers as? [PrimaryContainerType] else {
             fatalError("\(#function) FAILED : wrong view controller type")
@@ -83,8 +81,6 @@ extension TabBarController: UISplitViewControllerDelegate {
 
     // MARK: Expanding the Interface
 
-    // This method is called when a split view controller is separating its child into two children for a transition
-    // from a compact-width size class to a regular-width size class.
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         guard
             let navigationControllers = viewControllers as? [PrimaryContainerType],
@@ -94,7 +90,8 @@ extension TabBarController: UISplitViewControllerDelegate {
 
         navigationControllers.forEach { $0.separateDetail() }
 
-        if case .empty = selectedNavController.detailView {
+        // There is no point in hiding the primary view controller with an empty detail view
+        if case .empty = selectedNavController.detailView, splitViewController.preferredDisplayMode == .primaryHidden {
             splitViewController.preferredDisplayMode = .allVisible
         }
         updateSecondaryWithDetail(from: selectedNavController)
@@ -103,7 +100,6 @@ extension TabBarController: UISplitViewControllerDelegate {
 
     // MARK: Overriding the Presentation Behavior
 
-    // Customize the behavior of `showDetailViewController:` on a split view controller.
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         guard let selectedNavController = selectedViewController as? UINavigationController & PrimaryContainerType else {
             fatalError("\(#function) FAILED : wrong view controller type")
