@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol Coordinator {
+protocol CoordinatorType {
     associatedtype CoordinationResult
     var identifier: UUID { get }
     func start() -> Observable<CoordinationResult>
