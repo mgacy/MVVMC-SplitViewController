@@ -10,12 +10,12 @@ import UIKit
 
 class NavigationController: UINavigationController, PrimaryContainerType {
 
-    let detailPopCompletion: (UIViewController & EmptyDetailViewControllerType) -> Void
-    var detailView: DetailView = .empty
+    let detailPopCompletion: (UIViewController & PlaceholderViewControllerType) -> Void
+    var detailView: DetailView = .placeholder
 
     // MARK: - Lifecycle
 
-    init(withPopDetailCompletion completion: @escaping (UIViewController & EmptyDetailViewControllerType) -> Void) {
+    init(withPopDetailCompletion completion: @escaping (UIViewController & PlaceholderViewControllerType) -> Void) {
         self.detailPopCompletion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,19 +32,19 @@ class NavigationController: UINavigationController, PrimaryContainerType {
     override func popViewController(animated: Bool) -> UIViewController? {
         switch detailView {
         case .collapsed:
-            detailView = .empty
+            detailView = .placeholder
         case .separated:
-            detailView = .empty
-            // Set detail view controller to `EmptyDetailViewControllerType` to prevent confusion
+            detailView = .placeholder
+            // Set detail view controller to `PlaceholderViewControllerType` to prevent confusion
             detailPopCompletion(makeEmptyViewController())
-        case .empty:
+        case .placeholder:
             break
         }
         return super.popViewController(animated: animated)
     }
 
-    func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType {
-        return EmptyDetailViewController()
+    func makeEmptyViewController() -> UIViewController & PlaceholderViewControllerType {
+        return PlaceholderViewController()
     }
 
 }

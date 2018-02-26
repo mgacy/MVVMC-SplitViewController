@@ -23,13 +23,13 @@ final class SplitViewDelegate: NSObject {
             detailNavigationController.setViewControllers([detailViewController], animated: animated)
         case .separated(let detailViewController):
             detailNavigationController.setViewControllers([detailViewController], animated: animated)
-        case .empty:
+        case .placeholder:
             detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()],
                                                           animated: animated)
         }
     }
 
-    func replaceDetail(withEmpty viewController: UIViewController & EmptyDetailViewControllerType) {
+    func replaceDetail(withEmpty viewController: UIViewController & PlaceholderViewControllerType) {
         detailNavigationController.setViewControllers([viewController], animated: true)
     }
 
@@ -86,8 +86,8 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
 
         navigationControllers.forEach { $0.separateDetail() }
 
-        // There is no point in hiding the primary view controller with an empty detail view
-        if case .empty = selectedNavController.detailView, splitViewController.preferredDisplayMode == .primaryHidden {
+        // There is no point in hiding the primary view controller with a placeholder detail view
+        if case .placeholder = selectedNavController.detailView, splitViewController.preferredDisplayMode == .primaryHidden {
             splitViewController.preferredDisplayMode = .allVisible
         }
         updateSecondaryWithDetail(from: selectedNavController)
@@ -113,7 +113,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         } else {
             switch selectedNavController.detailView {
             // Animate only the initial presentation of the detail vc
-            case .empty:
+            case .placeholder:
                 detailNavigationController.setViewControllers([vc], animated: true)
             default:
                 detailNavigationController.setViewControllers([vc], animated: false)

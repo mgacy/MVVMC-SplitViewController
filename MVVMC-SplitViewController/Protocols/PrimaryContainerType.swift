@@ -8,23 +8,23 @@
 
 import UIKit
 
-/// Represents empty detail view controller.
-protocol EmptyDetailViewControllerType: class {}
 
 /// Represents state of `PrimaryContainerType` in split view controller.
 enum DetailView {
     case collapsed(UIViewController)
     case separated(UIViewController)
-    case empty
+    case placeholder
 }
 
+/// Represents empty detail view controller.
+protocol PlaceholderViewControllerType: class {}
 protocol PrimaryContainerType: class {
-    var detailPopCompletion: (UIViewController & EmptyDetailViewControllerType) -> Void { get }
+    var detailPopCompletion: (UIViewController & PlaceholderViewControllerType) -> Void { get }
     var detailView: DetailView { get set }
 
     func collapseDetail()
     func separateDetail()
-    func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType
+    func makeEmptyViewController() -> UIViewController & PlaceholderViewControllerType
 }
 
 extension PrimaryContainerType where Self: UINavigationController {

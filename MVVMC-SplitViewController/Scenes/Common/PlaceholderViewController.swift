@@ -1,5 +1,5 @@
 //
-//  EmptyDetailViewController.swift
+//  PlaceholderViewController.swift
 //  MVVMC-SplitViewController
 //
 //  Created by Mathew Gacy on 1/8/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyDetailViewController: UIViewController, EmptyDetailViewControllerType {
+class PlaceholderViewController: UIViewController, PlaceholderViewControllerType {
 
     let backgroundImageView: UIImageView = {
         let view = UIImageView()

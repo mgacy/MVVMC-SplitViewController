@@ -28,7 +28,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
         }
 
         if operation == .push {
-            switch toVC is EmptyDetailViewControllerType {
+            switch toVC is PlaceholderViewControllerType {
             case true:
                 animatePushAsPop(from: fromVC, to: toVC, using: transitionContext)
             case false:

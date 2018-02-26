@@ -74,7 +74,7 @@
 		C9C4F9BF200EF309004AD44A /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4F9BE200EF309004AD44A /* PostTableViewCell.swift */; };
 		C9C5E481200479A900F62D42 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E480200479A900F62D42 /* TableViewController.swift */; };
 		C9C5E4832004802D00F62D42 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4822004802D00F62D42 /* NavigationController.swift */; };
-		C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */; };
+		C9C5E4852004807E00F62D42 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4842004807E00F62D42 /* PlaceholderViewController.swift */; };
 		C9C5E487200482A300F62D42 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E486200482A300F62D42 /* TabBarController.swift */; };
 		C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */; };
 		C9E4C16820084F88005A44F2 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4C16720084F88005A44F2 /* PhotoCellViewModel.swift */; };
@@ -173,7 +173,7 @@
 		C9C4F9BE200EF309004AD44A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		C9C5E480200479A900F62D42 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C9C5E4822004802D00F62D42 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDetailViewController.swift; sourceTree = "<group>"; };
+		C9C5E4842004807E00F62D42 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		C9C5E486200482A300F62D42 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C9C5E4882004833300F62D42 /* SplitViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDelegate.swift; sourceTree = "<group>"; };
 		C9E4C16720084F88005A44F2 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				C9C5E4822004802D00F62D42 /* NavigationController.swift */,
 				C9490C4A201FC3BA0071DEEB /* DetailNavigationController.swift */,
 				C9EC850E203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift */,
-				C9C5E4842004807E00F62D42 /* EmptyDetailViewController.swift */,
+				C9C5E4842004807E00F62D42 /* PlaceholderViewController.swift */,
 				C9C5E486200482A300F62D42 /* TabBarController.swift */,
 				C9C5E480200479A900F62D42 /* TableViewController.swift */,
 			);
@@ -744,7 +744,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9EC850D203FB126002F3F8C /* PhotoDetailViewModel.swift in Sources */,
-				C9C5E4852004807E00F62D42 /* EmptyDetailViewController.swift in Sources */,
+				C9C5E4852004807E00F62D42 /* PlaceholderViewController.swift in Sources */,
 				C915BE071FF5D72C00F53F5F /* AppCoordinator.swift in Sources */,
 				C915BE121FF5DD7700F53F5F /* PostDetailViewController.swift in Sources */,
 				C97137EF1FFCB185009EE9B6 /* AppDependency.swift in Sources */,

@@ -30,7 +30,7 @@ class DetailNavigationController: UINavigationController {
 extension DetailNavigationController: UINavigationControllerDelegate {
 
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard operation == .push, toVC is EmptyDetailViewController else {
+        guard operation == .push, toVC is PlaceholderViewController else {
             return nil
         }
 
