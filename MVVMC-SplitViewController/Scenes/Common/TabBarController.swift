@@ -72,7 +72,7 @@ extension TabBarController: UISplitViewControllerDelegate {
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         guard let navigationControllers = viewControllers as? [PrimaryContainerType] else {
-            fatalError("\(#function) FAILED : wrong view controller type")
+            fatalError("Wrong view controller type: \(String(describing: viewControllers?.filter { !($0 is PrimaryContainerType) }))")
         }
 
         navigationControllers.forEach { $0.collapseDetail() }
