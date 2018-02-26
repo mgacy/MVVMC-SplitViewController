@@ -26,3 +26,29 @@ protocol PrimaryContainerType: class {
     func separateDetail()
     func makeEmptyViewController() -> UIViewController & EmptyDetailViewControllerType
 }
+
+extension PrimaryContainerType where Self: UINavigationController {
+
+    /// Add detail view controller to `viewControllers` if it is visible and update `detailView`.
+    func collapseDetail() {
+        switch detailView {
+        case .separated(let detailViewController):
+            viewControllers += [detailViewController]
+            detailView = .collapsed(detailViewController)
+        default:
+            return
+        }
+    }
+
+    /// Remove detail view controller from `viewControllers` if it is visible and update `detailView`.
+    func separateDetail() {
+        switch detailView {
+        case .collapsed(let detailViewController):
+            viewControllers.removeLast()
+            detailView = .separated(detailViewController)
+        default:
+            return
+        }
+    }
+
+}
