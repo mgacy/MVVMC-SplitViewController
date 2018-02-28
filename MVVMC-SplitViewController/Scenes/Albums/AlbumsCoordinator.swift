@@ -9,7 +9,7 @@
 import RxSwift
 
 class AlbumsCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient
+    typealias Dependencies = HasAlbumService
 
     private let navigationController: UINavigationController
     private let dependencies: Dependencies
@@ -39,7 +39,7 @@ class AlbumsCoordinator: BaseCoordinator<Void> {
     private func showDetailView(with album: Album) {
         let viewController = PhotoCollectionViewController.instance()
         let avm: Attachable<PhotoCollectionViewModel> = .detached(PhotoCollectionViewModel.Dependency(
-            client: dependencies.client, album: album))
+            albumService: dependencies.albumService, album: album))
         let viewModel = viewController.attach(wrapper: avm)
 
         navigationController.pushViewController(viewController, animated: true)
@@ -53,7 +53,7 @@ class AlbumsCoordinator: BaseCoordinator<Void> {
 
     private func showDetail(with photo: Photo) {
         let viewController = PhotoDetailViewController.instance()
-        viewController.viewModel = PhotoDetailViewModel(client: dependencies.client, photo: photo)
+        viewController.viewModel = PhotoDetailViewModel(albumService: dependencies.albumService, photo: photo)
         navigationController.showDetailViewController(viewController, sender: nil)
     }
 

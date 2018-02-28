@@ -22,6 +22,8 @@
 		C91AD8DF201830C600AFB5AB /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AD8DE201830C600AFB5AB /* CoordinatorType.swift */; };
 		C922683D201E5F1D00B103BA /* PrimaryContainerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922683C201E5F1C00B103BA /* PrimaryContainerType.swift */; };
 		C927902320466D53007EA30F /* ErrorAlertDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927902220466D53007EA30F /* ErrorAlertDisplayable.swift */; };
+		C9279025204746CE007EA30F /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9279024204746CE007EA30F /* AlbumService.swift */; };
+		C9279027204746DE007EA30F /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9279026204746DE007EA30F /* PostService.swift */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
 		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
 		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
@@ -118,6 +120,8 @@
 		C91AD8DE201830C600AFB5AB /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		C922683C201E5F1C00B103BA /* PrimaryContainerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryContainerType.swift; sourceTree = "<group>"; };
 		C927902220466D53007EA30F /* ErrorAlertDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertDisplayable.swift; sourceTree = "<group>"; };
+		C9279024204746CE007EA30F /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
+		C9279026204746DE007EA30F /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
 		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 				C93E19911FF4854E00B5D0B9 /* Router.swift */,
 				C93E19871FF4450C00B5D0B9 /* APIClient.swift */,
 				C97137D91FFB1A70009EE9B6 /* UserManager.swift */,
+				C9279024204746CE007EA30F /* AlbumService.swift */,
+				C9279026204746DE007EA30F /* PostService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -756,6 +762,7 @@
 				C94BE7311FF353AD0038CBA8 /* Photo.swift in Sources */,
 				C9BD52AC200965D200D697AD /* ProfileViewModel.swift in Sources */,
 				C94BE72B1FF353970038CBA8 /* Comment.swift in Sources */,
+				C9279027204746DE007EA30F /* PostService.swift in Sources */,
 				C93E199B1FF48CCD00B5D0B9 /* ActivityIndicator.swift in Sources */,
 				C915BE201FF5F74E00F53F5F /* SplitViewCoordinator.swift in Sources */,
 				C97A6DD91FFF204300C6E7C5 /* SettingsViewModel.swift in Sources */,
@@ -793,6 +800,7 @@
 				C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */,
 				C9EC850F203FC2A8002F3F8C /* DetailNavigationControllerAnimator.swift in Sources */,
 				C94BE72D1FF353A00038CBA8 /* Company.swift in Sources */,
+				C9279025204746CE007EA30F /* AlbumService.swift in Sources */,
 				C94BE72F1FF353A60038CBA8 /* Geo.swift in Sources */,
 				C977D1A72005E2E70076205E /* AlbumsCoordinator.swift in Sources */,
 				C94BE7351FF353BA0038CBA8 /* Todo.swift in Sources */,

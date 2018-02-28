@@ -25,11 +25,11 @@ final class PhotoCollectionViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
 
-        photos = dependency.client.getPhotos()
+        photos = dependency.albumService.getPhotos()
             .trackActivity(activityIndicator)
             .map { photo in
                 return photo.map {
-                    return PhotoCellViewModel.init(client: dependency.client, photo: $0)
+                    return PhotoCellViewModel.init(albumService: dependency.albumService, photo: $0)
                 }
             }
             .map {
@@ -50,7 +50,7 @@ final class PhotoCollectionViewModel: ViewModelType {
     // MARK: - ViewModelType
 
     struct Dependency {
-        let client: APIClient
+        let albumService: AlbumServiceType
         let album: Album
     }
 

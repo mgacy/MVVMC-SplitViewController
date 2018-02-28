@@ -18,7 +18,7 @@ final class PhotoDetailViewModel {
 
     private let photo: Photo
 
-    init(client: APIClient, photo: Photo) {
+    init(albumService: AlbumServiceType, photo: Photo) {
         self.photo = photo
 
         let activityIndicator = ActivityIndicator()
@@ -26,7 +26,7 @@ final class PhotoDetailViewModel {
 
         self.title = Driver.just(photo.title)
 
-        self.image = client.getImage(for: photo)
+        self.image = albumService.getImage(for: photo)
             .trackActivity(activityIndicator)
             .trackError(errorTracker)
             .asDriverOnErrorJustComplete()

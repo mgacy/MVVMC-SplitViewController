@@ -15,7 +15,7 @@ protocol ClientType {
     func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage>
 }
 
-class APIClient {
+class APIClient: ClientType {
 
     // MARK: Properties
 
@@ -37,9 +37,9 @@ class APIClient {
         //decoder.dateDecodingStrategy = .iso8601
     }
 
-    // MARK: Private
+    // MARK: Methods
 
-    private func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Single<M> {
+    func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Single<M> {
         return Single<M>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
@@ -58,7 +58,7 @@ class APIClient {
         }
     }
 
-    private func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage> {
+    func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage> {
         return Single<UIImage>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
@@ -89,58 +89,13 @@ enum ClientError: Error {
     case imageDecodingFailed
 }
 
-// MARK: - Albums
-
-extension APIClient {
-
-    func getAlbums() -> Single<[Album]> {
-        return request(Router.getAlbums)
+extension ClientError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .imageDecodingFailed:
+            return "Unable to decode image"
+        }
     }
-
-    func getAlbum(id: Int) -> Single<Album> {
-        return request(Router.getAlbum(id: id))
-    }
-
-}
-
-// MARK: - Photos
-
-extension APIClient {
-
-    func getPhotos() -> Single<[Photo]> {
-        return request(Router.getPhotos)
-    }
-
-    func getPhotosFromAlbum(id: Int) -> Single<[Photo]> {
-        return request(Router.getPhotosFromAlbum(id: id))
-    }
-
-    func getPhoto(id: Int) -> Single<Photo> {
-        return request(Router.getPhoto(id: id))
-    }
-
-    func getThumbnail(for photo: Photo) -> Single<UIImage> {
-        return requestImage(URLRequest(url: photo.thumbnailUrl))
-    }
-
-    func getImage(for photo: Photo) -> Single<UIImage> {
-        return requestImage(URLRequest(url: photo.url))
-    }
-
-}
-
-// MARK: - Posts
-
-extension APIClient {
-
-    func getPosts() -> Single<[Post]> {
-        return request(Router.getPosts)
-    }
-
-    func getPost(id: Int) -> Single<Post> {
-        return request(Router.getPost(id: id))
-    }
-
 }
 
 // MARK: - Todos

@@ -16,10 +16,10 @@ final class PhotoCellViewModel {
     let thumbnail: Driver<UIImage>
     let photo: Photo
 
-    init(client: APIClient, photo: Photo) {
+    init(albumService: AlbumServiceType, photo: Photo) {
         self.photo = photo
         self.title = Driver.just(photo.title)
-        self.thumbnail = client.getThumbnail(for: photo)
+        self.thumbnail = albumService.getThumbnail(for: photo)
             .asDriver(onErrorDriveWith: .empty())
     }
 

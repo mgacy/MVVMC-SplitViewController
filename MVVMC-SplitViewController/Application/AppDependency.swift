@@ -20,13 +20,27 @@ protocol HasUserManager {
     var userManager: UserManager { get }
 }
 
-struct AppDependency: HasClient, HasUserManager {
+protocol HasAlbumService {
+    var albumService: AlbumServiceType { get }
+}
+
+protocol HasPostService {
+    var postService: PostServiceType { get }
+}
+
+struct AppDependency: HasClient, HasUserManager, HasAlbumService, HasPostService {
     let client: APIClient
     let userManager: UserManager
+    let albumService: AlbumServiceType
+    let postService: PostServiceType
 
     init() {
         self.client = APIClient()
         self.userManager = UserManager()
+
+        let client = APIClient()
+        self.albumService = AlbumService(client: client)
+        self.postService = PostService(client: client)
     }
 
 }

@@ -9,7 +9,7 @@
 import RxSwift
 
 class PostsCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient
+    typealias Dependencies = HasPostService
 
     private let navigationController: UINavigationController
     private let dependencies: Dependencies

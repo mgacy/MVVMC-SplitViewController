@@ -24,7 +24,7 @@ final class PostsListViewModel: ViewModelType {
 
         posts = bindings.fetchTrigger
             .flatMapLatest {
-                return dependency.client.getPosts()
+                return dependency.postService.getPosts()
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
@@ -41,7 +41,7 @@ final class PostsListViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient
+    typealias Dependency = HasPostService
 
     struct Bindings {
         let fetchTrigger: Driver<Void>
