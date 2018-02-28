@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, ErrorAlertDisplayable {
 
     let disposeBag = DisposeBag()
 
