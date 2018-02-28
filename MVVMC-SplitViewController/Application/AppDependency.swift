@@ -28,4 +28,5 @@ struct AppDependency: HasClient, HasUserManager {
         self.client = APIClient()
         self.userManager = UserManager()
     }
+
 }

@@ -58,6 +58,7 @@ class APIClient {
         return Observable<UIImage>.create { [unowned self] observer in
             let request = self.sessionManager.request(endpoint)
             request
+                .validate()
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
