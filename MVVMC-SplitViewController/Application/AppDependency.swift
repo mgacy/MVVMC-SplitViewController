@@ -28,11 +28,16 @@ protocol HasPostService {
     var postService: PostServiceType { get }
 }
 
-struct AppDependency: HasClient, HasUserManager, HasAlbumService, HasPostService {
+protocol HasTodoService {
+    var todoService: TodoServiceType { get }
+}
+
+struct AppDependency: HasClient, HasUserManager, HasAlbumService, HasPostService, HasTodoService {
     let client: APIClient
     let userManager: UserManager
     let albumService: AlbumServiceType
     let postService: PostServiceType
+    let todoService: TodoServiceType
 
     init() {
         self.client = APIClient()
@@ -41,6 +46,7 @@ struct AppDependency: HasClient, HasUserManager, HasAlbumService, HasPostService
         let client = APIClient()
         self.albumService = AlbumService(client: client)
         self.postService = PostService(client: client)
+        self.todoService = TodoService(client: client)
     }
 
 }

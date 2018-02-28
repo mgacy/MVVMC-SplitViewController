@@ -9,7 +9,7 @@
 import RxSwift
 
 class SplitViewCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient & HasUserManager & HasAlbumService & HasPostService
+    typealias Dependencies = HasClient & HasUserManager & HasAlbumService & HasPostService & HasTodoService
 
     private let window: UIWindow
     private let dependencies: Dependencies

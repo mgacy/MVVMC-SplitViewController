@@ -24,6 +24,7 @@
 		C927902320466D53007EA30F /* ErrorAlertDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927902220466D53007EA30F /* ErrorAlertDisplayable.swift */; };
 		C9279025204746CE007EA30F /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9279024204746CE007EA30F /* AlbumService.swift */; };
 		C9279027204746DE007EA30F /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9279026204746DE007EA30F /* PostService.swift */; };
+		C92790292047502D007EA30F /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92790282047502D007EA30F /* TodoService.swift */; };
 		C93E19881FF4450C00B5D0B9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E19871FF4450C00B5D0B9 /* APIClient.swift */; };
 		C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */; };
 		C93E198D1FF4536800B5D0B9 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */; };
@@ -122,6 +123,7 @@
 		C927902220466D53007EA30F /* ErrorAlertDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertDisplayable.swift; sourceTree = "<group>"; };
 		C9279024204746CE007EA30F /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		C9279026204746DE007EA30F /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		C92790282047502D007EA30F /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
 		C93E19871FF4450C00B5D0B9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C93E198A1FF4535B00B5D0B9 /* PostsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewController.swift; sourceTree = "<group>"; };
 		C93E198C1FF4536800B5D0B9 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				C97137D91FFB1A70009EE9B6 /* UserManager.swift */,
 				C9279024204746CE007EA30F /* AlbumService.swift */,
 				C9279026204746DE007EA30F /* PostService.swift */,
+				C92790282047502D007EA30F /* TodoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				C9C5E4892004833300F62D42 /* SplitViewDelegate.swift in Sources */,
 				C977D1B32005EE440076205E /* PhotoCollectionViewModel.swift in Sources */,
 				C93E19A11FF4918500B5D0B9 /* Reusable.swift in Sources */,
+				C92790292047502D007EA30F /* TodoService.swift in Sources */,
 				C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */,
 				C9E4C16A200854FA005A44F2 /* PhotoCell.swift in Sources */,
 				C93E198B1FF4535B00B5D0B9 /* PostsListViewController.swift in Sources */,
