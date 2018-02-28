@@ -42,12 +42,12 @@ enum AuthenticationError: Error {
 // MARK: LoginService
 
 protocol LoginService {
-    func login(username: String, password: String) -> Observable<Bool>
+    func login(username: String, password: String) -> Single<Bool>
 }
 
 extension UserManager: LoginService {
 
-    func login(username: String, password: String) -> Observable<Bool> {
+    func login(username: String, password: String) -> Single<Bool> {
         // just a mock
         let loginResult = arc4random() % 5 == 0 ? false : true
         if loginResult == false {
@@ -55,7 +55,7 @@ extension UserManager: LoginService {
         }
 
         return client.getUser(id: 1)
-            .do(onNext: { [weak self] user in
+            .do(onSuccess: { [weak self] user in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)
@@ -68,16 +68,16 @@ extension UserManager: LoginService {
 // MARK: LogoutService
 
 protocol LogoutService {
-    func logout() -> Observable<Bool>
+    func logout() -> Single<Bool>
 }
 
 extension UserManager: LogoutService {
 
-    func logout() -> Observable<Bool> {
+    func logout() -> Single<Bool> {
         // just a mock
-        return Observable.just(true)
+        return Single.just(true)
             .delay(0.5, scheduler: MainScheduler.instance)
-            .do(onNext: { [weak self] _ in
+            .do(onSuccess: { [weak self] _ in
                 self?.authenticationState = .signedOut
                 self?.storageManager.clear()
                 self?.currentUser.onNext(nil)
@@ -89,12 +89,12 @@ extension UserManager: LogoutService {
 // MARK: SignupService
 
 protocol SignupService {
-    func signup(firstName: String, lastName: String, username: String, password: String) -> Observable<Bool>
+    func signup(firstName: String, lastName: String, username: String, password: String) -> Single<Bool>
 }
 
 extension UserManager: SignupService {
 
-    func signup(firstName: String, lastName: String, username: String, password: String) -> Observable<Bool> {
+    func signup(firstName: String, lastName: String, username: String, password: String) -> Single<Bool> {
         // just a mock
         let signupResult = arc4random() % 5 == 0 ? false : true
         if signupResult == false {
@@ -102,7 +102,7 @@ extension UserManager: SignupService {
         }
 
         return client.getUser(id: 1)
-            .do(onNext: { [weak self] user in
+            .do(onSuccess: { [weak self] user in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)

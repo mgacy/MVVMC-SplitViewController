@@ -20,7 +20,7 @@ final class PhotoCellViewModel {
         self.photo = photo
         self.title = Driver.just(photo.title)
         self.thumbnail = client.getThumbnail(for: photo)
-            .asDriverOnErrorJustComplete()
+            .asDriver(onErrorDriveWith: .empty())
     }
 
 }

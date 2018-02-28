@@ -10,6 +10,11 @@ import Alamofire
 import CodableAlamofire
 import RxSwift
 
+protocol ClientType {
+    func request<T: Codable>(_: URLRequestConvertible) -> Single<T>
+    func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage>
+}
+
 class APIClient {
 
     // MARK: Properties
@@ -34,28 +39,27 @@ class APIClient {
 
     // MARK: Private
 
-    private func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Observable<M> {
-        return Observable<M>.create { [unowned self] observer in
+    private func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Single<M> {
+        return Single<M>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
                 .validate()
                 .responseDecodableObject(queue: self.queue, decoder: self.decoder) { (response: DataResponse<M>) in
                     switch response.result {
-                    case .success(let value):
-                        observer.onNext(value)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        observer.onError(error)
+                    case let .success(val):
+                        single(.success(val))
+                    case let .failure(err):
+                        single(.error(err))
                     }
-                }
+            }
             return Disposables.create {
                 request.cancel()
             }
         }
     }
 
-    private func requestImage(_ endpoint: URLRequestConvertible) -> Observable<UIImage> {
-        return Observable<UIImage>.create { [unowned self] observer in
+    private func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage> {
+        return Single<UIImage>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
                 .validate()
@@ -63,14 +67,12 @@ class APIClient {
                     switch response.result {
                     case .success(let value):
                         guard let image = UIImage(data: value) else {
-                            observer.onError(ClientError.imageDecodingFailed)
+                            single(.error(ClientError.imageDecodingFailed))
                             return
                         }
-
-                        observer.onNext(image)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        observer.onError(error)
+                        single(.success(image))
+                    case .failure(let err):
+                        single(.error(err))
                     }
                 }
             return Disposables.create {
@@ -91,11 +93,11 @@ enum ClientError: Error {
 
 extension APIClient {
 
-    func getAlbums() -> Observable<[Album]> {
+    func getAlbums() -> Single<[Album]> {
         return request(Router.getAlbums)
     }
 
-    func getAlbum(id: Int) -> Observable<Album> {
+    func getAlbum(id: Int) -> Single<Album> {
         return request(Router.getAlbum(id: id))
     }
 
@@ -105,23 +107,23 @@ extension APIClient {
 
 extension APIClient {
 
-    func getPhotos() -> Observable<[Photo]> {
+    func getPhotos() -> Single<[Photo]> {
         return request(Router.getPhotos)
     }
 
-    func getPhotosFromAlbum(id: Int) -> Observable<[Photo]> {
+    func getPhotosFromAlbum(id: Int) -> Single<[Photo]> {
         return request(Router.getPhotosFromAlbum(id: id))
     }
 
-    func getPhoto(id: Int) -> Observable<Photo> {
+    func getPhoto(id: Int) -> Single<Photo> {
         return request(Router.getPhoto(id: id))
     }
 
-    func getThumbnail(for photo: Photo) -> Observable<UIImage> {
+    func getThumbnail(for photo: Photo) -> Single<UIImage> {
         return requestImage(URLRequest(url: photo.thumbnailUrl))
     }
 
-    func getImage(for photo: Photo) -> Observable<UIImage> {
+    func getImage(for photo: Photo) -> Single<UIImage> {
         return requestImage(URLRequest(url: photo.url))
     }
 
@@ -131,11 +133,11 @@ extension APIClient {
 
 extension APIClient {
 
-    func getPosts() -> Observable<[Post]> {
+    func getPosts() -> Single<[Post]> {
         return request(Router.getPosts)
     }
 
-    func getPost(id: Int) -> Observable<Post> {
+    func getPost(id: Int) -> Single<Post> {
         return request(Router.getPost(id: id))
     }
 
@@ -145,11 +147,11 @@ extension APIClient {
 
 extension APIClient {
 
-    func getTodos() -> Observable<[Todo]> {
+    func getTodos() -> Single<[Todo]> {
         return request(Router.getTodos)
     }
 
-    func getTodo(id: Int) -> Observable<Todo> {
+    func getTodo(id: Int) -> Single<Todo> {
         return request(Router.getTodo(id: id))
     }
 
@@ -159,7 +161,7 @@ extension APIClient {
 
 extension APIClient {
 
-    func getUser(id: Int) -> Observable<User> {
+    func getUser(id: Int) -> Single<User> {
         return request(Router.getUser(id: id))
     }
 
