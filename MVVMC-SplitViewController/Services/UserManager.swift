@@ -35,8 +35,19 @@ class UserManager {
 
 // MARK: - Authentication Services
 
+typealias AuthenticationService = LoginService & LogoutService & SignupService
+
 enum AuthenticationError: Error {
     case invalidCredentials
+}
+
+extension AuthenticationError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .invalidCredentials:
+            return "Invalid credentials"
+        }
+    }
 }
 
 // MARK: LoginService
