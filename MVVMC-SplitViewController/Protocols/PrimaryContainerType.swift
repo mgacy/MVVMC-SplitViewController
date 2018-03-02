@@ -8,28 +8,31 @@
 
 import UIKit
 
+typealias PrimaryContainerType = SplitTabRootViewControllerType & PlaceholderFactory
 
-/// Represents state of `PrimaryContainerType` in split view controller.
+/// Represents state of detail view controller in split view controller.
 enum DetailView {
     case collapsed(UIViewController)
     case separated(UIViewController)
     case placeholder
 }
 
-/// Represents empty detail view controller.
-protocol PlaceholderViewControllerType: class {}
-protocol PrimaryContainerType: class {
+protocol SplitTabRootViewControllerType: class {
+    /// Called to update secondary view controller with `PlaceholderViewControllerType` when popping view controller.
     var detailPopCompletion: (UIViewController & PlaceholderViewControllerType) -> Void { get }
+
+    /// Represents state of detail view controller in split view controller.
     var detailView: DetailView { get set }
 
+    /// Add detail view controller to `viewControllers` if it is visible and update `detailView`.
     func collapseDetail()
+
+    /// Remove detail view controller from `viewControllers` if it is visible and update `detailView`.
     func separateDetail()
-    func makePlaceholderViewController() -> UIViewController & PlaceholderViewControllerType
 }
 
-extension PrimaryContainerType where Self: UINavigationController {
+extension SplitTabRootViewControllerType where Self: UINavigationController {
 
-    /// Add detail view controller to `viewControllers` if it is visible and update `detailView`.
     func collapseDetail() {
         switch detailView {
         case .separated(let detailViewController):
@@ -40,7 +43,6 @@ extension PrimaryContainerType where Self: UINavigationController {
         }
     }
 
-    /// Remove detail view controller from `viewControllers` if it is visible and update `detailView`.
     func separateDetail() {
         switch detailView {
         case .collapsed(let detailViewController):
@@ -51,4 +53,12 @@ extension PrimaryContainerType where Self: UINavigationController {
         }
     }
 
+}
+
+/// Represents empty detail view controller.
+protocol PlaceholderViewControllerType: class {}
+
+protocol PlaceholderFactory {
+    /// Factory method to produce tab-specific placeholder for secondary view controller.
+    func makePlaceholderViewController() -> UIViewController & PlaceholderViewControllerType
 }
