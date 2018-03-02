@@ -18,10 +18,11 @@ enum AuthenticationState {
 class UserManager {
     var authenticationState: AuthenticationState
     let currentUser = BehaviorSubject<User?>(value: nil)
-    private let client = APIClient()
+    private let client: ClientType
     private let storageManager: UserStorageManagerType
 
     init() {
+        self.client = APIClient()
         self.storageManager = UserStorageManager()
         if let user = storageManager.read() {
             self.authenticationState = .signedIn
@@ -65,8 +66,8 @@ extension UserManager: LoginService {
             return .error(AuthenticationError.invalidCredentials)
         }
 
-        return client.getUser(id: 1)
-            .do(onSuccess: { [weak self] user in
+        return client.request(Router.getUser(id: 1))
+            .do(onSuccess: { [weak self] (user: User) in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)
@@ -112,8 +113,8 @@ extension UserManager: SignupService {
             return .error(AuthenticationError.invalidCredentials)
         }
 
-        return client.getUser(id: 1)
-            .do(onSuccess: { [weak self] user in
+        return client.request(Router.getUser(id: 1))
+            .do(onSuccess: { [weak self] (user: User) in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)

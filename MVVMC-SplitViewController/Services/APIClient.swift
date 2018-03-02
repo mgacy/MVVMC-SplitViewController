@@ -97,27 +97,3 @@ extension ClientError: LocalizedError {
         }
     }
 }
-
-// MARK: - Todos
-
-extension APIClient {
-
-    func getTodos() -> Single<[Todo]> {
-        return request(Router.getTodos)
-    }
-
-    func getTodo(id: Int) -> Single<Todo> {
-        return request(Router.getTodo(id: id))
-    }
-
-}
-
-// MARK: - Users
-
-extension APIClient {
-
-    func getUser(id: Int) -> Single<User> {
-        return request(Router.getUser(id: id))
-    }
-
-}
