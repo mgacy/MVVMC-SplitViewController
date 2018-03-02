@@ -24,7 +24,7 @@ final class SplitViewDelegate: NSObject {
         case .separated(let detailViewController):
             detailNavigationController.setViewControllers([detailViewController], animated: animated)
         case .placeholder:
-            detailNavigationController.setViewControllers([primaryContainer.makeEmptyViewController()],
+            detailNavigationController.setViewControllers([primaryContainer.makePlaceholderViewController()],
                                                           animated: animated)
         }
     }

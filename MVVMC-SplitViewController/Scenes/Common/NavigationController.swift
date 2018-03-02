@@ -36,14 +36,14 @@ class NavigationController: UINavigationController, PrimaryContainerType {
         case .separated:
             detailView = .placeholder
             // Set detail view controller to `PlaceholderViewControllerType` to prevent confusion
-            detailPopCompletion(makeEmptyViewController())
+            detailPopCompletion(makePlaceholderViewController())
         case .placeholder:
             break
         }
         return super.popViewController(animated: animated)
     }
 
-    func makeEmptyViewController() -> UIViewController & PlaceholderViewControllerType {
+    func makePlaceholderViewController() -> UIViewController & PlaceholderViewControllerType {
         return PlaceholderViewController()
     }
 

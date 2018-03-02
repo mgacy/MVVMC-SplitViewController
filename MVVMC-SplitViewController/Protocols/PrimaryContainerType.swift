@@ -24,7 +24,7 @@ protocol PrimaryContainerType: class {
 
     func collapseDetail()
     func separateDetail()
-    func makeEmptyViewController() -> UIViewController & PlaceholderViewControllerType
+    func makePlaceholderViewController() -> UIViewController & PlaceholderViewControllerType
 }
 
 extension PrimaryContainerType where Self: UINavigationController {
