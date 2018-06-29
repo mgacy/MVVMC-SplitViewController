@@ -71,6 +71,7 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         window.makeKeyAndVisible()
 
         return coordinationResults
+            .take(1)
     }
 
     private func configure(tabBarController: UITabBarController, withTabs tabs: [SectionTab]) -> [Observable<Void>] {
