@@ -17,6 +17,11 @@ final class SplitViewDelegate: NSObject {
         super.init()
     }
 
+    /// Changes the view controller displayed in the detail navigation controller.
+    ///
+    /// - Parameters:
+    ///   - primaryContainer: The `PrimaryContainerType` containing the `.detailView` used to update the detail nav controller.
+    ///   - animated: If `true`, animates the update.
     func updateSecondaryWithDetail(from primaryContainer: PrimaryContainerType, animated: Bool = false) {
         switch primaryContainer.detailView {
         case .collapsed(let detailViewController):
@@ -29,6 +34,9 @@ final class SplitViewDelegate: NSObject {
         }
     }
 
+    /// Sets view of detail navigation controller to a placeholder view controller.
+    ///
+    /// - Parameter viewController: Placeholder view controller to use.
     func replaceDetail(withEmpty viewController: UIViewController & PlaceholderViewControllerType) {
         detailNavigationController.setViewControllers([viewController], animated: true)
     }
@@ -39,7 +47,7 @@ final class SplitViewDelegate: NSObject {
 extension SplitViewDelegate: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        // Prevent selection of the same tab twice (which would reset its navigation controller)
+        /// Prevent selection of the same tab twice (which would reset its navigation controller)
         return tabBarController.selectedViewController === viewController ? false : true
     }
 
@@ -49,8 +57,8 @@ extension SplitViewDelegate: UITabBarControllerDelegate {
             let selectedNavController = viewController as? PrimaryContainerType else {
                 fatalError("\(#function) FAILED : wrong view controller type")
         }
-        // If split view controller is collapsed, detail view will already be on `selectedNavController.viewControllers`;
-        // otherwise, we need to change the secondary view controller to the selected tab's detail view.
+        /// If split view controller is collapsed, detail view will already be on `selectedNavController.viewControllers`;
+        /// otherwise, we need to change the secondary view controller to the selected tab's detail view.
         if !splitViewController.isCollapsed {
             updateSecondaryWithDetail(from: selectedNavController)
         }
@@ -71,7 +79,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
         }
 
         navigationControllers.forEach { $0.collapseDetail() }
-        return true // Prevent UIKit from performing default collapse behavior
+        return true /// Prevent UIKit from performing default collapse behavior
     }
 
     // MARK: Expanding the Interface
@@ -86,7 +94,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
 
         navigationControllers.forEach { $0.separateDetail() }
 
-        // There is no point in hiding the primary view controller with a placeholder detail view
+        /// There is no point in hiding the primary view controller with a placeholder detail view
         if case .placeholder = selectedNavController.detailView, splitViewController.preferredDisplayMode == .primaryHidden {
             splitViewController.preferredDisplayMode = .allVisible
         }
@@ -112,7 +120,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
             selectedNavController.detailView = .collapsed(vc)
         } else {
             switch selectedNavController.detailView {
-            // Animate only the initial presentation of the detail vc
+            /// Animate only the initial presentation of the detail vc
             case .placeholder:
                 detailNavigationController.setViewControllers([vc], animated: true)
             default:
@@ -120,7 +128,7 @@ extension SplitViewDelegate: UISplitViewControllerDelegate {
             }
             selectedNavController.detailView = .separated(vc)
         }
-        return true // Prevent UIKit from performing default behavior
+        return true /// Prevent UIKit from performing default behavior
     }
 
 }
