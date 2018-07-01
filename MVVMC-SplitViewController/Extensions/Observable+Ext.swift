@@ -25,3 +25,13 @@ extension ObservableType {
         return map { _ in }
     }
 }
+
+extension PrimitiveSequenceType where TraitType == SingleTrait {
+
+    func asDriverOnErrorJustComplete() -> Driver<ElementType> {
+        return self.primitiveSequence.asDriver { _ in
+            return Driver.empty()
+        }
+    }
+
+}
