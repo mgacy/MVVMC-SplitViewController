@@ -9,13 +9,14 @@
 //  https://github.com/uptechteam/Coordinator-MVVM-Rx-Example
 //  Arthur Myronenko
 //  Copyright © 2017 UPTech Team.
+//
 
 import RxSwift
 
 /// Base abstract coordinator generic over the return type of the `start` method.
-class BaseCoordinator<ResultType>: Coordinator {
+class BaseCoordinator<ResultType>: CoordinatorType {
 
-    /// Typealias which will allows to access a ResultType of the Coordainator by `CoordinatorName.CoordinationResult`.
+    /// Typealias which allows to access a ResultType of the Coordainator by `CoordinatorName.CoordinationResult`.
     typealias CoordinationResult = ResultType
 
     /// Utility `DisposeBag` used by the subclasses.
@@ -33,14 +34,14 @@ class BaseCoordinator<ResultType>: Coordinator {
     /// Stores coordinator to the `childCoordinators` dictionary.
     ///
     /// - Parameter coordinator: Child coordinator to store.
-    private func store<T: Coordinator>(coordinator: T) {
+    private func store<T: CoordinatorType>(coordinator: T) {
         childCoordinators[coordinator.identifier] = coordinator
     }
 
     /// Release coordinator from the `childCoordinators` dictionary.
     ///
     /// - Parameter coordinator: Coordinator to release.
-    private func free<T: Coordinator>(coordinator: T) {
+    private func free<T: CoordinatorType>(coordinator: T) {
         childCoordinators[coordinator.identifier] = nil
     }
 
@@ -50,7 +51,7 @@ class BaseCoordinator<ResultType>: Coordinator {
     ///
     /// - Parameter coordinator: Coordinator to start.
     /// - Returns: Result of `start()` method.
-    func coordinate<T: Coordinator, U>(to coordinator: T) -> Observable<U> where U == T.CoordinationResult {
+    func coordinate<T: CoordinatorType, U>(to coordinator: T) -> Observable<U> where U == T.CoordinationResult {
         store(coordinator: coordinator)
         return coordinator.start()
             .do(onNext: { [weak self] _ in self?.free(coordinator: coordinator) })

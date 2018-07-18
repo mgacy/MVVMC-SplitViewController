@@ -9,7 +9,7 @@
 import RxSwift
 
 class SplitViewCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasClient & HasUserManager & HasAlbumService & HasPostService & HasTodoService
 
     private let window: UIWindow
     private let dependencies: Dependencies
@@ -58,25 +58,26 @@ class SplitViewCoordinator: BaseCoordinator<Void> {
         let tabs: [SectionTab] = [.posts, .albums, .todos, .profile]
         let coordinationResults = Observable.from(configure(tabBarController: tabBarController, withTabs: tabs)).merge()
 
+        if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
+            viewDelegate.updateSecondaryWithDetail(from: initialPrimaryView)
+        }
+
         let splitViewController = UISplitViewController()
         splitViewController.delegate = viewDelegate
         splitViewController.viewControllers = [tabBarController, viewDelegate.detailNavigationController]
         splitViewController.preferredDisplayMode = .allVisible
 
-        if let initialPrimaryView = tabBarController.selectedViewController as? PrimaryContainerType {
-            viewDelegate.detailNavigationController.updateDetailView(with: initialPrimaryView, in: splitViewController)
-        }
-
         window.rootViewController = splitViewController
         window.makeKeyAndVisible()
 
         return coordinationResults
+            .take(1)
     }
 
     private func configure(tabBarController: UITabBarController, withTabs tabs: [SectionTab]) -> [Observable<Void>] {
         let navControllers = tabs
             .map { tab -> UINavigationController in
-                let navController = NavigationController()
+                let navController = NavigationController(withPopDetailCompletion: viewDelegate.replaceDetail)
                 navController.tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: nil)
                 //navController.navigationBar.prefersLargeTitles = true
                 //navController.navigationItem.largeTitleDisplayMode = .automatic

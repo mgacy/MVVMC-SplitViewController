@@ -10,6 +10,15 @@ import UIKit
 
 class DetailNavigationController: UINavigationController {
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        delegate = self
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isTranslucent = false
@@ -17,15 +26,15 @@ class DetailNavigationController: UINavigationController {
 
 }
 
-extension DetailNavigationController: SecondaryContainerType {
+// MARK: - UINavigationControllerDelegate
+extension DetailNavigationController: UINavigationControllerDelegate {
 
-    func updateDetailView(with primaryContainer: PrimaryContainerType, in splitViewController: UISplitViewController) {
-        switch primaryContainer.detailView {
-        case .visible(let detailViewController):
-            setViewControllers([detailViewController], animated: false)
-        case .empty:
-            setViewControllers([primaryContainer.makeEmptyViewController()], animated: false)
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard operation == .push, toVC is PlaceholderViewController else {
+            return nil
         }
+
+        return DetailNavigationControllerAnimator(operation: operation)
     }
 
 }

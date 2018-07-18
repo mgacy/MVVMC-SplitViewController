@@ -24,7 +24,7 @@ final class TodosListViewModel: ViewModelType {
 
         todos = bindings.fetchTrigger
             .flatMapLatest {
-                return dependency.client.getTodos()
+                return dependency.todoService.getTodos()
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
@@ -40,7 +40,7 @@ final class TodosListViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient
+    typealias Dependency = HasTodoService
 
     struct Bindings {
         let fetchTrigger: Driver<Void>

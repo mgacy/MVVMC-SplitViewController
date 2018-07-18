@@ -24,7 +24,7 @@ final class AlbumListViewModel: ViewModelType {
 
         albums = bindings.fetchTrigger
             .flatMapLatest {
-                return dependency.client.getAlbums()
+                return dependency.albumService.getAlbums()
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
@@ -40,7 +40,7 @@ final class AlbumListViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient
+    typealias Dependency = HasAlbumService
 
     struct Bindings {
         let fetchTrigger: Driver<Void>

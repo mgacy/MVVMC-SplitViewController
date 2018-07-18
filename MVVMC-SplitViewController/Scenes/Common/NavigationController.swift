@@ -8,11 +8,21 @@
 
 import UIKit
 
-class NavigationController: UINavigationController {
+class NavigationController: UINavigationController, PrimaryContainerType {
 
-    var detailView: DetailView<UIViewController> = .empty
+    let detailPopCompletion: (UIViewController & PlaceholderViewControllerType) -> Void
+    var detailView: DetailView = .placeholder
 
     // MARK: - Lifecycle
+
+    init(withPopDetailCompletion completion: @escaping (UIViewController & PlaceholderViewControllerType) -> Void) {
+        self.detailPopCompletion = completion
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,50 +30,21 @@ class NavigationController: UINavigationController {
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {
-        if case .visible(let detailViewController) = detailView {
-            if topViewController === detailViewController {
-                detailView = .empty
-            } else {
-                // Set detail view controller to empty to prevent confusion
-                if
-                    let splitViewController = splitViewController,
-                    splitViewController.viewControllers.count > 1,
-                    let detailNavigationController = splitViewController.viewControllers.last as? UINavigationController
-                {
-                    detailNavigationController.setViewControllers([makeEmptyViewController()], animated: false)
-                    detailView = .empty
-                }
-            }
+        switch detailView {
+        case .collapsed:
+            detailView = .placeholder
+        case .separated:
+            detailView = .placeholder
+            /// Set detail view controller to `PlaceholderViewControllerType` to prevent confusion
+            detailPopCompletion(makePlaceholderViewController())
+        case .placeholder:
+            break
         }
         return super.popViewController(animated: animated)
     }
 
-}
-
-extension NavigationController: PrimaryContainerType {
-
-    /// Add detail view controller to `viewControllers` if it is visible.
-    func collapseDetail() {
-        switch detailView {
-        case .visible(let detailViewController):
-            viewControllers += [detailViewController]
-        case .empty:
-            return
-        }
-    }
-
-    /// Remove detail view controller from `viewControllers` if it is visible.
-    func separateDetail() {
-        switch detailView {
-        case .visible:
-            viewControllers.removeLast()
-        case .empty:
-            return
-        }
-    }
-
-    func makeEmptyViewController() -> UIViewController {
-        return EmptyDetailViewController()
+    func makePlaceholderViewController() -> UIViewController & PlaceholderViewControllerType {
+        return PlaceholderViewController()
     }
 
 }

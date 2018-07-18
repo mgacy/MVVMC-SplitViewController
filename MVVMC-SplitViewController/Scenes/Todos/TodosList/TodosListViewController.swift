@@ -52,9 +52,9 @@ final class TodosListViewController: TableViewController, ViewModelAttaching {
             .disposed(by: disposeBag)
 
         viewModel.errors
-            .drive(onNext: { error in
-                print("Error: \(error)")
-            })
+            .delay(0.1)
+            .map { $0.localizedDescription }
+            .drive(errorAlert)
             .disposed(by: disposeBag)
 
         return viewModel

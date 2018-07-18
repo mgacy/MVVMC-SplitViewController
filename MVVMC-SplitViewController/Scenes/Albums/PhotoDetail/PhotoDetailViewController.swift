@@ -13,7 +13,7 @@ import RxSwift
 final class PhotoDetailViewController: UIViewController {
 
     let disposeBag = DisposeBag()
-    var viewModel: PhotoViewModel!
+    var viewModel: PhotoDetailViewModel!
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!

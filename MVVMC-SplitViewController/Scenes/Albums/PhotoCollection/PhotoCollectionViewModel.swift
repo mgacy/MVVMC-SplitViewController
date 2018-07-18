@@ -16,7 +16,7 @@ final class PhotoCollectionViewModel: ViewModelType {
     let fetching: Driver<Bool>
     //let albumTitle: Driver<String>
     let photos: Driver<[PhotoSection]>
-    let selectedPhoto: Driver<PhotoViewModel>
+    let selectedPhoto: Driver<PhotoCellViewModel>
     let errors: Driver<Error>
 
     // MARK: - Lifecycle
@@ -25,11 +25,11 @@ final class PhotoCollectionViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
 
-        photos = dependency.client.getPhotos()
+        photos = dependency.albumService.getPhotos()
             .trackActivity(activityIndicator)
             .map { photo in
                 return photo.map {
-                    return PhotoViewModel.init(client: dependency.client, photo: $0)
+                    return PhotoCellViewModel.init(albumService: dependency.albumService, photo: $0)
                 }
             }
             .map {
@@ -42,7 +42,7 @@ final class PhotoCollectionViewModel: ViewModelType {
         errors = errorTracker.asDriver()
 
         selectedPhoto = bindings.selection
-            .withLatestFrom(self.photos) { (indexPath, sections: [PhotoSection]) -> PhotoViewModel in
+            .withLatestFrom(self.photos) { (indexPath, sections: [PhotoSection]) -> PhotoCellViewModel in
                 return sections[indexPath.section].items[indexPath.row]
             }
     }
@@ -50,7 +50,7 @@ final class PhotoCollectionViewModel: ViewModelType {
     // MARK: - ViewModelType
 
     struct Dependency {
-        let client: APIClient
+        let albumService: AlbumServiceType
         let album: Album
     }
 
@@ -64,30 +64,28 @@ final class PhotoCollectionViewModel: ViewModelType {
 
 struct PhotoSection {
     var header: String
-    var photos: [PhotoViewModel]
-    //var updated: Date
+    var photos: [PhotoCellViewModel]
 
     init(header: String, photos: [Item]) {
         self.header = header
         self.photos = photos
-        //self.updated = updated
     }
 
 }
 
 extension PhotoSection: AnimatableSectionModelType {
-    typealias Item = PhotoViewModel
+    typealias Item = PhotoCellViewModel
     typealias Identity = String
 
     var identity: String {
         return header
     }
 
-    var items: [PhotoViewModel] {
+    var items: [PhotoCellViewModel] {
         return photos
     }
 
-    init(original: PhotoSection, items: [PhotoViewModel]) {
+    init(original: PhotoSection, items: [PhotoCellViewModel]) {
         self = original
         self.photos = items
     }
@@ -97,7 +95,7 @@ extension PhotoSection: AnimatableSectionModelType {
 extension PhotoSection: Equatable {
 
     static func == (lhs: PhotoSection, rhs: PhotoSection) -> Bool {
-        return lhs.header == rhs.header && lhs.items == rhs.items //&& lhs.updated == rhs.updated
+        return lhs.header == rhs.header && lhs.items == rhs.items
     }
 
 }

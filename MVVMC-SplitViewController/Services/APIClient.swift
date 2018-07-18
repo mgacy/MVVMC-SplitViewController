@@ -10,7 +10,12 @@ import Alamofire
 import CodableAlamofire
 import RxSwift
 
-class APIClient {
+protocol ClientType {
+    func request<T: Codable>(_: URLRequestConvertible) -> Single<T>
+    func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage>
+}
+
+class APIClient: ClientType {
 
     // MARK: Properties
 
@@ -32,63 +37,42 @@ class APIClient {
         //decoder.dateDecodingStrategy = .iso8601
     }
 
-    // MARK: Private
+    // MARK: Methods
 
-    private func requestOne<M: Codable>(_ endpoint: Router) -> Observable<M> {
-        return Observable<M>.create { [unowned self] observer in
+    func request<M: Codable>(_ endpoint: URLRequestConvertible) -> Single<M> {
+        return Single<M>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
                 .validate()
                 .responseDecodableObject(queue: self.queue, decoder: self.decoder) { (response: DataResponse<M>) in
                     switch response.result {
-                    case .success(let value):
-                        observer.onNext(value)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
-                        observer.onError(error)
+                    case let .success(val):
+                        single(.success(val))
+                    case let .failure(err):
+                        single(.error(err))
                     }
-                }
+            }
             return Disposables.create {
                 request.cancel()
             }
         }
     }
 
-    private func requestCollection<M: Codable>(_ endpoint: Router) -> Observable<[M]> {
-        return Observable<[M]>.create { [unowned self] observer in
+    func requestImage(_ endpoint: URLRequestConvertible) -> Single<UIImage> {
+        return Single<UIImage>.create { [unowned self] single in
             let request = self.sessionManager.request(endpoint)
             request
                 .validate()
-                .responseDecodableObject(queue: self.queue, decoder: self.decoder) { (response: DataResponse<[M]>) in
-                    switch response.result {
-                    case .success(let value):
-                        observer.onNext(value)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
-                        observer.onError(error)
-                    }
-                }
-            return Disposables.create {
-                request.cancel()
-            }
-        }
-    }
-
-    private func requestImage(from url: URL) -> Observable<UIImage?> {
-        return Observable<UIImage?>.create { [unowned self] observer in
-            let request = self.sessionManager.request(url)
-            request
                 .responseData { response in
                     switch response.result {
                     case .success(let value):
-                        let image = UIImage(data: value)
-                        observer.onNext(image)
-                        observer.onCompleted()
-                    case .failure(let error):
-                        //print("\(#function) FAILED : \(error)")
-                        observer.onError(error)
+                        guard let image = UIImage(data: value) else {
+                            single(.error(ClientError.imageDecodingFailed))
+                            return
+                        }
+                        single(.success(image))
+                    case .failure(let err):
+                        single(.error(err))
                     }
                 }
             return Disposables.create {
@@ -99,80 +83,17 @@ class APIClient {
 
 }
 
-// MARK: - Albums
+// MARK: - Errors
 
-extension APIClient {
-
-    func getAlbums() -> Observable<[Album]> {
-        return requestCollection(Router.getAlbums)
-    }
-
-    func getAlbum(id: Int) -> Observable<Album> {
-        return requestOne(Router.getAlbum(id: id))
-    }
-
+enum ClientError: Error {
+    case imageDecodingFailed
 }
 
-// MARK: - Photos
-
-extension APIClient {
-
-    func getPhotos() -> Observable<[Photo]> {
-        return requestCollection(Router.getPhotos)
+extension ClientError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .imageDecodingFailed:
+            return "Unable to decode image"
+        }
     }
-
-    func getPhotosFromAlbum(id: Int) -> Observable<[Photo]> {
-        return requestCollection(Router.getPhotosFromAlbum(id: id))
-    }
-
-    func getPhoto(id: Int) -> Observable<Photo> {
-        return requestOne(Router.getPhoto(id: id))
-    }
-
-    func getThumbnail(for photo: Photo) -> Observable<UIImage?> {
-        return requestImage(from: photo.thumbnailUrl)
-    }
-
-    func getImage(for photo: Photo) -> Observable<UIImage?> {
-        return requestImage(from: photo.url)
-    }
-
-}
-
-// MARK: - Posts
-
-extension APIClient {
-
-    func getPosts() -> Observable<[Post]> {
-        return requestCollection(Router.getPosts)
-    }
-
-    func getPost(id: Int) -> Observable<Post> {
-        return requestOne(Router.getPost(id: id))
-    }
-
-}
-
-// MARK: - Todos
-
-extension APIClient {
-
-    func getTodos() -> Observable<[Todo]> {
-        return requestCollection(Router.getTodos)
-    }
-
-    func getTodo(id: Int) -> Observable<Todo> {
-        return requestOne(Router.getTodo(id: id))
-    }
-
-}
-
-// MARK: - Users
-
-extension APIClient {
-
-    func getUser(id: Int) -> Observable<User> {
-        return requestOne(Router.getUser(id: id))
-    }
-
 }

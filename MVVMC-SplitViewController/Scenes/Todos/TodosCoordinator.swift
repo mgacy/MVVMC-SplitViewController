@@ -9,7 +9,7 @@
 import RxSwift
 
 class TodosCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient
+    typealias Dependencies = HasTodoService
 
     private let navigationController: UINavigationController
     private let dependencies: Dependencies

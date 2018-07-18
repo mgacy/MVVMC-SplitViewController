@@ -13,31 +13,10 @@
 import RxSwift
 import RxCocoa
 
-// swiftlint:disable unused_closure_parameter
-
-extension ObservableType where E == Bool {
-    /// Boolean not operator
-    public func not() -> Observable<Bool> {
-        return self.map(!)
-    }
-}
-
-extension SharedSequenceConvertibleType {
-    func mapToVoid() -> SharedSequence<SharingStrategy, Void> {
-        return map { _ in }
-    }
-}
-
 extension ObservableType {
 
-    func catchErrorJustComplete() -> Observable<E> {
-        return catchError { _ in
-            return Observable.empty()
-        }
-    }
-
     func asDriverOnErrorJustComplete() -> Driver<E> {
-        return asDriver { error in
+        return asDriver { _ in
             return Driver.empty()
         }
     }
@@ -45,4 +24,14 @@ extension ObservableType {
     func mapToVoid() -> Observable<Void> {
         return map { _ in }
     }
+}
+
+extension PrimitiveSequenceType where TraitType == SingleTrait {
+
+    func asDriverOnErrorJustComplete() -> Driver<ElementType> {
+        return self.primitiveSequence.asDriver { _ in
+            return Driver.empty()
+        }
+    }
+
 }

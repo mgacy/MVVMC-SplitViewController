@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 
 class AppCoordinator: BaseCoordinator<Void> {
-
     private let window: UIWindow
     private let dependencies: AppDependency
 
@@ -20,40 +19,42 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<Void> {
-        coordinateToRoot()
+        coordinateToRoot(basedOn: dependencies.userManager.authenticationState)
         return .never()
     }
 
-    // Recursive method that will restart a child coordinator after completion.
-    // Based on:
-    // https://github.com/uptechteam/Coordinator-MVVM-Rx-Example/issues/3
-    private func coordinateToRoot() {
-        switch dependencies.userManager.authenticationState {
+    /// Recursive method that will restart a child coordinator after completion.
+    /// Based on:
+    /// https://github.com/uptechteam/Coordinator-MVVM-Rx-Example/issues/3
+    private func coordinateToRoot(basedOn authState: AuthenticationState) {
+        switch authState {
         case .signedIn:
             return showSplitView()
-                .subscribe(onNext: { [weak self] _ in
+                .subscribe(onNext: { [weak self] authState in
                     self?.window.rootViewController = nil
-                    self?.coordinateToRoot()
+                    self?.coordinateToRoot(basedOn: authState)
                 })
                 .disposed(by: disposeBag)
         case .signedOut:
             return showLogin()
-                .subscribe(onNext: { [weak self] _ in
+                .subscribe(onNext: { [weak self] authState in
                     self?.window.rootViewController = nil
-                    self?.coordinateToRoot()
+                    self?.coordinateToRoot(basedOn: authState)
                 })
                 .disposed(by: disposeBag)
         }
     }
 
-    private func showSplitView() -> Observable<Void> {
+    private func showSplitView() -> Observable<AuthenticationState> {
         let splitViewCoordinator = SplitViewCoordinator(window: self.window, dependencies: dependencies)
         return coordinate(to: splitViewCoordinator)
+            .map { [unowned self] _ in self.dependencies.userManager.authenticationState }
     }
 
-    private func showLogin() -> Observable<Void> {
+    private func showLogin() -> Observable<AuthenticationState> {
         let loginCoordinator = LoginCoordinator(window: window, dependencies: dependencies)
         return coordinate(to: loginCoordinator)
+            .map { [unowned self] _ in self.dependencies.userManager.authenticationState }
     }
 
 }

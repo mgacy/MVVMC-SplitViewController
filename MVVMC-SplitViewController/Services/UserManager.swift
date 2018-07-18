@@ -10,19 +10,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum AuthenticationState {
+    case signedIn
+    case signedOut
+}
+
 class UserManager {
-
-    enum AuthenticationState {
-        case signedIn
-        case signedOut
-    }
-
     var authenticationState: AuthenticationState
     let currentUser = BehaviorSubject<User?>(value: nil)
-    private let client = APIClient()
+    private let client: ClientType
     private let storageManager: UserStorageManagerType
 
     init() {
+        self.client = APIClient()
         self.storageManager = UserStorageManager()
         if let user = storageManager.read() {
             self.authenticationState = .signedIn
@@ -34,27 +34,40 @@ class UserManager {
 
 }
 
+// MARK: - Authentication Services
+
+typealias AuthenticationService = LoginService & LogoutService & SignupService
+
 enum AuthenticationError: Error {
     case invalidCredentials
 }
 
-// MARK: - LoginService
+extension AuthenticationError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .invalidCredentials:
+            return "Invalid credentials"
+        }
+    }
+}
+
+// MARK: LoginService
 
 protocol LoginService {
-    func login(username: String, password: String) -> Observable<Bool>
+    func login(username: String, password: String) -> Single<Bool>
 }
 
 extension UserManager: LoginService {
 
-    func login(username: String, password: String) -> Observable<Bool> {
+    func login(username: String, password: String) -> Single<Bool> {
         // just a mock
         let loginResult = arc4random() % 5 == 0 ? false : true
         if loginResult == false {
             return .error(AuthenticationError.invalidCredentials)
         }
 
-        return client.getUser(id: 1)
-            .do(onNext: { [weak self] user in
+        return client.request(Router.getUser(id: 1))
+            .do(onSuccess: { [weak self] (user: User) in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)
@@ -64,19 +77,19 @@ extension UserManager: LoginService {
 
 }
 
-// MARK: - LogoutService
+// MARK: LogoutService
 
 protocol LogoutService {
-    func logout() -> Observable<Bool>
+    func logout() -> Single<Bool>
 }
 
 extension UserManager: LogoutService {
 
-    func logout() -> Observable<Bool> {
+    func logout() -> Single<Bool> {
         // just a mock
-        return Observable.just(true)
+        return Single.just(true)
             .delay(0.5, scheduler: MainScheduler.instance)
-            .do(onNext: { [weak self] _ in
+            .do(onSuccess: { [weak self] _ in
                 self?.authenticationState = .signedOut
                 self?.storageManager.clear()
                 self?.currentUser.onNext(nil)
@@ -85,23 +98,23 @@ extension UserManager: LogoutService {
 
 }
 
-// MARK: - SignupService
+// MARK: SignupService
 
 protocol SignupService {
-    func signup(firstName: String, lastName: String, username: String, password: String) -> Observable<Bool>
+    func signup(firstName: String, lastName: String, username: String, password: String) -> Single<Bool>
 }
 
 extension UserManager: SignupService {
 
-    func signup(firstName: String, lastName: String, username: String, password: String) -> Observable<Bool> {
+    func signup(firstName: String, lastName: String, username: String, password: String) -> Single<Bool> {
         // just a mock
         let signupResult = arc4random() % 5 == 0 ? false : true
         if signupResult == false {
             return .error(AuthenticationError.invalidCredentials)
         }
 
-        return client.getUser(id: 1)
-            .do(onNext: { [weak self] user in
+        return client.request(Router.getUser(id: 1))
+            .do(onSuccess: { [weak self] (user: User) in
                 self?.authenticationState = .signedIn
                 self?.currentUser.onNext(user)
                 self?.storageManager.store(user: user)

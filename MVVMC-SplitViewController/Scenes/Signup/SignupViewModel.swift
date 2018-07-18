@@ -42,7 +42,6 @@ final class SignupViewModel: ViewModelType {
                     .trackActivity(signingUp)
                     .asDriver(onErrorJustReturn: false)
             }
-            //.share(replay: 1)
 
         cancelled = bindings.cancelTaps
     }

@@ -22,7 +22,6 @@ class PhotoCollectionViewController: UIViewController, ViewModelAttaching {
         )
     }
 
-    private static let reuseIdentifier = "PhotoCell"
     //fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -72,15 +71,13 @@ extension PhotoCollectionViewController {
         return (
             // swiftlint:disable:next identifier_name
             { (_, cv, ip, i) in
-                let cell = cv.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: ip) as! PhotoCell
+                let cell: PhotoCell = cv.dequeueReusableCell(for: ip)
                 cell.bind(to: i)
                 return cell
             },
             // swiftlint:disable:next identifier_name
             { (ds, cv, kind, ip) in
-                let section = cv.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                  withReuseIdentifier: PhotoSectionView.reuseID,
-                                                                  for: ip) as! PhotoSectionView
+                let section: PhotoSectionView = cv.dequeueReusableSupplementaryView(ofKind: kind, for: ip)
                 section.titleLabel!.text = "\(ds[ip.section].header)"
                 return section
             }
