@@ -22,7 +22,7 @@ class APIClient: ClientType {
     private let sessionManager: SessionManager
     private let decoder: JSONDecoder
 
-    private let queue = DispatchQueue(label: "com.mgacy.response-queue", qos: .utility, attributes: [.concurrent])
+    private let queue = DispatchQueue(label: "com.mgacy.response-queue", qos: .userInitiated, attributes: [.concurrent])
 
     // MARK: Lifecycle
 
