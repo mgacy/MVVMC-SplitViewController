@@ -54,7 +54,6 @@
 		C97137DD1FFB2BDF009EE9B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */; };
 		C97137DF1FFB2BEF009EE9B6 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */; };
 		C97137E11FFB2BFE009EE9B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */; };
-		C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */; };
 		C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */; };
 		C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */; };
 		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
@@ -157,7 +156,6 @@
 		C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -440,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */,
-				C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */,
 				C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */,
 				C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */,
 			);
@@ -620,7 +617,6 @@
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
-				C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */,
 				C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */,
 				C977D1B52005EE580076205E /* PhotoCollectionViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,

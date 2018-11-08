@@ -22,7 +22,7 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
 
     override func start() -> Observable<CoordinationResult> {
-        let viewController = LoginViewController.instance()
+        let viewController = LoginViewController()
         let avm: Attachable<LoginViewModel> = .detached(dependencies)
         let viewModel = viewController.attach(wrapper: avm)
 
@@ -73,7 +73,7 @@ class ModalLoginCoordinator: BaseCoordinator<ModalLoginCoordinationResult> {
     }
 
     override func start() -> Observable<CoordinationResult> {
-        let viewController = LoginViewController.instance()
+        let viewController = LoginViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
 
         let avm: Attachable<LoginViewModel> = .detached(dependencies)
