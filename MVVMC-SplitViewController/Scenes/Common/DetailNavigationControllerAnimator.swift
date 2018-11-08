@@ -9,9 +9,9 @@
 import UIKit
 
 class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let operation: UINavigationControllerOperation
+    let operation: UINavigationController.Operation
 
-    init(operation: UINavigationControllerOperation) {
+    init(operation: UINavigationController.Operation) {
         self.operation = operation
         super.init()
     }
@@ -51,7 +51,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
 
         UIView.animate(
             withDuration: transitionDuration(using: transitionContext), delay: 0,
-            options: [ UIViewAnimationOptions.curveEaseOut ],
+            options: [ UIView.AnimationOptions.curveEaseOut ],
             animations: {
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx / -2.5, dy: 0.0)
@@ -70,7 +70,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
 
         UIView.animate(
             withDuration: transitionDuration(using: transitionContext), delay: 0,
-            options: [ UIViewAnimationOptions.curveEaseOut ],
+            options: [ UIView.AnimationOptions.curveEaseOut ],
             animations: {
                 toVC.view.frame = transitionContext.finalFrame(for: toVC)
                 fromVC.view.frame = finalFrame.offsetBy(dx: dx, dy: 0.0)
@@ -85,7 +85,7 @@ class DetailNavigationControllerAnimator: NSObject, UIViewControllerAnimatedTran
 
         UIView.animate(
             withDuration: transitionDuration(using: transitionContext), delay: 0,
-            options: [ UIViewAnimationOptions.curveEaseOut ],
+            options: [ UIView.AnimationOptions.curveEaseOut ],
             animations: {
                 fromVC.view.frame = containerView.bounds.offsetBy(dx: containerView.frame.width, dy: 0)
                 toVC.view.frame = containerView.bounds
