@@ -48,7 +48,7 @@ final class SignupViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient & HasUserManager
+    typealias Dependency = HasUserManager
 
     struct Bindings {
         let firstName: Driver<String>

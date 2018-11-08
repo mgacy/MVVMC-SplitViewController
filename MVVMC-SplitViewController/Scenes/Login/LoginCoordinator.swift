@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class LoginCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasUserManager
 
     private let window: UIWindow
     private let dependencies: Dependencies
@@ -62,7 +62,7 @@ enum ModalLoginCoordinationResult {
 }
 
 class ModalLoginCoordinator: BaseCoordinator<ModalLoginCoordinationResult> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasUserManager
 
     private let rootViewController: UIViewController
     private let dependencies: Dependencies

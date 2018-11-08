@@ -50,7 +50,7 @@ final class LoginViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient & HasUserManager
+    typealias Dependency = HasUserManager
 
     struct Bindings {
         let username: Driver<String>

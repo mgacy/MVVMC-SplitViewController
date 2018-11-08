@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class ProfileCoordinator: BaseCoordinator<Void> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasUserManager
 
     private let navigationController: UINavigationController
     private let dependencies: Dependencies
