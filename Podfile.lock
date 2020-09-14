@@ -2,51 +2,55 @@ PODS:
   - Alamofire (4.9.1)
   - CodableAlamofire (1.1.2):
     - Alamofire (~> 4.0)
-  - Differentiator (3.1.0)
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxDataSources (3.1.0):
-    - Differentiator (~> 3.0)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.5.0)
-  - RxSwiftExt (3.4.0):
-    - RxSwiftExt/Core (= 3.4.0)
-    - RxSwiftExt/RxCocoa (= 3.4.0)
-  - RxSwiftExt/Core (3.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwiftExt/RxCocoa (3.4.0):
-    - RxCocoa (~> 4.0)
+  - Differentiator (4.0.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
     - RxSwiftExt/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - CodableAlamofire
-  - RxCocoa (~> 4.0)
-  - RxDataSources (~> 3.0)
-  - RxSwift (~> 4.0)
-  - RxSwiftExt (~> 3.0)
+  - RxCocoa (~> 5.0)
+  - RxDataSources (~> 4.0)
+  - RxSwift (~> 5.0)
+  - RxSwiftExt (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Differentiator
-    - RxDataSources
   trunk:
     - Alamofire
     - CodableAlamofire
+    - Differentiator
     - RxCocoa
+    - RxDataSources
+    - RxRelay
     - RxSwift
     - RxSwiftExt
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
-  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: 363a845ef62794220e3ad9c9c022d12761600961
+PODFILE CHECKSUM: 0d02256bbb6929d3b42777aaa8ee1320259d030a
 
 COCOAPODS: 1.8.4
