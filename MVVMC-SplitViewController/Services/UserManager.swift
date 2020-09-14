@@ -88,7 +88,7 @@ extension UserManager: LogoutService {
     func logout() -> Single<Bool> {
         // just a mock
         return Single.just(true)
-            .delay(0.5, scheduler: MainScheduler.instance)
+            .delay(.milliseconds(500), scheduler: MainScheduler.instance)
             .do(onSuccess: { [weak self] _ in
                 self?.authenticationState = .signedOut
                 self?.storageManager.clear()
