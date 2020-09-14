@@ -1,21 +1,23 @@
 PODS:
-  - Alamofire (4.7.3)
-  - CodableAlamofire (1.1.0):
+  - Alamofire (4.9.1)
+  - CodableAlamofire (1.1.2):
     - Alamofire (~> 4.0)
   - Differentiator (3.1.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - RxSwiftExt (3.3.0):
-    - RxSwiftExt/Core (= 3.3.0)
-  - RxSwiftExt/Core (3.3.0):
+  - RxSwift (4.5.0)
+  - RxSwiftExt (3.4.0):
+    - RxSwiftExt/Core (= 3.4.0)
+    - RxSwiftExt/RxCocoa (= 3.4.0)
+  - RxSwiftExt/Core (3.4.0):
     - RxSwift (~> 4.0)
+  - RxSwiftExt/RxCocoa (3.4.0):
+    - RxCocoa (~> 4.0)
+    - RxSwiftExt/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -26,26 +28,25 @@ DEPENDENCIES:
   - RxSwiftExt (~> 3.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
+    - Differentiator
+    - RxDataSources
+  trunk:
     - Alamofire
     - CodableAlamofire
-    - Differentiator
-    - RxAtomic
     - RxCocoa
-    - RxDataSources
     - RxSwift
     - RxSwiftExt
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  RxSwiftExt: 81afb48ab0602f503147417baeb3989d64c7687d
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
 
 PODFILE CHECKSUM: 363a845ef62794220e3ad9c9c022d12761600961
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
