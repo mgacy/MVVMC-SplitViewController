@@ -5,6 +5,7 @@ platform :ios, '11.0'
 def basic_pods
   pod 'Alamofire',          '~> 4.4'
   pod 'CodableAlamofire'
+  pod 'ColorCompatibility'
   # pod 'SwiftyBeaver'
   pod 'RxSwift',            '~> 5.0'
   pod 'RxCocoa',            '~> 5.0'
