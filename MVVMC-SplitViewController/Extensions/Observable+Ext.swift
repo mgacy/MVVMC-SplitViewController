@@ -15,7 +15,7 @@ import RxCocoa
 
 extension ObservableType {
 
-    func asDriverOnErrorJustComplete() -> Driver<E> {
+    func asDriverOnErrorJustComplete() -> Driver<Element> {
         return asDriver { _ in
             return Driver.empty()
         }
@@ -26,9 +26,9 @@ extension ObservableType {
     }
 }
 
-extension PrimitiveSequenceType where TraitType == SingleTrait {
+extension PrimitiveSequenceType where Trait == SingleTrait {
 
-    func asDriverOnErrorJustComplete() -> Driver<ElementType> {
+    func asDriverOnErrorJustComplete() -> Driver<Element> {
         return self.primitiveSequence.asDriver { _ in
             return Driver.empty()
         }
