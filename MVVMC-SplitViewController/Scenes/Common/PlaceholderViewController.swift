@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import ColorCompatibility
 
 class PlaceholderViewController: UIViewController, PlaceholderViewControllerType {
 
     let backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.image = #imageLiteral(resourceName: "EmptyViewBackground")
-        view.tintColor = UIColor(named: "StarDust")
+        view.tintColor = ColorCompatibility.systemGray2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -35,7 +36,7 @@ class PlaceholderViewController: UIViewController, PlaceholderViewControllerType
     // MARK: - View Methods
 
     func setupView() {
-        view.backgroundColor = UIColor(named: "AthensGray")
+        view.backgroundColor = ColorCompatibility.systemBackground
         self.view.addSubview(backgroundImageView)
         navigationItem.leftItemsSupplementBackButton = true
     }

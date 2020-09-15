@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import ColorCompatibility
 
 class LoginViewController: UIViewController, ViewModelAttaching {
 
@@ -66,8 +67,8 @@ class LoginViewController: UIViewController, ViewModelAttaching {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
-        view.setTitleColor(.red, for: .highlighted)
-        view.backgroundColor = UIColor.blue
+        view.setTitleColor(ColorCompatibility.systemRed, for: .highlighted)
+        view.backgroundColor = ColorCompatibility.systemBlue
         return view
     }()
 
@@ -77,9 +78,9 @@ class LoginViewController: UIViewController, ViewModelAttaching {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.blue.cgColor
-        view.setTitleColor(.blue, for: .normal)
-        view.setTitleColor(.red, for: .highlighted)
+        view.layer.borderColor = ColorCompatibility.systemBlue.cgColor
+        view.setTitleColor(ColorCompatibility.systemBlue, for: .normal)
+        view.setTitleColor(ColorCompatibility.systemRed, for: .highlighted)
         view.backgroundColor = .clear
         return view
     }()
@@ -114,7 +115,7 @@ class LoginViewController: UIViewController, ViewModelAttaching {
     // MARK: - View Methods
 
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = ColorCompatibility.systemBackground
         view.addSubview(stackView)
     }
 

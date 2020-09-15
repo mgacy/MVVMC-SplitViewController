@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - CodableAlamofire (1.1.2):
     - Alamofire (~> 4.0)
+  - ColorCompatibility (1.0.0)
   - Differentiator (4.0.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - CodableAlamofire
+  - ColorCompatibility
   - RxCocoa (~> 5.0)
   - RxDataSources (~> 4.0)
   - RxSwift (~> 5.0)
@@ -34,6 +36,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CodableAlamofire
+    - ColorCompatibility
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -44,6 +47,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
+  ColorCompatibility: 2762fea4195ed88bfb15eeca3ca5de73bb4a9380
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -51,6 +55,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: 0d02256bbb6929d3b42777aaa8ee1320259d030a
+PODFILE CHECKSUM: 397c8626d3e9615526e914593551883ea1102e85
 
 COCOAPODS: 1.8.4
