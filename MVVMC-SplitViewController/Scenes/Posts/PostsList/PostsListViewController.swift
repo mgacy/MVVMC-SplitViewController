@@ -52,7 +52,7 @@ final class PostsListViewController: TableViewController, ViewModelAttaching {
             .disposed(by: disposeBag)
 
         viewModel.errors
-            .delay(0.1)
+            .delay(.milliseconds(100))
             .map { $0.localizedDescription }
             .drive(errorAlert)
             .disposed(by: disposeBag)

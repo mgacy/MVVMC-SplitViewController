@@ -9,11 +9,12 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import ColorCompatibility
 
 class LoginViewController: UIViewController, ViewModelAttaching {
 
     var viewModel: Attachable<LoginViewModel>!
-    var bindings: LoginViewModel.Bindings {
+    lazy var bindings: LoginViewModel.Bindings = {
         return LoginViewModel.Bindings(
             username: loginTextField.rx.text.orEmpty.asDriver(),
             password: passwordTextField.rx.text.orEmpty.asDriver(),
@@ -22,15 +23,78 @@ class LoginViewController: UIViewController, ViewModelAttaching {
             doneTaps: passwordTextField.rx.controlEvent(.editingDidEndOnExit).asDriver(),
             cancelTaps: cancelButtonItem.rx.tap.asDriver()
         )
-    }
+    }()
 
     let disposeBag = DisposeBag()
 
     // MARK: Interface
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
+
+    let loginTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "Email"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.borderStyle = .roundedRect
+        view.clearButtonMode = .whileEditing
+        view.textAlignment = .left
+        // UITextInputTraits
+        view.autocapitalizationType = .none
+        view.autocorrectionType = .no
+        view.keyboardType = .emailAddress
+        view.returnKeyType = .next
+        view.spellCheckingType = .no
+        view.textContentType = .emailAddress
+        return view
+    }()
+
+    let passwordTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "Password"
+        view.isSecureTextEntry = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.borderStyle = .roundedRect
+        view.clearButtonMode = .whileEditing
+        view.textAlignment = .left
+        // UITextInputTraits
+        view.autocapitalizationType = .none
+        view.returnKeyType = .go
+        view.spellCheckingType = .no
+        return view
+    }()
+
+    let loginButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Login", for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        view.setTitleColor(ColorCompatibility.systemRed, for: .highlighted)
+        view.backgroundColor = ColorCompatibility.systemBlue
+        return view
+    }()
+
+    let signupButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Signup", for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 1
+        view.layer.borderColor = ColorCompatibility.systemBlue.cgColor
+        view.setTitleColor(ColorCompatibility.systemBlue, for: .normal)
+        view.setTitleColor(ColorCompatibility.systemRed, for: .highlighted)
+        view.backgroundColor = .clear
+        return view
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [loginTextField, passwordTextField, loginButton, signupButton])
+        view.axis = .vertical
+        view.alignment = .fill
+        view.distribution = .fillEqually
+        view.spacing = 8.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
 
     // MARK: - Lifecycle
@@ -38,6 +102,7 @@ class LoginViewController: UIViewController, ViewModelAttaching {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +115,20 @@ class LoginViewController: UIViewController, ViewModelAttaching {
     // MARK: - View Methods
 
     private func setupView() {
-        loginButton.layer.cornerRadius = 5
+        view.backgroundColor = ColorCompatibility.systemBackground
+        view.addSubview(stackView)
+    }
+
+    private func setupConstraints() {
+        let guide = view.safeAreaLayoutGuide
+        let height = view.frame.height
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: height / 4.0),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16.0),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16.0)
+            //stackView.widthAnchor.constraint(lessThanOrEqualToConstant: 380.0)
+        ])
     }
 
     func bind(viewModel: LoginViewModel) -> LoginViewModel {

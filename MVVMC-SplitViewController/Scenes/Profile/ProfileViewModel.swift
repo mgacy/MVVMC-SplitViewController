@@ -41,7 +41,7 @@ final class ProfileViewModel: ViewModelType {
 
     // MARK: - ViewModelType
 
-    typealias Dependency = HasClient & HasUserManager
+    typealias Dependency = HasUserManager
 
     struct Bindings {
         let settingsTaps: Driver<Void>

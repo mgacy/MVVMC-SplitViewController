@@ -1,37 +1,60 @@
 PODS:
-  - Alamofire (4.6.0)
-  - CodableAlamofire (1.1.0):
+  - Alamofire (4.9.1)
+  - CodableAlamofire (1.1.2):
     - Alamofire (~> 4.0)
-  - Differentiator (3.0.2)
-  - RxCocoa (4.1.1):
-    - RxSwift (~> 4.0)
-  - RxDataSources (3.0.2):
-    - Differentiator (~> 3.0)
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.1.1)
-  - RxSwiftExt (3.1.0):
-    - RxSwiftExt/Core (= 3.1.0)
-  - RxSwiftExt/Core (3.1.0):
-    - RxSwift (~> 4.0)
+  - ColorCompatibility (1.0.0)
+  - Differentiator (4.0.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - CodableAlamofire
-  - RxCocoa (~> 4.0)
-  - RxDataSources (~> 3.0)
-  - RxSwift (~> 4.0)
-  - RxSwiftExt (~> 3.0)
+  - ColorCompatibility
+  - RxCocoa (~> 5.0)
+  - RxDataSources (~> 4.0)
+  - RxSwift (~> 5.0)
+  - RxSwiftExt (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CodableAlamofire
+    - ColorCompatibility
+    - Differentiator
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - RxSwiftExt
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  CodableAlamofire: e2d2edcec7cf413f7862c30c8fa98eded27a83f9
-  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
-  RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
-  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
-  RxSwift: c6e3b1c7b325c7d121cd4327e9d98b7ed746b570
-  RxSwiftExt: a9b9c8e94be009146707f9fcb16eaf3cc1f3910c
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
+  ColorCompatibility: 2762fea4195ed88bfb15eeca3ca5de73bb4a9380
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: 363a845ef62794220e3ad9c9c022d12761600961
+PODFILE CHECKSUM: 397c8626d3e9615526e914593551883ea1102e85
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.8.4

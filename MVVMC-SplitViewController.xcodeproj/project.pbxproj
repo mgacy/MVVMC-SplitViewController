@@ -54,7 +54,6 @@
 		C97137DD1FFB2BDF009EE9B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */; };
 		C97137DF1FFB2BEF009EE9B6 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */; };
 		C97137E11FFB2BFE009EE9B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */; };
-		C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */; };
 		C97137E71FFB4676009EE9B6 /* SignupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */; };
 		C97137E91FFB46A4009EE9B6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */; };
 		C97137EB1FFB46AF009EE9B6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */; };
@@ -71,6 +70,7 @@
 		C97A6DD91FFF204300C6E7C5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */; };
 		C97A6DDB1FFF23F700C6E7C5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */; };
 		C97A6DDD1FFF247F00C6E7C5 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */; };
+		C9BA2B5A251008660017161A /* ColorCompatibility+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA2B59251008660017161A /* ColorCompatibility+Ext.swift */; };
 		C9BD52A6200965AB00D697AD /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD52A5200965AB00D697AD /* ProfileCoordinator.swift */; };
 		C9BD52A8200965BA00D697AD /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BD52A7200965BA00D697AD /* ProfileViewController.storyboard */; };
 		C9BD52AA200965C600D697AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD52A9200965C600D697AD /* ProfileViewController.swift */; };
@@ -157,7 +157,6 @@
 		C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		C97137E61FFB4676009EE9B6 /* SignupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCoordinator.swift; sourceTree = "<group>"; };
 		C97137E81FFB46A4009EE9B6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C97137EA1FFB46AF009EE9B6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -174,6 +173,7 @@
 		C97A6DD81FFF204200C6E7C5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C97A6DDA1FFF23F700C6E7C5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C97A6DDC1FFF247F00C6E7C5 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		C9BA2B59251008660017161A /* ColorCompatibility+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorCompatibility+Ext.swift"; sourceTree = "<group>"; };
 		C9BD52A5200965AB00D697AD /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		C9BD52A7200965BA00D697AD /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		C9BD52A9200965C600D697AD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +303,7 @@
 		C93E19931FF4861C00B5D0B9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C9BA2B59251008660017161A /* ColorCompatibility+Ext.swift */,
 				C93E199E1FF4910E00B5D0B9 /* Observable+Ext.swift */,
 			);
 			path = Extensions;
@@ -440,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				C97137DE1FFB2BEF009EE9B6 /* LoginCoordinator.swift */,
-				C97137E31FFB33CF009EE9B6 /* LoginViewController.storyboard */,
 				C97137DC1FFB2BDF009EE9B6 /* LoginViewController.swift */,
 				C97137E01FFB2BFE009EE9B6 /* LoginViewModel.swift */,
 			);
@@ -535,7 +535,6 @@
 				C94F8F351FEC234C00C8183D /* Frameworks */,
 				C94F8F361FEC234C00C8183D /* Resources */,
 				B72FD184F3EF63FCD215DB0B /* [CP] Embed Pods Frameworks */,
-				3A08CD24947DE10489ECE1C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -554,8 +553,6 @@
 				C94F8F481FEC234C00C8183D /* Sources */,
 				C94F8F491FEC234C00C8183D /* Frameworks */,
 				C94F8F4A1FEC234C00C8183D /* Resources */,
-				7633AEF79D74D3CCCE43D270 /* [CP] Embed Pods Frameworks */,
-				9BEDD56C6283CB9BAB7F2707 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -574,15 +571,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Mathew Gacy";
 				TargetAttributes = {
 					C94F8F371FEC234C00C8183D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					C94F8F4B1FEC234C00C8183D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C94F8F371FEC234C00C8183D;
 					};
@@ -620,7 +619,6 @@
 				C94F8F461FEC234C00C8183D /* LaunchScreen.storyboard in Resources */,
 				C915BE1A1FF5F35600F53F5F /* TodosListViewController.storyboard in Resources */,
 				C93E198F1FF4537C00B5D0B9 /* PostsListViewController.storyboard in Resources */,
-				C97137E41FFB33CF009EE9B6 /* LoginViewController.storyboard in Resources */,
 				C915BE101FF5DD6600F53F5F /* PostDetailViewController.storyboard in Resources */,
 				C977D1B52005EE580076205E /* PhotoCollectionViewController.storyboard in Resources */,
 				C94F8F431FEC234C00C8183D /* Assets.xcassets in Resources */,
@@ -655,36 +653,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3A08CD24947DE10489ECE1C2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7633AEF79D74D3CCCE43D270 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewControllerTests/Pods-MVVMC-SplitViewControllerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		92F68C3A17E39E1A22821F4E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -703,33 +671,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9BEDD56C6283CB9BAB7F2707 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewControllerTests/Pods-MVVMC-SplitViewControllerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B72FD184F3EF63FCD215DB0B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ColorCompatibility/ColorCompatibility.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 			);
@@ -737,15 +692,17 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorCompatibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVMC-SplitViewController/Pods-MVVMC-SplitViewController-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -818,6 +775,7 @@
 				C93E19971FF487D500B5D0B9 /* ViewModelType.swift in Sources */,
 				C977D1AC2005E3870076205E /* AlbumListViewModel.swift in Sources */,
 				C93E199F1FF4910E00B5D0B9 /* Observable+Ext.swift in Sources */,
+				C9BA2B5A251008660017161A /* ColorCompatibility+Ext.swift in Sources */,
 				C915BE0A1FF5D88700F53F5F /* PostsCoordinator.swift in Sources */,
 				C93E199D1FF48CF900B5D0B9 /* ErrorTracker.swift in Sources */,
 				C927902320466D53007EA30F /* ErrorAlertDisplayable.swift in Sources */,
@@ -868,6 +826,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -875,6 +834,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -925,6 +885,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -932,6 +893,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -972,7 +934,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mgacy.MVVMC-SplitViewController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -988,7 +950,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mgacy.MVVMC-SplitViewController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1004,7 +966,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mgacy.MVVMC-SplitViewControllerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVVMC-SplitViewController.app/MVVMC-SplitViewController";
 			};
@@ -1021,7 +983,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mgacy.MVVMC-SplitViewControllerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVVMC-SplitViewController.app/MVVMC-SplitViewController";
 			};

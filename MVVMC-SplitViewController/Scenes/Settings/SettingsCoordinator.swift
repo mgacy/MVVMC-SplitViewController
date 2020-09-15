@@ -20,7 +20,7 @@ enum SettingsCoordinationResult {
 }
 
 class SettingsCoordinator: BaseCoordinator<SettingsCoordinationResult> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasUserManager
 
     private let rootViewController: UIViewController
     private let dependencies: Dependencies

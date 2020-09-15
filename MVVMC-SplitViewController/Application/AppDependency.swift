@@ -42,8 +42,6 @@ struct AppDependency: HasClient, HasUserManager, HasAlbumService, HasPostService
     init() {
         self.client = APIClient()
         self.userManager = UserManager()
-
-        let client = APIClient()
         self.albumService = AlbumService(client: client)
         self.postService = PostService(client: client)
         self.todoService = TodoService(client: client)

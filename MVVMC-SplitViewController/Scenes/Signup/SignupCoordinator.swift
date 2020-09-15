@@ -19,7 +19,7 @@ enum SignupCoordinationResult {
 }
 
 class SignupCoordinator: BaseCoordinator<SignupCoordinationResult> {
-    typealias Dependencies = HasClient & HasUserManager
+    typealias Dependencies = HasUserManager
 
     private let rootViewController: UIViewController
     private let dependencies: Dependencies
