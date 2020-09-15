@@ -51,20 +51,20 @@ class SignupViewController: UIViewController, ViewModelAttaching {
 
         // Next keyboard button
         firstNameTextField.rx.controlEvent(.editingDidEndOnExit)
-            .subscribe(onNext: { _ in
-                self.lastNameTextField.becomeFirstResponder()
+            .subscribe(onNext: { [weak self] _ in
+                self?.lastNameTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
 
         lastNameTextField.rx.controlEvent(.editingDidEndOnExit)
-            .subscribe(onNext: { _ in
-                self.loginTextField.becomeFirstResponder()
+            .subscribe(onNext: { [weak self] _ in
+                self?.loginTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
 
         loginTextField.rx.controlEvent(.editingDidEndOnExit)
-            .subscribe(onNext: { _ in
-                self.passwordTextField.becomeFirstResponder()
+            .subscribe(onNext: { [weak self] _ in
+                self?.passwordTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
     }
