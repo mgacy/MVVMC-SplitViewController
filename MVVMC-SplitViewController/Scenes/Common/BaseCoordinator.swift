@@ -64,3 +64,10 @@ class BaseCoordinator<ResultType>: CoordinatorType {
         fatalError("Start method should be implemented.")
     }
 }
+
+// MARK: - CustomStringConvertible
+extension BaseCoordinator: CustomStringConvertible {
+    var description: String {
+        return "\(type(of: self))"
+    }
+}
