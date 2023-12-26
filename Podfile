@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '12.0'
 
 inhibit_all_warnings!
 
@@ -40,7 +40,7 @@ target 'MVVMC-SplitViewController' do
       # Fix RxSwift error
       # https://stackoverflow.com/a/75729977/4472195
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
       end
 
       # Enable RxSwift.Resources for debugging
