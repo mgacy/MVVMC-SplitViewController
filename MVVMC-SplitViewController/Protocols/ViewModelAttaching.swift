@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol ViewModelAttaching: class {
+protocol ViewModelAttaching: AnyObject {
     associatedtype ViewModel: ViewModelType
 
     var bindings: ViewModel.Bindings { get }
