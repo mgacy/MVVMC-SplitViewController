@@ -19,9 +19,9 @@ Loads example data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 
 ### Requirements
 
-- Xcode 11
+- Xcode 12
 - Swift 5
-- iOS 11
+- iOS 12
 
 ### Links
 
