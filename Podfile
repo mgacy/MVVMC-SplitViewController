@@ -1,6 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 
+inhibit_all_warnings!
+
 # Basic
 def basic_pods
   pod 'Alamofire',          '~> 4.4'
