@@ -28,7 +28,10 @@ class SignupViewController: UIViewController, ViewModelAttaching {
     let disposeBag = DisposeBag()
 
     // MARK: Interface
-    let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+    let cancelButton = UIBarButtonItem(
+        barButtonSystemItem: .cancel,
+        target: SignupViewController.self,
+        action: nil)
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var loginTextField: UITextField!
