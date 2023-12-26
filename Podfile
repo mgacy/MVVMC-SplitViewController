@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+platform :ios, '13.0'
 
 # Basic
 def basic_pods
@@ -32,9 +32,16 @@ target 'MVVMC-SplitViewController' do
     # test_pods
   end
 
-  # Enable RxSwift.Resources for debugging
   post_install do |installer|
     installer.pods_project.targets.each do |target|
+      
+      # Fix RxSwift error
+      # https://stackoverflow.com/a/75729977/4472195
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      end
+
+      # Enable RxSwift.Resources for debugging
       if target.name == 'RxSwift'
         target.build_configurations.each do |config|
           if config.name == 'Debug'
