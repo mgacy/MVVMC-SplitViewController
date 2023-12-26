@@ -95,7 +95,10 @@ class LoginViewController: UIViewController, ViewModelAttaching {
         return view
     }()
 
-    let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+    let cancelButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .cancel,
+        target: LoginViewController.self,
+        action: nil)
 
     // MARK: - Lifecycle
 

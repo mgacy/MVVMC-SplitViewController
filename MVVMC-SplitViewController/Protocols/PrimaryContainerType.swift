@@ -17,7 +17,7 @@ enum DetailView {
     case placeholder
 }
 
-protocol SplitTabRootViewControllerType: class {
+protocol SplitTabRootViewControllerType: AnyObject {
     /// Called to update secondary view controller with `PlaceholderViewControllerType` when popping view controller.
     var detailPopCompletion: (UIViewController & PlaceholderViewControllerType) -> Void { get }
 
@@ -56,7 +56,7 @@ extension SplitTabRootViewControllerType where Self: UINavigationController {
 }
 
 /// Represents empty detail view controller.
-protocol PlaceholderViewControllerType: class {}
+protocol PlaceholderViewControllerType: AnyObject {}
 
 protocol PlaceholderFactory {
     /// Factory method to produce tab-specific placeholder for secondary view controller.
